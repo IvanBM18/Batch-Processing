@@ -17,3 +17,5 @@ class Process:
         self.processID = processID
         
     # Class Methods
+    def toString(self):
+        return self.valueA + self.operation + self.valueB 

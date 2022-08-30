@@ -8,25 +8,26 @@
 # 0-Salir del Programa
 #Añadir los procesos a la cola
 #Pantalla de ejecución de los lotes
-
 # import os
 # from models.queue import Queue
 # from models.process import Process
 #si te da error, instala pyside2 para checar si esta es pip show pyside2
 from PySide2.QtWidgets import QApplication
 
-from mainwindow import MainWindow 
+from controllers.main_window import MainForm 
 import sys
 
-    
-# Aplicación de Qt
-app = QApplication()
-# Se crea un botón con la palabra Hola
-window=MainWindow()
-# Se hace visible el botón
-window.show()
-# Qt loop
-sys.exit(app.exec_())
+if __name__ == '__main__':
+    # Aplicación de Qt
+    app = QApplication()
+    # Se crea un botón con la palabra Hola
+    window=MainForm()
+    # Se hace visible el botón
+    window.show()
+    # Qt loop
+    sys.exit(app.exec_())
+
+
 
 # print("Aqui ira el menu")
 

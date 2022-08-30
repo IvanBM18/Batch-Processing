@@ -1,3 +1,6 @@
+from unittest import result
+
+
 class Queue:
     #Class Atributes
     front : int = 0
@@ -33,3 +36,9 @@ class Queue:
     
     def getLength(self):
         return self.end - self.front + 1
+    
+    def toString(self):
+        result = ""
+        for i in self.values:
+            result += i.toString() + " "
+        return result

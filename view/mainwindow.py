@@ -13,11 +13,11 @@ from PySide2.QtGui import *
 from PySide2.QtWidgets import *
 
 
-class Ui_MainWindow(object):
+class MainWindow(object):
     def setupUi(self, MainWindow):
         if not MainWindow.objectName():
             MainWindow.setObjectName(u"MainWindow")
-        MainWindow.resize(1280, 747)
+        MainWindow.resize(1284, 756)
         self.centralwidget = QWidget(MainWindow)
         self.centralwidget.setObjectName(u"centralwidget")
         self.tabWidget = QTabWidget(self.centralwidget)
@@ -69,9 +69,9 @@ class Ui_MainWindow(object):
         self.plainTextEdit_operationFirst = QPlainTextEdit(self.groupBox_operation)
         self.plainTextEdit_operationFirst.setObjectName(u"plainTextEdit_operationFirst")
         self.plainTextEdit_operationFirst.setGeometry(QRect(100, 20, 61, 31))
-        self.plainTextEdit_operation = QPlainTextEdit(self.groupBox_operation)
-        self.plainTextEdit_operation.setObjectName(u"plainTextEdit_operation")
-        self.plainTextEdit_operation.setGeometry(QRect(300, 20, 61, 31))
+        self.plainTextEdit_operationSecond = QPlainTextEdit(self.groupBox_operation)
+        self.plainTextEdit_operationSecond.setObjectName(u"plainTextEdit_operationSecond")
+        self.plainTextEdit_operationSecond.setGeometry(QRect(300, 20, 61, 31))
 
         self.gridLayout.addWidget(self.groupBox_operation, 2, 0, 1, 1)
 
@@ -80,12 +80,12 @@ class Ui_MainWindow(object):
         self.label_time = QLabel(self.groupBox_operation_2)
         self.label_time.setObjectName(u"label_time")
         self.label_time.setGeometry(QRect(10, 30, 29, 16))
-        self.plainTextEdit_6 = QPlainTextEdit(self.groupBox_operation_2)
-        self.plainTextEdit_6.setObjectName(u"plainTextEdit_6")
-        self.plainTextEdit_6.setGeometry(QRect(48, 12, 256, 41))
-        self.plainTextEdit_7 = QPlainTextEdit(self.groupBox_operation_2)
-        self.plainTextEdit_7.setObjectName(u"plainTextEdit_7")
-        self.plainTextEdit_7.setGeometry(QRect(445, 10, 221, 41))
+        self.plainTextEdit_SetTime = QPlainTextEdit(self.groupBox_operation_2)
+        self.plainTextEdit_SetTime.setObjectName(u"plainTextEdit_SetTime")
+        self.plainTextEdit_SetTime.setGeometry(QRect(48, 12, 256, 41))
+        self.plainTextEdit_setID = QPlainTextEdit(self.groupBox_operation_2)
+        self.plainTextEdit_setID.setObjectName(u"plainTextEdit_setID")
+        self.plainTextEdit_setID.setGeometry(QRect(445, 10, 221, 41))
         self.label = QLabel(self.groupBox_operation_2)
         self.label.setObjectName(u"label")
         self.label.setGeometry(QRect(310, 20, 54, 16))
@@ -100,15 +100,15 @@ class Ui_MainWindow(object):
         self.label_name_2 = QLabel(self.groupBox_name_2)
         self.label_name_2.setObjectName(u"label_name_2")
         self.label_name_2.setGeometry(QRect(10, 20, 55, 16))
-        self.pushButton = QPushButton(self.groupBox_name_2)
-        self.pushButton.setObjectName(u"pushButton")
-        self.pushButton.setGeometry(QRect(20, 20, 93, 28))
+        self.pushButton_addProcess = QPushButton(self.groupBox_name_2)
+        self.pushButton_addProcess.setObjectName(u"pushButton_addProcess")
+        self.pushButton_addProcess.setGeometry(QRect(20, 20, 93, 28))
         self.label_5 = QLabel(self.groupBox_name_2)
         self.label_5.setObjectName(u"label_5")
         self.label_5.setGeometry(QRect(360, 30, 121, 20))
-        self.plainTextEdit = QPlainTextEdit(self.groupBox_name_2)
-        self.plainTextEdit.setObjectName(u"plainTextEdit")
-        self.plainTextEdit.setGeometry(QRect(490, 20, 104, 31))
+        self.plainTextEdit_capturedProcess = QPlainTextEdit(self.groupBox_name_2)
+        self.plainTextEdit_capturedProcess.setObjectName(u"plainTextEdit_capturedProcess")
+        self.plainTextEdit_capturedProcess.setGeometry(QRect(490, 20, 104, 31))
 
         self.gridLayout.addWidget(self.groupBox_name_2, 4, 0, 1, 1)
 
@@ -125,20 +125,20 @@ class Ui_MainWindow(object):
 
         self.gridLayout_2.addWidget(self.label_3, 0, 0, 1, 1)
 
-        self.plainTextEdit_2 = QPlainTextEdit(self.groupBox)
-        self.plainTextEdit_2.setObjectName(u"plainTextEdit_2")
+        self.plainTextEdit_PendingBatch = QPlainTextEdit(self.groupBox)
+        self.plainTextEdit_PendingBatch.setObjectName(u"plainTextEdit_PendingBatch")
 
-        self.gridLayout_2.addWidget(self.plainTextEdit_2, 0, 1, 1, 1)
+        self.gridLayout_2.addWidget(self.plainTextEdit_PendingBatch, 0, 1, 1, 1)
 
         self.label_4 = QLabel(self.groupBox)
         self.label_4.setObjectName(u"label_4")
 
         self.gridLayout_2.addWidget(self.label_4, 0, 2, 1, 1)
 
-        self.plainTextEdit_3 = QPlainTextEdit(self.groupBox)
-        self.plainTextEdit_3.setObjectName(u"plainTextEdit_3")
+        self.plainTextEdit_Counter = QPlainTextEdit(self.groupBox)
+        self.plainTextEdit_Counter.setObjectName(u"plainTextEdit_Counter")
 
-        self.gridLayout_2.addWidget(self.plainTextEdit_3, 0, 3, 2, 1)
+        self.gridLayout_2.addWidget(self.plainTextEdit_Counter, 0, 3, 2, 1)
 
         self.groupBox_2 = QGroupBox(self.tab_2)
         self.groupBox_2.setObjectName(u"groupBox_2")
@@ -168,7 +168,7 @@ class Ui_MainWindow(object):
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QMenuBar(MainWindow)
         self.menubar.setObjectName(u"menubar")
-        self.menubar.setGeometry(QRect(0, 0, 1280, 24))
+        self.menubar.setGeometry(QRect(0, 0, 1284, 21))
         MainWindow.setMenuBar(self.menubar)
         self.statusbar = QStatusBar(MainWindow)
         self.statusbar.setObjectName(u"statusbar")
@@ -176,7 +176,7 @@ class Ui_MainWindow(object):
 
         self.retranslateUi(MainWindow)
 
-        self.tabWidget.setCurrentIndex(1)
+        self.tabWidget.setCurrentIndex(0)
 
 
         QMetaObject.connectSlotsByName(MainWindow)
@@ -205,7 +205,7 @@ class Ui_MainWindow(object):
         self.label_2.setText(QCoreApplication.translate("MainWindow", u"ID", None))
         self.groupBox_name_2.setTitle("")
         self.label_name_2.setText("")
-        self.pushButton.setText(QCoreApplication.translate("MainWindow", u"Agregar", None))
+        self.pushButton_addProcess.setText(QCoreApplication.translate("MainWindow", u"Agregar", None))
         self.label_5.setText(QCoreApplication.translate("MainWindow", u"Procesos Capturados", None))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab), QCoreApplication.translate("MainWindow", u"Informacion del Proceso", None))
         self.groupBox.setTitle(QCoreApplication.translate("MainWindow", u"Simulador de procesamiento por lotes", None))
