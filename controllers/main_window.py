@@ -1,6 +1,6 @@
 #Validaciones
 #Division por 0
-import queue
+import time
 from PySide2.QtWidgets import QMainWindow
 from PySide2.QtWidgets import QMessageBox
 
@@ -105,7 +105,7 @@ class MainForm(QMainWindow, MainWindow):
                     msgBox.exec_()
                     self.plainTextEdit_operationSecond.setPlainText("")
             self.operation = operation
-            aux = Process(self.name,self.plainTextEdit_operationFirst.toPlainText(),self.plainTextEdit_operationSecond.toPlainText(),operation,self.plainTextEdit_SetTime.toPlainText(),self.plainTextEdit_setID.toPlainText())
+            aux = Process(self.name,self.plainTextEdit_operationFirst.toPlainText(),self.plainTextEdit_operationSecond.toPlainText(),operation,int(self.plainTextEdit_SetTime.toPlainText()),self.plainTextEdit_setID.toPlainText())
             self.queue.enqueue(aux)
             self.counter += 1
             self.plainTextEdit_capturedProcess.setPlainText(str(self.counter))
@@ -117,7 +117,26 @@ class MainForm(QMainWindow, MainWindow):
             currentIndx = self.tabWidget.currentIndex()
             self.tabWidget.setCurrentIndex(currentIndx + 1)
             print(self.queue.toString())
-            self.processBatches()
+            
     
-    def proceessBatches(self):
-        pass
+    #Checar esto no sirve al 100
+    def processBatches(self):
+        indx = 0
+        self.counter = 0
+        auxCont = 0
+        self.plainTextEdit_Counter.setPlainText(str(self.counter))
+        auxVal = self.queue.getFront()
+        while(indx < self.totalProcess):
+            if(auxCont >= auxVal.getTime()):
+                auxCont = 1
+                self.queue.dequeue()
+                auxVal = self.queue.getFront()
+                indx +=1
+            else:
+                auxCont += 1
+            time.sleep(1)
+            self.counter += 1
+            self.plainTextEdit_Counter.setPlainText(str(self.counter))
+            #self.plainTextEdit_PendingBatch.setPlainText(str(self.totalProcess - indx))
+            self.counter += 1
+        print("[INFO] Procesos terminados")
