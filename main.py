@@ -8,6 +8,7 @@
 # 0-Salir del Programa
 #Añadir los procesos a la cola
 #Pantalla de ejecución de los lotes
+#Color blanco del textBox_numero2
 # import os
 # from models.queue import Queue
 # from models.process import Process

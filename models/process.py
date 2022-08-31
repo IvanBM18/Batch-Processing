@@ -18,7 +18,7 @@ class Process:
         
     # Class Methods
     def toString(self):
-        return self.valueA + self.operation + self.valueB
+        return str(self.valueA) + self.operation + str(self.valueB)
     
     def getTime(self) -> int:
         return self.time
