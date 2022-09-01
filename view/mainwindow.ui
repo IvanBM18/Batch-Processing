@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1264</width>
-    <height>782</height>
+    <width>1209</width>
+    <height>788</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -92,7 +92,7 @@ border: 1px solid rgb(0, 153, 117);
 border-radius: 4px;</string>
         </property>
         <property name="text">
-         <string>Ivan</string>
+         <string/>
         </property>
        </widget>
        <widget class="QLineEdit" name="textBox_numero1">
@@ -128,7 +128,7 @@ border-radius: 4px;</string>
          <rect>
           <x>10</x>
           <y>60</y>
-          <width>101</width>
+          <width>81</width>
           <height>31</height>
          </rect>
         </property>
@@ -241,7 +241,11 @@ color: rgb(255, 255, 255);</string>
         <property name="styleSheet">
          <string notr="true">border: 1px solid rgb(0, 153, 117);
 background-color: rgb(52, 62, 64);
+color: rgb(255, 255, 255);
 border-radius: 4px;</string>
+        </property>
+        <property name="text">
+         <string/>
         </property>
        </widget>
        <widget class="QLineEdit" name="textBox_tiempo">
@@ -379,6 +383,9 @@ border-radius: 10px;</string>
     </layout>
    </widget>
    <widget class="QGroupBox" name="groupBox_2">
+    <property name="enabled">
+     <bool>false</bool>
+    </property>
     <property name="geometry">
      <rect>
       <x>378</x>
@@ -386,6 +393,18 @@ border-radius: 10px;</string>
       <width>360</width>
       <height>689</height>
      </rect>
+    </property>
+    <property name="sizeIncrement">
+     <size>
+      <width>6</width>
+      <height>6</height>
+     </size>
+    </property>
+    <property name="baseSize">
+     <size>
+      <width>9</width>
+      <height>6</height>
+     </size>
     </property>
     <property name="title">
      <string/>
@@ -398,6 +417,12 @@ border-radius: 10px;</string>
        <width>321</width>
        <height>311</height>
       </rect>
+     </property>
+     <property name="baseSize">
+      <size>
+       <width>7</width>
+       <height>7</height>
+      </size>
      </property>
      <property name="styleSheet">
       <string notr="true">selection-background-color: rgb(255, 170, 127);
@@ -658,25 +683,37 @@ border-radius: 4px;</string>
      </widget>
     </widget>
     <widget class="QTableWidget" name="tablaProcesos">
+     <property name="enabled">
+      <bool>false</bool>
+     </property>
      <property name="geometry">
       <rect>
-       <x>30</x>
-       <y>100</y>
-       <width>311</width>
-       <height>181</height>
+       <x>10</x>
+       <y>90</y>
+       <width>315</width>
+       <height>203</height>
       </rect>
      </property>
-     <property name="minimumSize">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
+       <horstretch>21</horstretch>
+       <verstretch>12</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="sizeIncrement">
       <size>
-       <width>305</width>
+       <width>7</width>
        <height>0</height>
       </size>
      </property>
-     <property name="maximumSize">
-      <size>
-       <width>16777215</width>
-       <height>250</height>
-      </size>
+     <property name="cursor" stdset="0">
+      <cursorShape>ArrowCursor</cursorShape>
+     </property>
+     <property name="contextMenuPolicy">
+      <enum>Qt::ActionsContextMenu</enum>
+     </property>
+     <property name="acceptDrops">
+      <bool>true</bool>
      </property>
      <property name="layoutDirection">
       <enum>Qt::LeftToRight</enum>
@@ -685,6 +722,78 @@ border-radius: 4px;</string>
       <string notr="true">background-color: rgb(52, 62, 64);
 </string>
      </property>
+     <property name="frameShape">
+      <enum>QFrame::StyledPanel</enum>
+     </property>
+     <property name="frameShadow">
+      <enum>QFrame::Raised</enum>
+     </property>
+     <property name="lineWidth">
+      <number>4</number>
+     </property>
+     <property name="verticalScrollBarPolicy">
+      <enum>Qt::ScrollBarAsNeeded</enum>
+     </property>
+     <property name="horizontalScrollBarPolicy">
+      <enum>Qt::ScrollBarAlwaysOff</enum>
+     </property>
+     <property name="sizeAdjustPolicy">
+      <enum>QAbstractScrollArea::AdjustToContents</enum>
+     </property>
+     <property name="autoScroll">
+      <bool>true</bool>
+     </property>
+     <property name="tabKeyNavigation">
+      <bool>false</bool>
+     </property>
+     <property name="showDropIndicator" stdset="0">
+      <bool>false</bool>
+     </property>
+     <property name="dragEnabled">
+      <bool>false</bool>
+     </property>
+     <property name="dragDropOverwriteMode">
+      <bool>false</bool>
+     </property>
+     <property name="sortingEnabled">
+      <bool>false</bool>
+     </property>
+     <property name="wordWrap">
+      <bool>true</bool>
+     </property>
+     <property name="cornerButtonEnabled">
+      <bool>false</bool>
+     </property>
+     <property name="rowCount">
+      <number>0</number>
+     </property>
+     <attribute name="horizontalHeaderVisible">
+      <bool>true</bool>
+     </attribute>
+     <attribute name="horizontalHeaderCascadingSectionResizes">
+      <bool>false</bool>
+     </attribute>
+     <attribute name="horizontalHeaderMinimumSectionSize">
+      <number>35</number>
+     </attribute>
+     <attribute name="horizontalHeaderDefaultSectionSize">
+      <number>104</number>
+     </attribute>
+     <attribute name="horizontalHeaderShowSortIndicator" stdset="0">
+      <bool>false</bool>
+     </attribute>
+     <attribute name="horizontalHeaderStretchLastSection">
+      <bool>false</bool>
+     </attribute>
+     <attribute name="verticalHeaderCascadingSectionResizes">
+      <bool>true</bool>
+     </attribute>
+     <attribute name="verticalHeaderMinimumSectionSize">
+      <number>34</number>
+     </attribute>
+     <attribute name="verticalHeaderDefaultSectionSize">
+      <number>30</number>
+     </attribute>
      <column>
       <property name="text">
        <string>ID</string>
@@ -773,8 +882,8 @@ border-radius: 4px;</string>
      <rect>
       <x>745</x>
       <y>11</y>
-      <width>531</width>
-      <height>691</height>
+      <width>451</width>
+      <height>681</height>
      </rect>
     </property>
     <property name="title">
@@ -804,7 +913,7 @@ font: 63 13pt &quot;Segoe UI Semibold&quot;;
       <rect>
        <x>20</x>
        <y>100</y>
-       <width>481</width>
+       <width>421</width>
        <height>451</height>
       </rect>
      </property>
@@ -812,6 +921,18 @@ font: 63 13pt &quot;Segoe UI Semibold&quot;;
       <string notr="true">background-color: rgb(52, 62, 64);
 </string>
      </property>
+     <property name="verticalScrollBarPolicy">
+      <enum>Qt::ScrollBarAlwaysOff</enum>
+     </property>
+     <property name="horizontalScrollBarPolicy">
+      <enum>Qt::ScrollBarAlwaysOff</enum>
+     </property>
+     <property name="sizeAdjustPolicy">
+      <enum>QAbstractScrollArea::AdjustToContents</enum>
+     </property>
+     <attribute name="horizontalHeaderDefaultSectionSize">
+      <number>104</number>
+     </attribute>
      <column>
       <property name="text">
        <string>Lote</string>
@@ -886,8 +1007,8 @@ border-radius: 4px;</string>
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1264</width>
-     <height>21</height>
+     <width>1209</width>
+     <height>26</height>
     </rect>
    </property>
   </widget>
