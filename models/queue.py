@@ -1,6 +1,3 @@
-from unittest import result
-
-
 class Queue:
     #Class Atributes
     front : int = 0
@@ -26,7 +23,7 @@ class Queue:
             return self.values[index]
     
     def isEmpty(self) -> bool:
-        if((self.front == 0 and self.end == self.front -1)):
+        if((self.front == 0 and self.end == (self.front -1))):
             return True
         return False
 
@@ -42,3 +39,10 @@ class Queue:
         for i in self.values:
             result += i.toString() + " "
         return result
+    
+    def getBatch(self,index) -> list:
+        aux = []
+        for i in range(index,index +3):
+            if( i < len(self.values)):
+                aux.append(self.values[i])
+        return aux

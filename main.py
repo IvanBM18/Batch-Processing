@@ -13,7 +13,7 @@
 # from models.queue import Queue
 # from models.process import Process
 #si te da error, instala pyside2 para checar si esta es pip show pyside2
-from PySide2.QtWidgets import QApplication
+from PySide6.QtWidgets import QApplication
 
 from controllers.main_window import MainForm 
 import sys
