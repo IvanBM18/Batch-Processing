@@ -6,12 +6,12 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1209</width>
+    <width>1196</width>
     <height>788</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string>Programa 2</string>
   </property>
   <property name="styleSheet">
    <string notr="true">background-color: rgb(44, 47, 51);
@@ -49,8 +49,8 @@ border: 0px solid rgb(0, 153, 117);
        <widget class="QLabel" name="label_titulo">
         <property name="geometry">
          <rect>
-          <x>40</x>
-          <y>10</y>
+          <x>70</x>
+          <y>40</y>
           <width>221</width>
           <height>31</height>
          </rect>
@@ -61,15 +61,15 @@ font: 87 14pt &quot;Segoe UI Black&quot;;
 </string>
         </property>
         <property name="text">
-         <string>Capturar procesos</string>
+         <string>Capturar inicial</string>
         </property>
        </widget>
-       <widget class="QLineEdit" name="textBox_Nombre">
+       <widget class="QLineEdit" name="textBox_NumProcess">
         <property name="geometry">
          <rect>
-          <x>110</x>
-          <y>60</y>
-          <width>144</width>
+          <x>40</x>
+          <y>210</y>
+          <width>230</width>
           <height>35</height>
          </rect>
         </property>
@@ -95,239 +95,12 @@ border-radius: 4px;</string>
          <string/>
         </property>
        </widget>
-       <widget class="QLineEdit" name="textBox_numero1">
+       <widget class="QLabel" name="label_Numero">
         <property name="geometry">
          <rect>
-          <x>110</x>
-          <y>110</y>
-          <width>81</width>
-          <height>35</height>
-         </rect>
-        </property>
-        <property name="minimumSize">
-         <size>
-          <width>60</width>
-          <height>35</height>
-         </size>
-        </property>
-        <property name="maximumSize">
-         <size>
-          <width>230</width>
-          <height>35</height>
-         </size>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">background-color: rgb(52, 62, 64);
-color: rgb(255, 255, 255);
-border: 1px solid rgb(0, 153, 117);
-border-radius: 4px;</string>
-        </property>
-       </widget>
-       <widget class="QLabel" name="label_Nombre">
-        <property name="geometry">
-         <rect>
-          <x>10</x>
-          <y>60</y>
-          <width>81</width>
-          <height>31</height>
-         </rect>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">color:rgb(255, 255, 255);
-font: 10pt &quot;Segoe UI Emoji&quot;;
-</string>
-        </property>
-        <property name="text">
-         <string>Nombre</string>
-        </property>
-       </widget>
-       <widget class="QLabel" name="label_operacion">
-        <property name="geometry">
-         <rect>
-          <x>10</x>
-          <y>110</y>
-          <width>81</width>
-          <height>31</height>
-         </rect>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">color:rgb(255, 255, 255);
-font: 10pt &quot;Segoe UI Emoji&quot;;
-</string>
-        </property>
-        <property name="text">
-         <string>Operación</string>
-        </property>
-       </widget>
-       <widget class="QComboBox" name="comboBoxOperaciones">
-        <property name="geometry">
-         <rect>
-          <x>200</x>
-          <y>110</y>
-          <width>50</width>
-          <height>35</height>
-         </rect>
-        </property>
-        <property name="minimumSize">
-         <size>
-          <width>0</width>
-          <height>35</height>
-         </size>
-        </property>
-        <property name="maximumSize">
-         <size>
-          <width>50</width>
-          <height>35</height>
-         </size>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">background-color: rgb(52, 62, 64);
-border: 1px solid rgb(0, 153, 117);
-border-radius: 6px;
-color: rgb(255, 255, 255);</string>
-        </property>
-        <item>
-         <property name="text">
-          <string>+</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>-</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>*</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>/</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>%</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>^</string>
-         </property>
-        </item>
-       </widget>
-       <widget class="QLineEdit" name="textBox_numero2">
-        <property name="geometry">
-         <rect>
-          <x>260</x>
-          <y>110</y>
-          <width>71</width>
-          <height>35</height>
-         </rect>
-        </property>
-        <property name="minimumSize">
-         <size>
-          <width>60</width>
-          <height>35</height>
-         </size>
-        </property>
-        <property name="maximumSize">
-         <size>
-          <width>230</width>
-          <height>35</height>
-         </size>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">border: 1px solid rgb(0, 153, 117);
-background-color: rgb(52, 62, 64);
-color: rgb(255, 255, 255);
-border-radius: 4px;</string>
-        </property>
-        <property name="text">
-         <string/>
-        </property>
-       </widget>
-       <widget class="QLineEdit" name="textBox_tiempo">
-        <property name="geometry">
-         <rect>
-          <x>110</x>
-          <y>160</y>
-          <width>144</width>
-          <height>35</height>
-         </rect>
-        </property>
-        <property name="minimumSize">
-         <size>
-          <width>60</width>
-          <height>35</height>
-         </size>
-        </property>
-        <property name="maximumSize">
-         <size>
-          <width>230</width>
-          <height>35</height>
-         </size>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">background-color: rgb(52, 62, 64);
-color: rgb(255, 255, 255);
-border: 1px solid rgb(0, 153, 117);
-border-radius: 4px;</string>
-        </property>
-       </widget>
-       <widget class="QLabel" name="label_tiempo">
-        <property name="geometry">
-         <rect>
-          <x>10</x>
-          <y>160</y>
-          <width>71</width>
-          <height>31</height>
-         </rect>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">color:rgb(255, 255, 255);
-font: 10pt &quot;Segoe UI Emoji&quot;;
-</string>
-        </property>
-        <property name="text">
-         <string>Tiempo</string>
-        </property>
-       </widget>
-       <widget class="QLineEdit" name="textBox_Id">
-        <property name="geometry">
-         <rect>
-          <x>110</x>
-          <y>220</y>
+          <x>40</x>
+          <y>170</y>
           <width>171</width>
-          <height>35</height>
-         </rect>
-        </property>
-        <property name="minimumSize">
-         <size>
-          <width>60</width>
-          <height>35</height>
-         </size>
-        </property>
-        <property name="maximumSize">
-         <size>
-          <width>230</width>
-          <height>35</height>
-         </size>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">background-color: rgb(52, 62, 64);
-color: rgb(255, 255, 255);
-border: 1px solid rgb(0, 153, 117);
-border-radius: 4px;</string>
-        </property>
-       </widget>
-       <widget class="QLabel" name="label_5">
-        <property name="geometry">
-         <rect>
-          <x>20</x>
-          <y>220</y>
-          <width>31</width>
           <height>31</height>
          </rect>
         </property>
@@ -337,14 +110,14 @@ font: 10pt &quot;Segoe UI Emoji&quot;;
 </string>
         </property>
         <property name="text">
-         <string>ID</string>
+         <string>Numero de procesos</string>
         </property>
        </widget>
        <widget class="QPushButton" name="pushButton_Agregar">
         <property name="geometry">
          <rect>
-          <x>30</x>
-          <y>360</y>
+          <x>20</x>
+          <y>290</y>
           <width>111</width>
           <height>41</height>
          </rect>
@@ -362,8 +135,8 @@ border-radius: 10px;</string>
        <widget class="QPushButton" name="pushButton_ejecturar">
         <property name="geometry">
          <rect>
-          <x>190</x>
-          <y>360</y>
+          <x>180</x>
+          <y>290</y>
           <width>111</width>
           <height>41</height>
          </rect>
@@ -412,8 +185,8 @@ border-radius: 10px;</string>
     <widget class="QGroupBox" name="groupBox_5">
      <property name="geometry">
       <rect>
-       <x>20</x>
-       <y>340</y>
+       <x>30</x>
+       <y>300</y>
        <width>321</width>
        <height>311</height>
       </rect>
@@ -435,8 +208,8 @@ border: 0px solid rgb(0, 153, 117);
      <widget class="QLabel" name="label_titulo_4">
       <property name="geometry">
        <rect>
-        <x>80</x>
-        <y>10</y>
+        <x>60</x>
+        <y>40</y>
         <width>221</width>
         <height>31</height>
        </rect>
@@ -449,34 +222,6 @@ font: 63 13pt &quot;Segoe UI Semibold&quot;;
       </property>
       <property name="text">
        <string>Proceso Actual</string>
-      </property>
-     </widget>
-     <widget class="QLineEdit" name="textBox_Nombre_proceso">
-      <property name="geometry">
-       <rect>
-        <x>140</x>
-        <y>60</y>
-        <width>141</width>
-        <height>35</height>
-       </rect>
-      </property>
-      <property name="minimumSize">
-       <size>
-        <width>60</width>
-        <height>35</height>
-       </size>
-      </property>
-      <property name="maximumSize">
-       <size>
-        <width>230</width>
-        <height>35</height>
-       </size>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">background-color: rgb(52, 62, 64);
-color: rgb(255, 255, 255);
-border: 1px solid rgb(0, 153, 117);
-border-radius: 4px;</string>
       </property>
      </widget>
      <widget class="QLineEdit" name="textBox_operacion">
@@ -505,24 +250,6 @@ border-radius: 4px;</string>
 color: rgb(255, 255, 255);
 border: 1px solid rgb(0, 153, 117);
 border-radius: 4px;</string>
-      </property>
-     </widget>
-     <widget class="QLabel" name="label_Nombre_4">
-      <property name="geometry">
-       <rect>
-        <x>10</x>
-        <y>60</y>
-        <width>91</width>
-        <height>31</height>
-       </rect>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">color:rgb(255, 255, 255);
-font: 10pt &quot;Segoe UI Emoji&quot;;
-</string>
-      </property>
-      <property name="text">
-       <string>Nombre</string>
       </property>
      </widget>
      <widget class="QLabel" name="label_operacion_4">
@@ -576,7 +303,7 @@ border-radius: 4px;</string>
        <rect>
         <x>10</x>
         <y>160</y>
-        <width>101</width>
+        <width>111</width>
         <height>31</height>
        </rect>
       </property>
@@ -792,7 +519,7 @@ border-radius: 4px;</string>
       <number>34</number>
      </attribute>
      <attribute name="verticalHeaderDefaultSectionSize">
-      <number>30</number>
+      <number>34</number>
      </attribute>
      <column>
       <property name="text">
@@ -883,7 +610,7 @@ border-radius: 4px;</string>
       <x>745</x>
       <y>11</y>
       <width>451</width>
-      <height>681</height>
+      <height>691</height>
      </rect>
     </property>
     <property name="title">
@@ -995,9 +722,13 @@ font: 63 13pt &quot;Segoe UI Semibold&quot;;
       </size>
      </property>
      <property name="styleSheet">
-      <string notr="true">border: 1px solid rgb(0, 153, 117);
-background-color: rgb(52, 62, 64);
+      <string notr="true">background-color: rgb(52, 62, 64);
+color: rgb(255, 255, 255);
+border: 1px solid rgb(0, 153, 117);
 border-radius: 4px;</string>
+     </property>
+     <property name="text">
+      <string/>
      </property>
     </widget>
    </widget>
@@ -1007,8 +738,8 @@ border-radius: 4px;</string>
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1209</width>
-     <height>26</height>
+     <width>1196</width>
+     <height>22</height>
     </rect>
    </property>
   </widget>
