@@ -264,7 +264,6 @@ class MainForm(QMainWindow, MainWindow):
     def insertProcessingRow(self,process:Process):
         n = self.tablaProcesos.rowCount()
         self.tablaProcesos.insertRow(n)
-        print(process.getID())
         self.tablaProcesos.setItem(n,0,QTableWidgetItem(str(process.getID())))
         self.tablaProcesos.setItem(n,1,QTableWidgetItem(str(process.getTime())))
         self.tablaProcesos.setItem(n,2,QTableWidgetItem(str(process.getElapsedTime())))
