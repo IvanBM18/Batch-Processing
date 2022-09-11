@@ -533,7 +533,7 @@ border-radius: 4px;</string>
      </column>
      <column>
       <property name="text">
-       <string>Operación</string>
+       <string>T. Transcurrido</string>
       </property>
      </column>
     </widget>

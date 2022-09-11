@@ -13,7 +13,7 @@ if __name__ == '__main__':
     # Se hace visible el botón
     window.show()
     # Qt loop
-    sys.exit(app.exec_()) #use exec?
+    sys.exit(app.exec()) #use exec?
 
 
 

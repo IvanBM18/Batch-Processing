@@ -20,7 +20,7 @@ from PySide6.QtWidgets import (QAbstractScrollArea, QApplication, QFrame, QGridL
     QMainWindow, QMenuBar, QPushButton, QSizePolicy,
     QStatusBar, QTableWidget, QTableWidgetItem, QWidget)
 
-class MainWindow(object):
+class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         if not MainWindow.objectName():
             MainWindow.setObjectName(u"MainWindow")
@@ -311,7 +311,7 @@ class MainWindow(object):
         ___qtablewidgetitem1 = self.tablaProcesos.horizontalHeaderItem(1)
         ___qtablewidgetitem1.setText(QCoreApplication.translate("MainWindow", u"T. M\u00e1x", None));
         ___qtablewidgetitem2 = self.tablaProcesos.horizontalHeaderItem(2)
-        ___qtablewidgetitem2.setText(QCoreApplication.translate("MainWindow", u"Operaci\u00f3n", None));
+        ___qtablewidgetitem2.setText(QCoreApplication.translate("MainWindow", u"T. Transcurrido", None));
         self.label_titulo_5.setText(QCoreApplication.translate("MainWindow", u"Lote Actual", None))
         self.label_titulo_6.setText(QCoreApplication.translate("MainWindow", u"Restantes", None))
         self.groupBox_3.setTitle("")
