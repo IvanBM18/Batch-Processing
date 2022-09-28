@@ -228,7 +228,7 @@ class MainForm(QMainWindow, MainWindow):
                 operation = "%"
             elif(procesNum == 5):
                 operation = "^"	
-            newProcess = Process((random.randint(1,100)),(random.randint(1,100)),operation,(random.randint(6,16)),self.indxP)
+            newProcess = Process((random.randint(1,100)),(random.rpandint(1,100)),operation,(random.randint(6,16)),self.indxP)
             self.indxP +=1
         return newProcess
     

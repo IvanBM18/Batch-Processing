@@ -17,12 +17,3 @@ if __name__ == '__main__':
 
 
 
-# print("Aqui ira el menu")
-
-
-# n = str(input("Numero de Procesos a Introducir: "))
-# while (n.isdigit() == False or int(n) < 1):
-#     os.system("clear" | "cls")
-#     print("[ERROR] introduce un numero")
-#     n = str(input("Numero de Procesos a Introducir: "))
-# n = int(n)
