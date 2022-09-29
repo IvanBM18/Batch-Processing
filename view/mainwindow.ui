@@ -152,6 +152,9 @@ border-radius: 10px;</string>
         </property>
        </widget>
        <widget class="QTableWidget" name="tablaPbloqueados">
+        <property name="enabled">
+         <bool>false</bool>
+        </property>
         <property name="geometry">
          <rect>
           <x>20</x>
@@ -174,6 +177,9 @@ border-radius: 10px;</string>
         </property>
         <attribute name="horizontalHeaderDefaultSectionSize">
          <number>104</number>
+        </attribute>
+        <attribute name="verticalHeaderVisible">
+         <bool>false</bool>
         </attribute>
         <column>
          <property name="text">
@@ -552,7 +558,7 @@ border-radius: 4px;</string>
       <bool>false</bool>
      </property>
      <property name="rowCount">
-      <number>0</number>
+      <number>2</number>
      </property>
      <attribute name="horizontalHeaderVisible">
       <bool>true</bool>
@@ -572,6 +578,9 @@ border-radius: 4px;</string>
      <attribute name="horizontalHeaderStretchLastSection">
       <bool>false</bool>
      </attribute>
+     <attribute name="verticalHeaderVisible">
+      <bool>false</bool>
+     </attribute>
      <attribute name="verticalHeaderCascadingSectionResizes">
       <bool>true</bool>
      </attribute>
@@ -584,6 +593,16 @@ border-radius: 4px;</string>
      <attribute name="verticalHeaderHighlightSections">
       <bool>false</bool>
      </attribute>
+     <row>
+      <property name="text">
+       <string>Nueva fila</string>
+      </property>
+     </row>
+     <row>
+      <property name="text">
+       <string>2</string>
+      </property>
+     </row>
      <column>
       <property name="text">
        <string>ID</string>
@@ -599,6 +618,36 @@ border-radius: 4px;</string>
        <string>T. Transcurrido</string>
       </property>
      </column>
+     <item row="0" column="0">
+      <property name="text">
+       <string>1</string>
+      </property>
+     </item>
+     <item row="0" column="1">
+      <property name="text">
+       <string>1</string>
+      </property>
+     </item>
+     <item row="0" column="2">
+      <property name="text">
+       <string>1</string>
+      </property>
+     </item>
+     <item row="1" column="0">
+      <property name="text">
+       <string>1</string>
+      </property>
+     </item>
+     <item row="1" column="1">
+      <property name="text">
+       <string>1</string>
+      </property>
+     </item>
+     <item row="1" column="2">
+      <property name="text">
+       <string>1</string>
+      </property>
+     </item>
     </widget>
     <widget class="QLabel" name="label_titulo_ProceL">
      <property name="geometry">
@@ -699,6 +748,9 @@ font: 63 13pt &quot;Segoe UI Semibold&quot;;
      </property>
     </widget>
     <widget class="QTableWidget" name="tablaPTerminados">
+     <property name="enabled">
+      <bool>false</bool>
+     </property>
      <property name="geometry">
       <rect>
        <x>120</x>
@@ -708,8 +760,7 @@ font: 63 13pt &quot;Segoe UI Semibold&quot;;
       </rect>
      </property>
      <property name="styleSheet">
-      <string notr="true">background-color: rgb(52, 62, 64);
-</string>
+      <string notr="true">background-color: rgb(52, 62, 64);</string>
      </property>
      <property name="verticalScrollBarPolicy">
       <enum>Qt::ScrollBarAlwaysOff</enum>
@@ -722,6 +773,9 @@ font: 63 13pt &quot;Segoe UI Semibold&quot;;
      </property>
      <attribute name="horizontalHeaderDefaultSectionSize">
       <number>104</number>
+     </attribute>
+     <attribute name="verticalHeaderVisible">
+      <bool>false</bool>
      </attribute>
      <column>
       <property name="text">
@@ -809,13 +863,34 @@ font: 63 13pt &quot;Segoe UI Semibold&quot;;
      </property>
     </widget>
     <widget class="QTableWidget" name="tablePTimeStats">
+     <property name="enabled">
+      <bool>false</bool>
+     </property>
      <property name="geometry">
       <rect>
-       <x>20</x>
+       <x>30</x>
        <y>350</y>
        <width>471</width>
        <height>271</height>
       </rect>
+     </property>
+     <property name="acceptDrops">
+      <bool>true</bool>
+     </property>
+     <property name="autoFillBackground">
+      <bool>true</bool>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(52, 62, 64);</string>
+     </property>
+     <property name="frameShadow">
+      <enum>QFrame::Raised</enum>
+     </property>
+     <property name="horizontalScrollBarPolicy">
+      <enum>Qt::ScrollBarAlwaysOff</enum>
+     </property>
+     <property name="sizeAdjustPolicy">
+      <enum>QAbstractScrollArea::AdjustToContents</enum>
      </property>
      <property name="autoScroll">
       <bool>true</bool>
@@ -836,19 +911,46 @@ font: 63 13pt &quot;Segoe UI Semibold&quot;;
       <enum>QAbstractItemView::DragOnly</enum>
      </property>
      <property name="alternatingRowColors">
+      <bool>false</bool>
+     </property>
+     <property name="showGrid">
+      <bool>true</bool>
+     </property>
+     <property name="wordWrap">
       <bool>true</bool>
      </property>
      <attribute name="horizontalHeaderVisible">
       <bool>true</bool>
      </attribute>
      <attribute name="horizontalHeaderCascadingSectionResizes">
-      <bool>false</bool>
+      <bool>true</bool>
      </attribute>
      <attribute name="horizontalHeaderMinimumSectionSize">
       <number>25</number>
      </attribute>
      <attribute name="horizontalHeaderDefaultSectionSize">
       <number>67</number>
+     </attribute>
+     <attribute name="horizontalHeaderHighlightSections">
+      <bool>true</bool>
+     </attribute>
+     <attribute name="horizontalHeaderShowSortIndicator" stdset="0">
+      <bool>true</bool>
+     </attribute>
+     <attribute name="horizontalHeaderStretchLastSection">
+      <bool>true</bool>
+     </attribute>
+     <attribute name="verticalHeaderVisible">
+      <bool>false</bool>
+     </attribute>
+     <attribute name="verticalHeaderCascadingSectionResizes">
+      <bool>false</bool>
+     </attribute>
+     <attribute name="verticalHeaderHighlightSections">
+      <bool>false</bool>
+     </attribute>
+     <attribute name="verticalHeaderShowSortIndicator" stdset="0">
+      <bool>false</bool>
      </attribute>
      <column>
       <property name="text">
