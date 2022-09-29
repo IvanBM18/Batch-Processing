@@ -46,3 +46,6 @@ class Queue:
             if( i < len(self.values)):
                 aux.append(self.values[i])
         return aux
+    
+    def getList(self) -> list:
+        return self.values

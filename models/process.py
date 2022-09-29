@@ -6,7 +6,7 @@ class Process:
     operation: str
     remainingTime : int
     elapsedTime : int
-    bloquedTime : int
+    blockedTime : int
     processID : str
     stats : TimeStats
     
@@ -18,14 +18,15 @@ class Process:
         self.remainingTime = time
         self.processID = processID
         self.elapsedTime = 0
+        self.blockedTime = 0
         self.stats = TimeStats()
         
     # Class Methods
     def setElapsedTime(self,t : int):
         self.elapsedTime = t
     
-    def setBloquedTime(self,t : int):
-        self.bloquedTime = t
+    def setBlockedTime(self,t : int):
+        self.blockedTime = t
     
     def toString(self):
         return str(self.valueA) + self.operation + str(self.valueB) + " = " + str(self.remainingTime)
@@ -36,8 +37,8 @@ class Process:
     def getElapsedTime(self) -> int:
         return self.elapsedTime
     
-    def getBloquedTime(self) -> int:
-        return self.bloquedTime
+    def getBlockedTime(self) -> int:
+        return self.blockedTime
     
     def getID(self) -> str:
         return self.processID

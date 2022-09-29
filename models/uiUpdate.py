@@ -6,5 +6,7 @@ class Updates(Enum):
     NEW = 1
     #Time Update
     UPDATE = 2
-    #Process Finished
-    END = 3
+    #Blocked Process
+    BLOCKED = 3
+    #Process Finishd
+    END = 4

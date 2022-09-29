@@ -306,49 +306,49 @@ class Ui_MainWindow(object):
 "\n"
 "font: 63 13pt \"Segoe UI Semibold\";\n"
 "")
-        self.tableWidget = QTableWidget(self.groupBox_3)
-        if (self.tableWidget.columnCount() < 7):
-            self.tableWidget.setColumnCount(7)
+        self.tablePTimeStats = QTableWidget(self.groupBox_3)
+        if (self.tablePTimeStats.columnCount() < 7):
+            self.tablePTimeStats.setColumnCount(7)
         font = QFont()
         font.setPointSize(8)
         font.setKerning(False)
         __qtablewidgetitem8 = QTableWidgetItem()
         __qtablewidgetitem8.setText(u"ID");
         __qtablewidgetitem8.setFont(font);
-        self.tableWidget.setHorizontalHeaderItem(0, __qtablewidgetitem8)
+        self.tablePTimeStats.setHorizontalHeaderItem(0, __qtablewidgetitem8)
         font1 = QFont()
         font1.setPointSize(8)
         __qtablewidgetitem9 = QTableWidgetItem()
         __qtablewidgetitem9.setFont(font1);
-        self.tableWidget.setHorizontalHeaderItem(1, __qtablewidgetitem9)
+        self.tablePTimeStats.setHorizontalHeaderItem(1, __qtablewidgetitem9)
         __qtablewidgetitem10 = QTableWidgetItem()
         __qtablewidgetitem10.setText(u"T.F");
         __qtablewidgetitem10.setFont(font1);
-        self.tableWidget.setHorizontalHeaderItem(2, __qtablewidgetitem10)
+        self.tablePTimeStats.setHorizontalHeaderItem(2, __qtablewidgetitem10)
         __qtablewidgetitem11 = QTableWidgetItem()
         __qtablewidgetitem11.setFont(font1);
-        self.tableWidget.setHorizontalHeaderItem(3, __qtablewidgetitem11)
+        self.tablePTimeStats.setHorizontalHeaderItem(3, __qtablewidgetitem11)
         __qtablewidgetitem12 = QTableWidgetItem()
         __qtablewidgetitem12.setFont(font1);
-        self.tableWidget.setHorizontalHeaderItem(4, __qtablewidgetitem12)
+        self.tablePTimeStats.setHorizontalHeaderItem(4, __qtablewidgetitem12)
         __qtablewidgetitem13 = QTableWidgetItem()
         __qtablewidgetitem13.setFont(font1);
-        self.tableWidget.setHorizontalHeaderItem(5, __qtablewidgetitem13)
+        self.tablePTimeStats.setHorizontalHeaderItem(5, __qtablewidgetitem13)
         __qtablewidgetitem14 = QTableWidgetItem()
-        self.tableWidget.setHorizontalHeaderItem(6, __qtablewidgetitem14)
-        self.tableWidget.setObjectName(u"tableWidget")
-        self.tableWidget.setGeometry(QRect(20, 350, 471, 271))
-        self.tableWidget.setAutoScroll(True)
-        self.tableWidget.setAutoScrollMargin(8)
-        self.tableWidget.setTabKeyNavigation(False)
-        self.tableWidget.setProperty("showDropIndicator", False)
-        self.tableWidget.setDragEnabled(True)
-        self.tableWidget.setDragDropMode(QAbstractItemView.DragOnly)
-        self.tableWidget.setAlternatingRowColors(True)
-        self.tableWidget.horizontalHeader().setVisible(True)
-        self.tableWidget.horizontalHeader().setCascadingSectionResizes(False)
-        self.tableWidget.horizontalHeader().setMinimumSectionSize(25)
-        self.tableWidget.horizontalHeader().setDefaultSectionSize(67)
+        self.tablePTimeStats.setHorizontalHeaderItem(6, __qtablewidgetitem14)
+        self.tablePTimeStats.setObjectName(u"tablePTimeStats")
+        self.tablePTimeStats.setGeometry(QRect(20, 350, 471, 271))
+        self.tablePTimeStats.setAutoScroll(True)
+        self.tablePTimeStats.setAutoScrollMargin(8)
+        self.tablePTimeStats.setTabKeyNavigation(False)
+        self.tablePTimeStats.setProperty("showDropIndicator", False)
+        self.tablePTimeStats.setDragEnabled(True)
+        self.tablePTimeStats.setDragDropMode(QAbstractItemView.DragOnly)
+        self.tablePTimeStats.setAlternatingRowColors(True)
+        self.tablePTimeStats.horizontalHeader().setVisible(True)
+        self.tablePTimeStats.horizontalHeader().setCascadingSectionResizes(False)
+        self.tablePTimeStats.horizontalHeader().setMinimumSectionSize(25)
+        self.tablePTimeStats.horizontalHeader().setDefaultSectionSize(67)
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QMenuBar(MainWindow)
         self.menubar.setObjectName(u"menubar")
@@ -403,15 +403,15 @@ class Ui_MainWindow(object):
         self.label_titulo_Cont.setText(QCoreApplication.translate("MainWindow", u"Contador", None))
         self.textBox_contadorGlobal.setText("")
         self.label_titulo_TiempoC.setText(QCoreApplication.translate("MainWindow", u"Tiempos calculados", None))
-        ___qtablewidgetitem8 = self.tableWidget.horizontalHeaderItem(1)
+        ___qtablewidgetitem8 = self.tablePTimeStats.horizontalHeaderItem(1)
         ___qtablewidgetitem8.setText(QCoreApplication.translate("MainWindow", u"T.L", None));
-        ___qtablewidgetitem9 = self.tableWidget.horizontalHeaderItem(3)
+        ___qtablewidgetitem9 = self.tablePTimeStats.horizontalHeaderItem(3)
         ___qtablewidgetitem9.setText(QCoreApplication.translate("MainWindow", u"T.Ret", None));
-        ___qtablewidgetitem10 = self.tableWidget.horizontalHeaderItem(4)
+        ___qtablewidgetitem10 = self.tablePTimeStats.horizontalHeaderItem(4)
         ___qtablewidgetitem10.setText(QCoreApplication.translate("MainWindow", u"T.Res", None));
-        ___qtablewidgetitem11 = self.tableWidget.horizontalHeaderItem(5)
+        ___qtablewidgetitem11 = self.tablePTimeStats.horizontalHeaderItem(5)
         ___qtablewidgetitem11.setText(QCoreApplication.translate("MainWindow", u"T. E.", None));
-        ___qtablewidgetitem12 = self.tableWidget.horizontalHeaderItem(6)
+        ___qtablewidgetitem12 = self.tablePTimeStats.horizontalHeaderItem(6)
         ___qtablewidgetitem12.setText(QCoreApplication.translate("MainWindow", u"T.S", None));
     # retranslateUi
 

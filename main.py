@@ -1,5 +1,4 @@
-# Actualizar procesos nuevos restantes
-
+# Al entrar un programa bloqueado a lo actual da error
 from PySide6.QtWidgets import QApplication
 
 from controllers.main_window import MainForm 

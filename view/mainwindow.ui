@@ -808,7 +808,7 @@ font: 63 13pt &quot;Segoe UI Semibold&quot;;
       <string>Tiempos calculados</string>
      </property>
     </widget>
-    <widget class="QTableWidget" name="tableWidget">
+    <widget class="QTableWidget" name="tablePTimeStats">
      <property name="geometry">
       <rect>
        <x>20</x>
