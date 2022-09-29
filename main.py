@@ -1,5 +1,5 @@
-#Añadir los procesos a la cola
-#Pantalla de ejecución de los lotes
+# Actualizar procesos nuevos restantes
+
 from PySide6.QtWidgets import QApplication
 
 from controllers.main_window import MainForm 

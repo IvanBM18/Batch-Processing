@@ -1,44 +1,54 @@
-#e = 101
-# W = 119
+#e = 101 (E/S) Ejecución pasa a bloqueados durante 7 seg, luego a listos
+# W = 119 (Error)
 # P = 112
 # c = 99
 #Cambio de Batch, forza cambio automatico de proceso en la cola
-from http.client import GONE
+#Nuevo
+# Listos: Procesos en la cola de ejecución
+# Bloquados: Procesos que no se pueden ejecutar hasta que termine una operación de E/S
+# Terminado: Procesos que se salieron de procesos activos
+
+#Lista de Nuevos?
+
+#Library Imports
 import keyboard
 import random
 from typing import Any
+
+# QT Imports
 from PySide6.QtWidgets import QMainWindow
 from PySide6.QtWidgets import QMessageBox, QTableWidgetItem
 from PySide6.QtCore import QTimer
 
+#UI Imports
 from view.ui_mainwindow import Ui_MainWindow as MainWindow
+
+#Class Imports
 from models.queue import Queue
 from models.process import Process
 from models.batch import Batch
-
+from models.uiUpdate import Updates
 
 class MainForm(QMainWindow, MainWindow):
-    
 #Atributtes
-    # Process Atributes
+    # Process Variables
     totalProcess : int = 0
-    queue = Queue() #Cola de Lotes
-    batch = Batch() #Batch Actual
+    # Batch with all new Processes
+    readyProcesses = Batch() 
+    #Ready Queue
+    newQueue = Queue() #Cola de Procesos Listos
 
     #Variables used in Counting
     counting = False #Bandera para iniciar el proceso de ejecucion
-    timer : Any  #Timer que se ejecuta cada segundo para actualizar el contador global
+    timer : QTimer  #Timer que se ejecuta cada segundo para actualizar el contador global
     
     #Variables to be used during process Execution
     actualProcess : Process
-    batchCounter = 0 #Contador de batches para pasar a la siguiente tabla
     timeCounter = 0 #Contador de Tiempo Global
     elapsedTime = 0 #Contador de Tiempo de Proceso
     remainingTime = 0 #Tiempo restante del proceso
-    counter = 0 #Contador de Lotes para textbox restantes
-    indxB = 0 #Indice del batch
-    batchInTable = False
     indxP = 0 #Indice del proceso en el batch en ejecución, en creación indice actual
+    interruptedProcesses = False
     
     #Flags for keyboard Press
     pause = False
@@ -54,10 +64,10 @@ class MainForm(QMainWindow, MainWindow):
         self.timer.start(1000)
         #Init UI
         self.setupUi(self)
-        #Initial configurations
+        #Button Listeners
         self.pushButton_Agregar.clicked.connect(self.setTotalProcess)
-        self.pushButton_ejecturar.clicked.connect(self.processBatches)
-        self.pushButton_ejecturar.setEnabled(False)
+        self.pushButton_Ejecutar.clicked.connect(self.startExecution)
+        self.pushButton_Ejecutar.setEnabled(False)
         #Keboard Listener
         keyboard.on_press(self.onKeyPress)
         
@@ -73,117 +83,113 @@ class MainForm(QMainWindow, MainWindow):
             msgBox.exec_()
             self.textBox_NumProcess.setText("")
         else:
-            if(self.queue.getLength() != 0):
-                self.queue = Queue()
-                self.batch = Batch()
+            if(self.newQueue.getLength() != 0):
+                self.newQueue = Queue()
+                self.readyProcesses = Batch()
             self.totalProcess = int(validateEntry)
-            self.pushButton_ejecturar.setEnabled(True)
+            self.pushButton_Ejecutar.setEnabled(True)
     
 #Processing Methods
     #Counting Method
     def updateTimer(self):
-        uiChangeFlag = False
         # Eliminar repeticion de set text timeCounter
+        uiChangeFlag = False
         if(self.counting == True):
             # Pushing Process to Finished Queue by Error
             if(self.error == True):
                 self.remainingTime = 0
             # Interrupting Actual Process
-            if(self.interruption):
+            if(self.interruption): #Send process to bloqued List
                 self.actualProcess.setElapsedTime(self.elapsedTime)
                 # Removing and adding to Table
                 self.tablaProcesos.removeRow(0)
-                self.insertProcessingRow(self.actualProcess)
+                self.insertReadyRow(self.actualProcess)
                 
                 # ReEnqueueing Process
-                self.batch.removeProcess()
-                self.batch.addProcess(self.actualProcess)
+                self.readyProcesses.removeProcess()
+                self.readyProcesses.addProcess(self.actualProcess)
                 
                 # Adapting Variables to Interruption
-                self.actualProcess = self.batch.getTopProcess()
+                self.actualProcess = self.readyProcesses.getTopProcess()
                 self.elapsedTime = 0 #Tiempo transcurrido del proceso
                 self.remainingTime = self.actualProcess.getTime() #Tiempo restante del proceso
                 
                 # Adapting UI to Interruption
-                self.textBox_tiempo_transcurrido.setText(str(self.elapsedTime))
-                self.textBox_tiempo_restante.setText(str(self.remainingTime))
-                self.textBox_operacion.setText(self.actualProcess.getFullOperation())
-                self.textBox_Id_proceso.setText(str(self.actualProcess.getID()))
+                self.updateUI(Updates.NEW)
                 
+                # Resetting Interruption Flag
                 self.interruption = False
+                self.interruptedProcesses = True
+                
                 return
-            if ((self.queue.getLength() == 0) and (self.batch.getRemainingProcess() == 0) and (self.remainingTime == 0)): #Fin del Procesamiento
+            #Fin del Procesamiento
+            if ((self.newQueue.getLength() == 0) and (self.readyProcesses.getRemainingProcess() == 0) and (self.remainingTime == 0)): 
                 self.textBox_restantes.setText(str(0))
                 self.tablaProcesos.clearContents()
                 self.counting = False
+                print("Procesamiento Terminado!")
                 return
-            if(self.batchInTable == False): #Caso 0
-                self.batch = self.queue.dequeue() #Batch de 3 Procesos
-                self.insertBatch(self.batch.getProcessList())
+            #Caso 0
+            if(self.readyProcesses.getRemainingProcess() == 0): 
+                # Enqueueing first 3 processes
+                for i in range(3):
+                    aux = self.newQueue.dequeue()
+                    self.readyProcesses.addProcess(aux)
+                    self.insertReadyRow(aux)
+                # Time changes
                 self.elapsedTime = 0
-                self.actualProcess = self.batch.getTopProcess() #Proceso Actual
+                self.actualProcess = self.readyProcesses.getTopProcess() #Proceso Actual
                 self.remainingTime = self.actualProcess.getTime() #Tiempo restante del proceso
-                self.textBox_operacion.setText(self.actualProcess.getFullOperation())
-                self.textBox_tiempo_transcurrido.setText(str(self.elapsedTime))
-                self.textBox_tiempo_restante.setText(str(self.remainingTime))
-                self.textBox_Id_proceso.setText(str(self.actualProcess.getID()))
-                self.textBox_contadorGlobal.setText(str(self.timeCounter))
-                self.batchInTable = True
+                
+                self.updateUI(Updates.NEW)
                 uiChangeFlag = True
-            if(self.batch.getRemainingProcess() == 0): #Batch Change
-                self.tablaProcesos.clearContents()
-                if(self.queue.getLength() != 0): #Si quedan aun batches
-                    self.batch = self.queue.dequeue()       
-                    self.insertBatch(self.batch.getProcessList())
-                self.counter -=1
-                self.textBox_restantes.setText(str(self.counter))
-                self.batchCounter += 1 
-                # Cambio de Proceso
-                self.actualProcess = self.batch.getTopProcess()
-                self.remainingTime = self.actualProcess.getTime()
-                self.elapsedTime = 0
-                self.textBox_operacion.setText(self.actualProcess.getFullOperation())
-                self.textBox_Id_proceso.setText(str(self.actualProcess.getID()))
+                return
             #Cambio de Proceso
             if(self.remainingTime == 0): 
+                
+                # Insert Process to Finished Table
                 self.insertFinishedRow(self.actualProcess,self.error)
                 if(self.error == True):
                     self.error = False
                 self.tablaProcesos.removeRow(0)
-                self.batch.removeProcess()
+                
+                # Enqueueing new Process
+                self.readyProcesses.removeProcess()
+                self.insertReadyRow(self.newQueue.getFront())
+                self.readyProcesses.addProcess(self.newQueue.dequeue())
+                
+                # Process Counter Update
+                self.textBox_restantes.setText(str(self.readyProcesses.getRemainingProcess()))
+                
+                # Time changes
                 self.remainingTime = 0
-                if(self.batch.getRemainingProcess() != 0): #Si quedan aun procesos
-                    self.elapsedTime = 0 #Tiempo transcurrido del proceso
-                    self.actualProcess = self.batch.getTopProcess() #Obtenemos un nuevo proceso
+                if(self.readyProcesses.getRemainingProcess() != 0): #Si quedan aun procesos
+                    #Obtenemos un nuevo proceso
+                    self.actualProcess = self.readyProcesses.getTopProcess() 
                     if(self.actualProcess.getElapsedTime() != 0):
-                        self.remainingTime = self.actualProcess.getTime() - self.actualProcess.getElapsedTime()
                         self.elapsedTime = self.actualProcess.getElapsedTime()
+                        self.remainingTime = self.actualProcess.getTime() - self.elapsedTime
                     else:
+                        self.elapsedTime = 0 
                         self.remainingTime = self.actualProcess.getTime() #Tiempo restante del proceso
-                    self.textBox_tiempo_transcurrido.setText(str(self.elapsedTime))
-                    self.textBox_tiempo_restante.setText(str(self.remainingTime))
-                    self.textBox_operacion.setText(self.actualProcess.getFullOperation())
-                    self.textBox_Id_proceso.setText(str(self.actualProcess.getID()))
-            elif(not uiChangeFlag): #Continuamos con el proceso
+                        
+                    self.updateUI(Updates.NEW)
+                    return
+            #Continuamos con el proceso actual
+            elif(not uiChangeFlag): 
                 self.timeCounter += 1
                 self.elapsedTime += 1
                 self.remainingTime -= 1
-                self.textBox_tiempo_transcurrido.setText(str(self.elapsedTime))
-                self.textBox_tiempo_restante.setText(str(self.remainingTime))
-                self.textBox_contadorGlobal.setText(str(self.timeCounter))
+                self.updateUI(Updates.UPDATE)
+                return
     
     #Starts Batch Processing
-    def processBatches(self):
+    def startExecution(self):
         self.tablaPTerminados.clearContents()
         if(self.totalProcess != 0):
-            self.counter = self.totalProcess//3 #Contador de Lotes
-            if(self.totalProcess%3 != 0):
-                self.counter += 1
             self.timeCounter = 0 #Contador de Tiempo Global
             self.elapsedTime = 0 #Contador de Tiempo de Proceso
             self.remainingTime = 0 #Tiempo restante del proceso
-            self.counter -= 1
-            self.textBox_restantes.setText(str(self.counter))
             self.generateProcess()
             self.counting = True
 
@@ -228,55 +234,59 @@ class MainForm(QMainWindow, MainWindow):
                 operation = "%"
             elif(procesNum == 5):
                 operation = "^"	
-            newProcess = Process((random.randint(1,100)),(random.rpandint(1,100)),operation,(random.randint(6,16)),self.indxP)
+            newProcess = Process((random.randint(1,100)),(random.randint(1,100)),operation,(random.randint(6,16)),self.indxP)
             self.indxP +=1
         return newProcess
     
-    #Generate Process till end
+    #Generate new Process
     def generateProcess(self):
         if(self.totalProcess > 0):
             cont = 0
-            auxCont = 0
             newProcess : Process
             while(cont < self.totalProcess):
                 newProcess = self.newProcess()
-                self.batch.addProcess(newProcess)
+                self.newQueue.enqueue(newProcess)
                 cont += 1
-                auxCont += 1
-                if(auxCont == 3):
-                    self.queue.enqueue(self.batch)
-                    self.batch = Batch()
-                    auxCont = 0
-            if(auxCont != 0):
-                self.queue.enqueue(self.batch)
             self.indxP = 0
     
 #Visual Methods
-    #Inserts Batches in Processing Table
-    def insertBatch(self,batch:list):
-        self.tablaProcesos.clearContents()
-        aux : Process
-        for i in range(len(batch)):
-            aux = batch[i]
-            self.insertProcessingRow(aux)
-    
+    def updateUI(self,upType) -> None:
+        #New Process on Execution
+        if(upType == Updates.NEW):
+            self.textBox_tiempo_transcurrido.setText(str(self.elapsedTime))
+            self.textBox_tiempo_restante.setText(str(self.remainingTime))
+            self.textBox_operacion.setText(self.actualProcess.getFullOperation())
+            self.textBox_Id_proceso.setText(str(self.actualProcess.getID()))
+            self.textBox_restantes.setText(str(self.newQueue.getLength()))
+        #Only Changes in Remaining Time/Elapsed Time
+        if(upType == Updates.UPDATE):
+            self.textBox_tiempo_transcurrido.setText(str(self.elapsedTime))
+            self.textBox_tiempo_restante.setText(str(self.remainingTime))
+        self.textBox_contadorGlobal.setText(str(self.timeCounter))
+        
     # Inserts row in ProcessTable
-    def insertProcessingRow(self,process:Process):
+    def insertReadyRow(self,process:Process):
         n = self.tablaProcesos.rowCount()
         self.tablaProcesos.insertRow(n)
         self.tablaProcesos.setItem(n,0,QTableWidgetItem(str(process.getID())))
         self.tablaProcesos.setItem(n,1,QTableWidgetItem(str(process.getTime())))
         self.tablaProcesos.setItem(n,2,QTableWidgetItem(str(process.getElapsedTime())))
     
+    #Insert row in Bloqued Table
+    def insertBloquedRow(self,process:Process):
+        n = self.tablaPbloqueados.rowCount()
+        self.tablaPbloqueados.insertRow(n)
+        self.tablaPbloqueados.setItem(n,0,QTableWidgetItem(str(process.getID())))
+        self.tablaPbloqueados.setItem(n,1,QTableWidgetItem(str(process.getTime())))
+    
     #Inserts a row in the finished Table
     def insertFinishedRow(self,row:Process,errorFlag:bool):
         n = self.tablaPTerminados.rowCount()
         self.tablaPTerminados.insertRow(n)
-        self.tablaPTerminados.setItem(n,0,QTableWidgetItem(str(self.batchCounter)))
-        self.tablaPTerminados.setItem(n,1,QTableWidgetItem(str(row.getID())))
-        self.tablaPTerminados.setItem(n,2,QTableWidgetItem(row.getFullOperation()))
+        self.tablaPTerminados.setItem(n,0,QTableWidgetItem(str(row.getID())))
+        self.tablaPTerminados.setItem(n,1,QTableWidgetItem(row.getFullOperation()))
         # If process finished with an error
         if(errorFlag):
-            self.tablaPTerminados.setItem(n,3,QTableWidgetItem("Error"))
+            self.tablaPTerminados.setItem(n,2,QTableWidgetItem("Error"))
         else:
-            self.tablaPTerminados.setItem(n,3,QTableWidgetItem(str(row.getResult())))
+            self.tablaPTerminados.setItem(n,2,QTableWidgetItem(str(row.getResult())))

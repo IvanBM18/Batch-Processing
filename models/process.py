@@ -1,33 +1,43 @@
+from models.processsTime import TimeStats
 class Process:
     # Class Atributes
     valueA : int
     valueB : int
     operation: str
-    time : int
+    remainingTime : int
     elapsedTime : int
+    bloquedTime : int
     processID : str
+    stats : TimeStats
     
     # Class constructor
     def __init__(self,valueA,valueB,operation,time,processID) -> None:
         self.valueA = valueA
         self.valueB = valueB
         self.operation = operation
-        self.time = time
+        self.remainingTime = time
         self.processID = processID
         self.elapsedTime = 0
+        self.stats = TimeStats()
         
     # Class Methods
-    def setElapsedTime(self,t):
-        self.elapsedTime = int(t)
+    def setElapsedTime(self,t : int):
+        self.elapsedTime = t
+    
+    def setBloquedTime(self,t : int):
+        self.bloquedTime = t
     
     def toString(self):
-        return str(self.valueA) + self.operation + str(self.valueB) + " = " + str(self.time)
+        return str(self.valueA) + self.operation + str(self.valueB) + " = " + str(self.remainingTime)
     
     def getTime(self) -> int:
-        return self.time
+        return self.remainingTime
     
     def getElapsedTime(self) -> int:
         return self.elapsedTime
+    
+    def getBloquedTime(self) -> int:
+        return self.bloquedTime
     
     def getID(self) -> str:
         return self.processID
