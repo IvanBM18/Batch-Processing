@@ -8,7 +8,7 @@
 # Bloquados: Procesos que no se pueden ejecutar hasta que termine una operación de E/S
 # Terminado: Procesos que se salieron de procesos activos
 
-#Al Interrumpir agregar un proceso a la fila de listos
+# Adaptar para que el programa siga, aunque no haya proceso en listo, pero si en E/S
 
 #Library Imports
 import keyboard
@@ -116,9 +116,17 @@ class MainForm(QMainWindow, MainWindow):
                 self.blockedList.append(self.actualProcess)
                 self.insertBloquedRow(self.actualProcess)
                 
+                # Adding new process to ready List
+                if(self.newQueue.getLength() > 0):
+                    aux = self.newQueue.dequeue()
+                    self.readyProcesses.addProcess(aux)
+                    self.insertReadyRow(aux)
+                    aux.stats.setArrivalTime(self.timeCounter)
+                    
+                
                 # Adapting Variables to Interruption
                 self.actualProcess = self.readyProcesses.getTopProcess()
-                self.elapsedTime = 0 #Tiempo transcurrido del proceso
+                self.elapsedTime = self.actualProcess.getElapsedTime() #Tiempo transcurrido del proceso
                 self.remainingTime = self.actualProcess.getTime() #Tiempo restante del proceso
                 
                 # Adapting UI to Interruption
@@ -173,7 +181,7 @@ class MainForm(QMainWindow, MainWindow):
                 
                 # Enqueueing new Process
                 self.readyProcesses.removeProcess()
-                if(self.newQueue.getLength() != 0):
+                if(self.newQueue.getLength() != 0 and self.readyProcesses.getRemainingProcess() < 3):
                     aux = self.newQueue.dequeue()
                     self.insertReadyRow(aux)
                     aux.stats.setArrivalTime(self.timeCounter)
