@@ -72,11 +72,9 @@ class MainForm(QMainWindow, MainWindow):
         self.setupUi(self)
         self.setWindowTitle("FCFS")
         self.BCPWindow = BCP_table()
-        #Generating Timer
         # Timer Generation
         self.timer = QTimer(self)
         self.timer.timeout.connect(self.updateTimer)
-        self.timer.start(1000)
         #Button Listeners
         self.pushButton_Agregar.clicked.connect(self.setTotalProcess)
         self.pushButton_Ejecutar.clicked.connect(self.startExecution)
@@ -88,7 +86,7 @@ class MainForm(QMainWindow, MainWindow):
 #Setters
     def setTotalProcess(self):
         validateEntry = self.textBox_NumProcess.text()
-        if (str(validateEntry).isdigit() == False and validateEntry != "" and validateEntry > 0):
+        if (not str(validateEntry).isdigit() or validateEntry == "" or int(validateEntry) <= 0):
             print("[ERROR] introduce un numero")
             msgBox = QMessageBox()
             msgBox.setText("Introduce un numero")
@@ -108,7 +106,6 @@ class MainForm(QMainWindow, MainWindow):
         # Eliminar repeticion de set text timeCounter
         uiChangeFlag = False
         if(self.bcp):
-            print("BCP")
             self.BCPWindow.show()
             while self.pause:
                 QCoreApplication.processEvents()
@@ -257,6 +254,7 @@ class MainForm(QMainWindow, MainWindow):
             self.elapsedTime = 0 #Contador de Tiempo de Proceso
             self.remainingTime = 0 #Tiempo restante del proceso
             self.generateProcesses()
+            self.timer.start(1000)
             self.pause = False
             
 
