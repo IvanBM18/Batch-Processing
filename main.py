@@ -2,17 +2,17 @@
 from PySide6.QtWidgets import QApplication
 
 from controllers.main_window import MainForm 
+from controllers.table_bcp import BCP_table
 import sys
 
 if __name__ == '__main__':
     # Aplicación de Qt
     app = QApplication()
-    # Se crea un botón con la palabra Hola
-    window=MainForm()
+    window =  MainForm()
     # Se hace visible el botón
     window.show()
     # Qt loop
-    sys.exit(app.exec()) #use exec?
+    sys.exit(app.exec()) 
 
 
 

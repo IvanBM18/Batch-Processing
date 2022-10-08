@@ -1,14 +1,18 @@
-#e = 101 (E/S) Ejecución pasa a bloqueados durante 7 seg, luego a listos
+# E = 101 (E/S) Ejecución pasa a bloqueados durante 7 seg, luego a listos
 # W = 119 (Error)
-# P = 112
-# c = 99
+# P = 112 (Pausa)
+# C = 99 (Continuar)
+# N = 110 (Nuevo) Al presionar N se crea un nuevo proceso
+# B = 98 (Tabla de PCB) Pausa y con C continuas
 #Cambio de Batch, forza cambio automatico de proceso en la cola
-#Nuevo
 # Listos: Procesos en la cola de ejecución
 # Bloquados: Procesos que no se pueden ejecutar hasta que termine una operación de E/S
 # Terminado: Procesos que se salieron de procesos activos
 
+# Por Hacer:
 # Adaptar para que el programa siga, aunque no haya proceso en listo, pero si en E/S
+# Mejorar calculo de las estadisticas
+# Abrir Nueva Tabla de PCB
 
 #Library Imports
 import keyboard
@@ -18,10 +22,11 @@ from typing import Any
 # QT Imports
 from PySide6.QtWidgets import QMainWindow
 from PySide6.QtWidgets import QMessageBox, QTableWidgetItem
-from PySide6.QtCore import QTimer
+from PySide6.QtCore import QTimer, QCoreApplication
 
 #UI Imports
 from view.ui_mainwindow import Ui_MainWindow as MainWindow
+from controllers.table_bcp import BCP_table
 
 #Class Imports
 from models.queue import Queue
@@ -43,31 +48,35 @@ class MainForm(QMainWindow, MainWindow):
     finishedList = []
 
     #Variables used in Counting
-    counting = False #Bandera para iniciar el proceso de ejecucion
-    timer : QTimer  #Timer que se ejecuta cada segundo para actualizar el contador global
+    timer : QTimer = None  #Timer que se ejecuta cada segundo para actualizar el contador global
+    BCPWindow  : BCP_table
     
     #Variables to be used during process Execution
     actualProcess : Process
     timeCounter = 0 #Contador de Tiempo Global
-    elapsedTime = 0 #Contador de Tiempo de Proceso
-    remainingTime = 0 #Tiempo restante del proceso
+    elapsedTime = 0 #Contador de Tiempo de Proceso transcurrido
+    remainingTime = 0 #Contador Tiempo restante del proceso
     indxP = 0 #Indice del proceso en el batch en ejecución, en creación indice actual
     interruptedProcesses = False
     
     #Flags for keyboard Press
-    pause = False
+    pause = True
     error = False
     interruption = False
+    bcp = False
     
     #Constructor
     def __init__(self):
+        #Init UI
         super().__init__()
+        self.setupUi(self)
+        self.setWindowTitle("FCFS")
+        self.BCPWindow = BCP_table()
         #Generating Timer
+        # Timer Generation
         self.timer = QTimer(self)
         self.timer.timeout.connect(self.updateTimer)
         self.timer.start(1000)
-        #Init UI
-        self.setupUi(self)
         #Button Listeners
         self.pushButton_Agregar.clicked.connect(self.setTotalProcess)
         self.pushButton_Ejecutar.clicked.connect(self.startExecution)
@@ -94,18 +103,29 @@ class MainForm(QMainWindow, MainWindow):
             self.pushButton_Ejecutar.setEnabled(True)
     
 #Processing Methods
-    #Counting Method
+    # Updates the timer and the UI
     def updateTimer(self):
         # Eliminar repeticion de set text timeCounter
         uiChangeFlag = False
-        if(self.counting == True):
+        if(self.bcp):
+            print("BCP")
+            self.BCPWindow.show()
+            while self.pause:
+                QCoreApplication.processEvents()
+            self.BCPWindow.hide()
+            self.bcp = False
+            self.pause = False
+                
+        if(not self.pause):
             # Pushing Process to Finished Queue by Error
-            if(self.error == True):
+            if(self.error):
                 self.remainingTime = 0
+            # If there is a process bloqued
             if(self.interruptedProcesses):
                 self.updateUI(Updates.BLOCKED)
             # Interrupting Actual Process
-            if(self.interruption): #Send process to bloqued List
+            if(self.interruption):
+                #Send process to bloqued List
                 self.actualProcess.setElapsedTime(self.elapsedTime)
                 # Removing and adding to Table
                 self.tablaProcesos.removeRow(0)
@@ -137,7 +157,7 @@ class MainForm(QMainWindow, MainWindow):
                 self.interruptedProcesses = True
                 
                 return
-            # Fin del Procesamiento
+            # End of Process
             if ((self.newQueue.getLength() == 0) and (self.readyProcesses.getRemainingProcess() == 0) and (self.remainingTime == 0) and (len(self.blockedList) == 0)): 
                 
                 # Last process calculations
@@ -156,14 +176,15 @@ class MainForm(QMainWindow, MainWindow):
                 print("Procesamiento Terminado!")
                 self.timer.stop()
                 return
-            # Caso 0
+            # Case 0
             if(self.readyProcesses.getRemainingProcess() == 0): 
                 # Enqueueing first 3 processes
                 for i in range(3):
-                    aux = self.newQueue.dequeue()
-                    aux.stats.setArrivalTime(self.timeCounter)
-                    self.readyProcesses.addProcess(aux)
-                    self.insertReadyRow(aux)
+                    if(self.newQueue.getLength() > 0):
+                        aux = self.newQueue.dequeue()
+                        aux.stats.setArrivalTime(self.timeCounter)
+                        self.readyProcesses.addProcess(aux)
+                        self.insertReadyRow(aux)
                 # Time changes
                 self.elapsedTime = 0
                 self.actualProcess = self.readyProcesses.getTopProcess() #Proceso Actual
@@ -192,18 +213,17 @@ class MainForm(QMainWindow, MainWindow):
                 # Process Counter Update
                 self.textBox_restantes.setText(str(self.readyProcesses.getRemainingProcess()))
                 
-                # End of process time changes
+                # End of process time stats
                 self.actualProcess.stats.setEndTime(self.timeCounter)
                 self.actualProcess.stats.setTotalTime(self.timeCounter - self.actualProcess.stats.getAnswerTime())
                 self.actualProcess.stats.setWaitTime(self.actualProcess.stats.getEndTime() - self.actualProcess.stats.getArrivalTime())
-                
                 if(self.error):
                     self.actualProcess.stats.setServiceTime(self.actualProcess.stats.getEndTime() - self.actualProcess.stats.getAnswerTime())
                 else:
                     self.actualProcess.stats.setServiceTime(self.actualProcess.getTime())
                 
-                
-                if(self.readyProcesses.getRemainingProcess() != 0): #Si quedan aun procesos
+                # Try get new process
+                if(self.readyProcesses.getRemainingProcess() != 0): 
                     #Obtenemos un nuevo proceso
                     self.finishedList.append(self.actualProcess)
                     self.actualProcess = self.readyProcesses.getTopProcess() 
@@ -219,23 +239,26 @@ class MainForm(QMainWindow, MainWindow):
                         
                     self.updateUI(Updates.NEW)
                     return
-            #Continuamos con el proceso actual
+            #Normal Execution
             elif(not uiChangeFlag): 
                 self.timeCounter += 1
                 self.elapsedTime += 1
                 self.remainingTime -= 1
                 self.updateUI(Updates.UPDATE)
-                return
     
-    #Starts Batch Processing
+    #Starts Task Processing
     def startExecution(self):
         self.tablaPTerminados.clearContents()
+        self.tablaPbloqueados.clearContents()
+        self.tablePTimeStats.clearContents()
+        self.tablaProcesos.clearContents()
         if(self.totalProcess != 0):
             self.timeCounter = 0 #Contador de Tiempo Global
             self.elapsedTime = 0 #Contador de Tiempo de Proceso
             self.remainingTime = 0 #Tiempo restante del proceso
-            self.generateProcess()
-            self.counting = True
+            self.generateProcesses()
+            self.pause = False
+            
 
     # Applies on keyboard press
     def onKeyPress(self,event):
@@ -244,11 +267,10 @@ class MainForm(QMainWindow, MainWindow):
             # Pause
             if(option == 'p'): 
                 self.pause = True
-                self.counting = False
             # Continue
             elif(option == 'c'):
                 self.pause = False
-                self.counting = True
+                self.bcp = False
             # Interrupt
             elif(option == 'e'):
                 print('e')
@@ -257,6 +279,13 @@ class MainForm(QMainWindow, MainWindow):
             elif(option == 'w'):
                 print('w')
                 self.error = True
+            # New Process
+            elif(option == 'n'):
+                print('n')
+            # BCP Table
+            elif(option == 'b'):
+                self.bcp = True
+                self.pause = True
         except:
             pass
 
@@ -283,7 +312,7 @@ class MainForm(QMainWindow, MainWindow):
         return newProcess
     
     #Generate new Process
-    def generateProcess(self):
+    def generateProcesses(self) -> None:
         if(self.totalProcess > 0):
             cont = 0
             newProcess : Process
