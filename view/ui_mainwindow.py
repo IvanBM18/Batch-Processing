@@ -193,24 +193,6 @@ class Ui_MainWindow(object):
         self.tablaProcesos.setHorizontalHeaderItem(1, __qtablewidgetitem3)
         __qtablewidgetitem4 = QTableWidgetItem()
         self.tablaProcesos.setHorizontalHeaderItem(2, __qtablewidgetitem4)
-        if (self.tablaProcesos.rowCount() < 2):
-            self.tablaProcesos.setRowCount(2)
-        __qtablewidgetitem5 = QTableWidgetItem()
-        self.tablaProcesos.setVerticalHeaderItem(0, __qtablewidgetitem5)
-        __qtablewidgetitem6 = QTableWidgetItem()
-        self.tablaProcesos.setVerticalHeaderItem(1, __qtablewidgetitem6)
-        __qtablewidgetitem7 = QTableWidgetItem()
-        self.tablaProcesos.setItem(0, 0, __qtablewidgetitem7)
-        __qtablewidgetitem8 = QTableWidgetItem()
-        self.tablaProcesos.setItem(0, 1, __qtablewidgetitem8)
-        __qtablewidgetitem9 = QTableWidgetItem()
-        self.tablaProcesos.setItem(0, 2, __qtablewidgetitem9)
-        __qtablewidgetitem10 = QTableWidgetItem()
-        self.tablaProcesos.setItem(1, 0, __qtablewidgetitem10)
-        __qtablewidgetitem11 = QTableWidgetItem()
-        self.tablaProcesos.setItem(1, 1, __qtablewidgetitem11)
-        __qtablewidgetitem12 = QTableWidgetItem()
-        self.tablaProcesos.setItem(1, 2, __qtablewidgetitem12)
         self.tablaProcesos.setObjectName(u"tablaProcesos")
         self.tablaProcesos.setEnabled(False)
         self.tablaProcesos.setGeometry(QRect(20, 60, 315, 203))
@@ -242,7 +224,7 @@ class Ui_MainWindow(object):
         self.tablaProcesos.setSortingEnabled(False)
         self.tablaProcesos.setWordWrap(True)
         self.tablaProcesos.setCornerButtonEnabled(False)
-        self.tablaProcesos.setRowCount(2)
+        self.tablaProcesos.setRowCount(0)
         self.tablaProcesos.horizontalHeader().setVisible(True)
         self.tablaProcesos.horizontalHeader().setCascadingSectionResizes(False)
         self.tablaProcesos.horizontalHeader().setMinimumSectionSize(35)
@@ -290,19 +272,20 @@ class Ui_MainWindow(object):
         self.tablaPTerminados = QTableWidget(self.groupBox_3)
         if (self.tablaPTerminados.columnCount() < 3):
             self.tablaPTerminados.setColumnCount(3)
-        __qtablewidgetitem13 = QTableWidgetItem()
-        self.tablaPTerminados.setHorizontalHeaderItem(0, __qtablewidgetitem13)
-        __qtablewidgetitem14 = QTableWidgetItem()
-        self.tablaPTerminados.setHorizontalHeaderItem(1, __qtablewidgetitem14)
-        __qtablewidgetitem15 = QTableWidgetItem()
-        self.tablaPTerminados.setHorizontalHeaderItem(2, __qtablewidgetitem15)
+        __qtablewidgetitem5 = QTableWidgetItem()
+        self.tablaPTerminados.setHorizontalHeaderItem(0, __qtablewidgetitem5)
+        __qtablewidgetitem6 = QTableWidgetItem()
+        self.tablaPTerminados.setHorizontalHeaderItem(1, __qtablewidgetitem6)
+        __qtablewidgetitem7 = QTableWidgetItem()
+        self.tablaPTerminados.setHorizontalHeaderItem(2, __qtablewidgetitem7)
         self.tablaPTerminados.setObjectName(u"tablaPTerminados")
         self.tablaPTerminados.setEnabled(False)
-        self.tablaPTerminados.setGeometry(QRect(120, 100, 311, 191))
+        self.tablaPTerminados.setGeometry(QRect(120, 80, 311, 191))
         self.tablaPTerminados.setStyleSheet(u"background-color: rgb(52, 62, 64);")
-        self.tablaPTerminados.setVerticalScrollBarPolicy(Qt.ScrollBarAlwaysOff)
+        self.tablaPTerminados.setVerticalScrollBarPolicy(Qt.ScrollBarAlwaysOn)
         self.tablaPTerminados.setHorizontalScrollBarPolicy(Qt.ScrollBarAlwaysOff)
         self.tablaPTerminados.setSizeAdjustPolicy(QAbstractScrollArea.AdjustToContents)
+        self.tablaPTerminados.setAutoScroll(True)
         self.tablaPTerminados.horizontalHeader().setDefaultSectionSize(104)
         self.tablaPTerminados.verticalHeader().setVisible(False)
         self.label_titulo_Cont = QLabel(self.groupBox_3)
@@ -334,30 +317,30 @@ class Ui_MainWindow(object):
         font = QFont()
         font.setPointSize(8)
         font.setKerning(False)
-        __qtablewidgetitem16 = QTableWidgetItem()
-        __qtablewidgetitem16.setText(u"ID");
-        __qtablewidgetitem16.setFont(font);
-        self.tablePTimeStats.setHorizontalHeaderItem(0, __qtablewidgetitem16)
+        __qtablewidgetitem8 = QTableWidgetItem()
+        __qtablewidgetitem8.setText(u"ID");
+        __qtablewidgetitem8.setFont(font);
+        self.tablePTimeStats.setHorizontalHeaderItem(0, __qtablewidgetitem8)
         font1 = QFont()
         font1.setPointSize(8)
-        __qtablewidgetitem17 = QTableWidgetItem()
-        __qtablewidgetitem17.setFont(font1);
-        self.tablePTimeStats.setHorizontalHeaderItem(1, __qtablewidgetitem17)
-        __qtablewidgetitem18 = QTableWidgetItem()
-        __qtablewidgetitem18.setText(u"T.F");
-        __qtablewidgetitem18.setFont(font1);
-        self.tablePTimeStats.setHorizontalHeaderItem(2, __qtablewidgetitem18)
-        __qtablewidgetitem19 = QTableWidgetItem()
-        __qtablewidgetitem19.setFont(font1);
-        self.tablePTimeStats.setHorizontalHeaderItem(3, __qtablewidgetitem19)
-        __qtablewidgetitem20 = QTableWidgetItem()
-        __qtablewidgetitem20.setFont(font1);
-        self.tablePTimeStats.setHorizontalHeaderItem(4, __qtablewidgetitem20)
-        __qtablewidgetitem21 = QTableWidgetItem()
-        __qtablewidgetitem21.setFont(font1);
-        self.tablePTimeStats.setHorizontalHeaderItem(5, __qtablewidgetitem21)
-        __qtablewidgetitem22 = QTableWidgetItem()
-        self.tablePTimeStats.setHorizontalHeaderItem(6, __qtablewidgetitem22)
+        __qtablewidgetitem9 = QTableWidgetItem()
+        __qtablewidgetitem9.setFont(font1);
+        self.tablePTimeStats.setHorizontalHeaderItem(1, __qtablewidgetitem9)
+        __qtablewidgetitem10 = QTableWidgetItem()
+        __qtablewidgetitem10.setText(u"T.F");
+        __qtablewidgetitem10.setFont(font1);
+        self.tablePTimeStats.setHorizontalHeaderItem(2, __qtablewidgetitem10)
+        __qtablewidgetitem11 = QTableWidgetItem()
+        __qtablewidgetitem11.setFont(font1);
+        self.tablePTimeStats.setHorizontalHeaderItem(3, __qtablewidgetitem11)
+        __qtablewidgetitem12 = QTableWidgetItem()
+        __qtablewidgetitem12.setFont(font1);
+        self.tablePTimeStats.setHorizontalHeaderItem(4, __qtablewidgetitem12)
+        __qtablewidgetitem13 = QTableWidgetItem()
+        __qtablewidgetitem13.setFont(font1);
+        self.tablePTimeStats.setHorizontalHeaderItem(5, __qtablewidgetitem13)
+        __qtablewidgetitem14 = QTableWidgetItem()
+        self.tablePTimeStats.setHorizontalHeaderItem(6, __qtablewidgetitem14)
         self.tablePTimeStats.setObjectName(u"tablePTimeStats")
         self.tablePTimeStats.setEnabled(False)
         self.tablePTimeStats.setGeometry(QRect(30, 350, 471, 271))
@@ -428,49 +411,28 @@ class Ui_MainWindow(object):
         ___qtablewidgetitem3.setText(QCoreApplication.translate("MainWindow", u"T. M\u00e1x", None));
         ___qtablewidgetitem4 = self.tablaProcesos.horizontalHeaderItem(2)
         ___qtablewidgetitem4.setText(QCoreApplication.translate("MainWindow", u"T. Transcurrido", None));
-        ___qtablewidgetitem5 = self.tablaProcesos.verticalHeaderItem(0)
-        ___qtablewidgetitem5.setText(QCoreApplication.translate("MainWindow", u"Nueva fila", None));
-        ___qtablewidgetitem6 = self.tablaProcesos.verticalHeaderItem(1)
-        ___qtablewidgetitem6.setText(QCoreApplication.translate("MainWindow", u"2", None));
-
-        __sortingEnabled = self.tablaProcesos.isSortingEnabled()
-        self.tablaProcesos.setSortingEnabled(False)
-        ___qtablewidgetitem7 = self.tablaProcesos.item(0, 0)
-        ___qtablewidgetitem7.setText(QCoreApplication.translate("MainWindow", u"1", None));
-        ___qtablewidgetitem8 = self.tablaProcesos.item(0, 1)
-        ___qtablewidgetitem8.setText(QCoreApplication.translate("MainWindow", u"1", None));
-        ___qtablewidgetitem9 = self.tablaProcesos.item(0, 2)
-        ___qtablewidgetitem9.setText(QCoreApplication.translate("MainWindow", u"1", None));
-        ___qtablewidgetitem10 = self.tablaProcesos.item(1, 0)
-        ___qtablewidgetitem10.setText(QCoreApplication.translate("MainWindow", u"1", None));
-        ___qtablewidgetitem11 = self.tablaProcesos.item(1, 1)
-        ___qtablewidgetitem11.setText(QCoreApplication.translate("MainWindow", u"1", None));
-        ___qtablewidgetitem12 = self.tablaProcesos.item(1, 2)
-        ___qtablewidgetitem12.setText(QCoreApplication.translate("MainWindow", u"1", None));
-        self.tablaProcesos.setSortingEnabled(__sortingEnabled)
-
         self.label_titulo_ProceL.setText(QCoreApplication.translate("MainWindow", u"Procesos listos", None))
         self.label_titulo_Nuevos.setText(QCoreApplication.translate("MainWindow", u"Nuevos:", None))
         self.groupBox_3.setTitle("")
         self.label_titulo_ProcesoT.setText(QCoreApplication.translate("MainWindow", u"Procesos Terminados", None))
-        ___qtablewidgetitem13 = self.tablaPTerminados.horizontalHeaderItem(0)
-        ___qtablewidgetitem13.setText(QCoreApplication.translate("MainWindow", u"ID", None));
-        ___qtablewidgetitem14 = self.tablaPTerminados.horizontalHeaderItem(1)
-        ___qtablewidgetitem14.setText(QCoreApplication.translate("MainWindow", u"Operaci\u00f3n", None));
-        ___qtablewidgetitem15 = self.tablaPTerminados.horizontalHeaderItem(2)
-        ___qtablewidgetitem15.setText(QCoreApplication.translate("MainWindow", u"Resultado", None));
+        ___qtablewidgetitem5 = self.tablaPTerminados.horizontalHeaderItem(0)
+        ___qtablewidgetitem5.setText(QCoreApplication.translate("MainWindow", u"ID", None));
+        ___qtablewidgetitem6 = self.tablaPTerminados.horizontalHeaderItem(1)
+        ___qtablewidgetitem6.setText(QCoreApplication.translate("MainWindow", u"Operaci\u00f3n", None));
+        ___qtablewidgetitem7 = self.tablaPTerminados.horizontalHeaderItem(2)
+        ___qtablewidgetitem7.setText(QCoreApplication.translate("MainWindow", u"Resultado", None));
         self.label_titulo_Cont.setText(QCoreApplication.translate("MainWindow", u"Contador", None))
         self.textBox_contadorGlobal.setText("")
         self.label_titulo_TiempoC.setText(QCoreApplication.translate("MainWindow", u"Tiempos calculados", None))
-        ___qtablewidgetitem16 = self.tablePTimeStats.horizontalHeaderItem(1)
-        ___qtablewidgetitem16.setText(QCoreApplication.translate("MainWindow", u"T.L", None));
-        ___qtablewidgetitem17 = self.tablePTimeStats.horizontalHeaderItem(3)
-        ___qtablewidgetitem17.setText(QCoreApplication.translate("MainWindow", u"T.Ret", None));
-        ___qtablewidgetitem18 = self.tablePTimeStats.horizontalHeaderItem(4)
-        ___qtablewidgetitem18.setText(QCoreApplication.translate("MainWindow", u"T.Res", None));
-        ___qtablewidgetitem19 = self.tablePTimeStats.horizontalHeaderItem(5)
-        ___qtablewidgetitem19.setText(QCoreApplication.translate("MainWindow", u"T. E.", None));
-        ___qtablewidgetitem20 = self.tablePTimeStats.horizontalHeaderItem(6)
-        ___qtablewidgetitem20.setText(QCoreApplication.translate("MainWindow", u"T.S", None));
+        ___qtablewidgetitem8 = self.tablePTimeStats.horizontalHeaderItem(1)
+        ___qtablewidgetitem8.setText(QCoreApplication.translate("MainWindow", u"T.L", None));
+        ___qtablewidgetitem9 = self.tablePTimeStats.horizontalHeaderItem(3)
+        ___qtablewidgetitem9.setText(QCoreApplication.translate("MainWindow", u"T.Ret", None));
+        ___qtablewidgetitem10 = self.tablePTimeStats.horizontalHeaderItem(4)
+        ___qtablewidgetitem10.setText(QCoreApplication.translate("MainWindow", u"T.Res", None));
+        ___qtablewidgetitem11 = self.tablePTimeStats.horizontalHeaderItem(5)
+        ___qtablewidgetitem11.setText(QCoreApplication.translate("MainWindow", u"T. E.", None));
+        ___qtablewidgetitem12 = self.tablePTimeStats.horizontalHeaderItem(6)
+        ___qtablewidgetitem12.setText(QCoreApplication.translate("MainWindow", u"T.S", None));
     # retranslateUi
 

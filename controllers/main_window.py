@@ -139,10 +139,7 @@ class MainForm(QMainWindow, MainWindow):
                 return
             # Fin del Procesamiento
             if ((self.newQueue.getLength() == 0) and (self.readyProcesses.getRemainingProcess() == 0) and (self.remainingTime == 0) and (len(self.blockedList) == 0)): 
-                self.textBox_restantes.setText(str(0))
-                self.tablaProcesos.clearContents()
-                self.counting = False
-                print("Procesamiento Terminado!")
+                
                 # Last process calculations
                 self.actualProcess.stats.setEndTime(self.timeCounter)
                 self.actualProcess.stats.setTotalTime(self.timeCounter - self.actualProcess.stats.getAnswerTime())
@@ -153,6 +150,11 @@ class MainForm(QMainWindow, MainWindow):
                     self.actualProcess.stats.setServiceTime(self.actualProcess.getTime())
                 self.finishedList.append(self.actualProcess)
                 self.updateUI(Updates.END)
+                self.textBox_restantes.setText(str(0))
+                self.tablaProcesos.clearContents()
+                self.counting = False
+                print("Procesamiento Terminado!")
+                self.timer.stop()
                 return
             # Caso 0
             if(self.readyProcesses.getRemainingProcess() == 0): 
@@ -193,7 +195,8 @@ class MainForm(QMainWindow, MainWindow):
                 # End of process time changes
                 self.actualProcess.stats.setEndTime(self.timeCounter)
                 self.actualProcess.stats.setTotalTime(self.timeCounter - self.actualProcess.stats.getAnswerTime())
-                self.actualProcess.stats.setWaitTime(self.actualProcess.stats.getTotalReturnTime() - self.actualProcess.stats.getServiceTime())
+                self.actualProcess.stats.setWaitTime(self.actualProcess.stats.getEndTime() - self.actualProcess.stats.getArrivalTime())
+                
                 if(self.error):
                     self.actualProcess.stats.setServiceTime(self.actualProcess.stats.getEndTime() - self.actualProcess.stats.getAnswerTime())
                 else:

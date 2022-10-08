@@ -1,3 +1,4 @@
+# Arrglar scroll
 from PySide6.QtWidgets import QApplication
 
 from controllers.main_window import MainForm 

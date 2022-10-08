@@ -558,7 +558,7 @@ border-radius: 4px;</string>
       <bool>false</bool>
      </property>
      <property name="rowCount">
-      <number>2</number>
+      <number>0</number>
      </property>
      <attribute name="horizontalHeaderVisible">
       <bool>true</bool>
@@ -593,16 +593,6 @@ border-radius: 4px;</string>
      <attribute name="verticalHeaderHighlightSections">
       <bool>false</bool>
      </attribute>
-     <row>
-      <property name="text">
-       <string>Nueva fila</string>
-      </property>
-     </row>
-     <row>
-      <property name="text">
-       <string>2</string>
-      </property>
-     </row>
      <column>
       <property name="text">
        <string>ID</string>
@@ -618,36 +608,6 @@ border-radius: 4px;</string>
        <string>T. Transcurrido</string>
       </property>
      </column>
-     <item row="0" column="0">
-      <property name="text">
-       <string>1</string>
-      </property>
-     </item>
-     <item row="0" column="1">
-      <property name="text">
-       <string>1</string>
-      </property>
-     </item>
-     <item row="0" column="2">
-      <property name="text">
-       <string>1</string>
-      </property>
-     </item>
-     <item row="1" column="0">
-      <property name="text">
-       <string>1</string>
-      </property>
-     </item>
-     <item row="1" column="1">
-      <property name="text">
-       <string>1</string>
-      </property>
-     </item>
-     <item row="1" column="2">
-      <property name="text">
-       <string>1</string>
-      </property>
-     </item>
     </widget>
     <widget class="QLabel" name="label_titulo_ProceL">
      <property name="geometry">
@@ -754,7 +714,7 @@ font: 63 13pt &quot;Segoe UI Semibold&quot;;
      <property name="geometry">
       <rect>
        <x>120</x>
-       <y>100</y>
+       <y>80</y>
        <width>311</width>
        <height>191</height>
       </rect>
@@ -763,13 +723,16 @@ font: 63 13pt &quot;Segoe UI Semibold&quot;;
       <string notr="true">background-color: rgb(52, 62, 64);</string>
      </property>
      <property name="verticalScrollBarPolicy">
-      <enum>Qt::ScrollBarAlwaysOff</enum>
+      <enum>Qt::ScrollBarAlwaysOn</enum>
      </property>
      <property name="horizontalScrollBarPolicy">
       <enum>Qt::ScrollBarAlwaysOff</enum>
      </property>
      <property name="sizeAdjustPolicy">
       <enum>QAbstractScrollArea::AdjustToContents</enum>
+     </property>
+     <property name="autoScroll">
+      <bool>true</bool>
      </property>
      <attribute name="horizontalHeaderDefaultSectionSize">
       <number>104</number>
