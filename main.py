@@ -11,7 +11,7 @@ if __name__ == '__main__':
     window =  MainForm()
     # Se hace visible el botón
     window.show()
-    # Qt loop
+    # Qt loopb
     sys.exit(app.exec()) 
 
 

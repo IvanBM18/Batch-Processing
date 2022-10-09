@@ -32,12 +32,16 @@ class BCP_table(QWidget):
         stat = process.stats
         self.ui.tableTStats.insertRow(n)
         self.ui.tableTStats.setItem(n,0,QTableWidgetItem(str(process.getID())))
-        self.ui.tableTStats.setItem(n,1,QTableWidgetItem(str(stat.getArrivalTime())))
-        self.ui.tableTStats.setItem(n,2,QTableWidgetItem(str(stat.getEndTime())))
-        self.ui.tableTStats.setItem(n,3,QTableWidgetItem(str(stat.getReturnTime())))
-        self.ui.tableTStats.setItem(n,4,QTableWidgetItem(str(stat.getAnswerTime())))
-        self.ui.tableTStats.setItem(n,5,QTableWidgetItem(str(stat.getWaitTime())))
-        self.ui.tableTStats.setItem(n,6,QTableWidgetItem(str(stat.getServiceTime())))
+        self.ui.tableTStats.setItem(n,1,QTableWidgetItem(process.getFullOperation()))
+        self.ui.tableTStats.setItem(n,2,QTableWidgetItem(str(process.getResult())))
+        self.ui.tableTStats.setItem(n,3,QTableWidgetItem(process.getStatus()))
+        self.ui.tableTStats.setItem(n,4,QTableWidgetItem(str(stat.getArrivalTime())))
+        self.ui.tableTStats.setItem(n,5,QTableWidgetItem(str(stat.getEndTime())))
+        self.ui.tableTStats.setItem(n,6,QTableWidgetItem(str(stat.getReturnTime())))
+        self.ui.tableTStats.setItem(n,7,QTableWidgetItem(str(stat.getWaitTime())))
+        self.ui.tableTStats.setItem(n,8,QTableWidgetItem(str(stat.getServiceTime())))
+        self.ui.tableTStats.setItem(n,9,QTableWidgetItem(str(process.getTime())))
+        self.ui.tableTStats.setItem(n,10,QTableWidgetItem(str(stat.getAnswerTime())))
 
     def startTable(self):
         for i in self.pList:

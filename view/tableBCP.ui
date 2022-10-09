@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>789</width>
-    <height>533</height>
+    <width>779</width>
+    <height>526</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -49,13 +49,13 @@
     <property name="minimumSize">
      <size>
       <width>761</width>
-      <height>0</height>
+      <height>511</height>
      </size>
     </property>
     <property name="maximumSize">
      <size>
       <width>811</width>
-      <height>16777215</height>
+      <height>511</height>
      </size>
     </property>
     <property name="sizeIncrement">
@@ -287,17 +287,7 @@
     </column>
     <column>
      <property name="text">
-      <string>T. Max</string>
-     </property>
-    </column>
-    <column>
-     <property name="text">
-      <string>T. Llegada</string>
-     </property>
-    </column>
-    <column>
-     <property name="text">
-      <string>T. Espera</string>
+      <string>T. LL</string>
      </property>
     </column>
     <column>
@@ -307,22 +297,27 @@
     </column>
     <column>
      <property name="text">
-      <string>T. Res</string>
-     </property>
-    </column>
-    <column>
-     <property name="text">
       <string>T. Ret</string>
      </property>
     </column>
     <column>
      <property name="text">
-      <string>T. Serv</string>
+      <string>T. Esp</string>
      </property>
     </column>
     <column>
      <property name="text">
-      <string>T. Bloq</string>
+      <string>T.Serv</string>
+     </property>
+    </column>
+    <column>
+     <property name="text">
+      <string>T. Rest</string>
+     </property>
+    </column>
+    <column>
+     <property name="text">
+      <string>T.Resp</string>
      </property>
     </column>
    </widget>

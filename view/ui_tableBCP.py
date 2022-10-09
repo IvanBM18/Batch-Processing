@@ -23,14 +23,14 @@ class Ui_Form(object):
     def setupUi(self, Form):
         if not Form.objectName():
             Form.setObjectName(u"Form")
-        Form.resize(789, 533)
+        Form.resize(779, 526)
         Form.setStyleSheet(u"background-color: rgb(52, 62, 64);")
         self.groupBox = QGroupBox(Form)
         self.groupBox.setObjectName(u"groupBox")
         self.groupBox.setGeometry(QRect(10, 10, 761, 511))
         self.tableTStats = QTableWidget(self.groupBox)
-        if (self.tableTStats.columnCount() < 12):
-            self.tableTStats.setColumnCount(12)
+        if (self.tableTStats.columnCount() < 11):
+            self.tableTStats.setColumnCount(11)
         font = QFont()
         font.setPointSize(9)
         __qtablewidgetitem = QTableWidgetItem()
@@ -57,8 +57,6 @@ class Ui_Form(object):
         self.tableTStats.setHorizontalHeaderItem(9, __qtablewidgetitem9)
         __qtablewidgetitem10 = QTableWidgetItem()
         self.tableTStats.setHorizontalHeaderItem(10, __qtablewidgetitem10)
-        __qtablewidgetitem11 = QTableWidgetItem()
-        self.tableTStats.setHorizontalHeaderItem(11, __qtablewidgetitem11)
         self.tableTStats.setObjectName(u"tableTStats")
         self.tableTStats.setEnabled(False)
         self.tableTStats.setGeometry(QRect(0, 0, 761, 511))
@@ -67,8 +65,8 @@ class Ui_Form(object):
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.tableTStats.sizePolicy().hasHeightForWidth())
         self.tableTStats.setSizePolicy(sizePolicy)
-        self.tableTStats.setMinimumSize(QSize(761, 0))
-        self.tableTStats.setMaximumSize(QSize(811, 16777215))
+        self.tableTStats.setMinimumSize(QSize(761, 511))
+        self.tableTStats.setMaximumSize(QSize(811, 511))
         self.tableTStats.setSizeIncrement(QSize(20, 0))
         palette = QPalette()
         brush = QBrush(QColor(44, 47, 51, 255))
@@ -134,20 +132,18 @@ class Ui_Form(object):
         ___qtablewidgetitem3 = self.tableTStats.horizontalHeaderItem(3)
         ___qtablewidgetitem3.setText(QCoreApplication.translate("Form", u"Estado", None));
         ___qtablewidgetitem4 = self.tableTStats.horizontalHeaderItem(4)
-        ___qtablewidgetitem4.setText(QCoreApplication.translate("Form", u"T. Max", None));
+        ___qtablewidgetitem4.setText(QCoreApplication.translate("Form", u"T. LL", None));
         ___qtablewidgetitem5 = self.tableTStats.horizontalHeaderItem(5)
-        ___qtablewidgetitem5.setText(QCoreApplication.translate("Form", u"T. Llegada", None));
+        ___qtablewidgetitem5.setText(QCoreApplication.translate("Form", u"T. Fin", None));
         ___qtablewidgetitem6 = self.tableTStats.horizontalHeaderItem(6)
-        ___qtablewidgetitem6.setText(QCoreApplication.translate("Form", u"T. Espera", None));
+        ___qtablewidgetitem6.setText(QCoreApplication.translate("Form", u"T. Ret", None));
         ___qtablewidgetitem7 = self.tableTStats.horizontalHeaderItem(7)
-        ___qtablewidgetitem7.setText(QCoreApplication.translate("Form", u"T. Fin", None));
+        ___qtablewidgetitem7.setText(QCoreApplication.translate("Form", u"T. Esp", None));
         ___qtablewidgetitem8 = self.tableTStats.horizontalHeaderItem(8)
-        ___qtablewidgetitem8.setText(QCoreApplication.translate("Form", u"T. Res", None));
+        ___qtablewidgetitem8.setText(QCoreApplication.translate("Form", u"T.Serv", None));
         ___qtablewidgetitem9 = self.tableTStats.horizontalHeaderItem(9)
-        ___qtablewidgetitem9.setText(QCoreApplication.translate("Form", u"T. Ret", None));
+        ___qtablewidgetitem9.setText(QCoreApplication.translate("Form", u"T. Rest", None));
         ___qtablewidgetitem10 = self.tableTStats.horizontalHeaderItem(10)
-        ___qtablewidgetitem10.setText(QCoreApplication.translate("Form", u"T. Serv", None));
-        ___qtablewidgetitem11 = self.tableTStats.horizontalHeaderItem(11)
-        ___qtablewidgetitem11.setText(QCoreApplication.translate("Form", u"T. Bloq", None));
+        ___qtablewidgetitem10.setText(QCoreApplication.translate("Form", u"T.Resp", None));
     # retranslateUi
 

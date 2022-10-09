@@ -1,22 +1,22 @@
 class TimeStats:
 #Class Atributes
-    # Hora Llegada |
+    # Hora Llegada a la cola de listos
     arrival : int
     # Hora Fin |
     end : int 
     # Tiempo de respuesta (entrada a procesamiento - llegada)
-    answer : int # |
+    answer : int # 
     # Tiempo de retorno (Tiempo total) |
     totalReturn : int
     #Tiempo de Espera (espera para usar el procesador)
-    wait : int # |
+    wait : int # 
     #Tiempo de servicio |
     service : int
     
     def __init__(self) -> None:
-        self.arrival = 0
+        self.arrival = -1
         self.end = 0
-        self.answer = 0
+        self.answer = -1
         self.totalReturn = 0
         self.wait = 0
         self.service = 0

@@ -9,6 +9,7 @@ class Process:
     blockedTime : int
     processID : str
     stats : TimeStats
+    error : bool
     
     # Class constructor
     def __init__(self,valueA,valueB,operation,time,processID) -> None:
@@ -19,6 +20,7 @@ class Process:
         self.processID = processID
         self.elapsedTime = 0
         self.blockedTime = 0
+        self.error = False
         self.stats = TimeStats()
         
     # Class Methods
@@ -46,10 +48,25 @@ class Process:
     def getOperation(self) -> str:
         return self.operation
     
+    def getStatus(self) -> str:
+        if(self.blockedTime > 0):
+            return str(self.blockedTime)
+        if(self.error):
+            return "Error"
+        if(self.remainingTime == 0):
+            return "Terminado"
+        if(self.stats.getArrivalTime() == -1 ):
+            return "Nuevo"
+        return "Listo"
+    
     def getFullOperation(self) -> str:
         return str(self.valueA) + self.operation + str(self.valueB)
     
-    def getResult(self) -> int:
+    def getResult(self) -> int | str:
+        if(self.error):
+            return "Error"
+        if(self.remainingTime > 0):
+            return ""
         if(self.operation == "+"):
             return self.valueA + self.valueB
         elif(self.operation == "-"):

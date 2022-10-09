@@ -10,11 +10,11 @@
 # Terminado: Procesos que se salieron de procesos activos
 
 # Por Hacer:
-# Mejorar calculo de las estadisticas
 # Adaptar para que el programa siga, aunque no haya proceso en listo, pero si en E/S
 
 # A futuro
 # Mejorar/Cambiar uso de QTimer 
+# Caso 0 a start Execution
 #Library Imports
 import keyboard
 import random
@@ -108,12 +108,15 @@ class MainForm(QMainWindow, MainWindow):
 #Getters
     # Returns all process wherever they are
     def getAllProcesses(self) -> List[Process]:
-        result =[]
-        result += self.newQueue.getList()
-        result += self.blockedList
-        result += self.readyProcesses.getProcessList()
-        result += self.finishedList
-        result.sort(key=lambda x: x.processID)
+        aux =[]
+        result = []
+        aux += self.newQueue.getList()
+        aux += self.blockedList
+        aux += self.readyProcesses.getProcessList()
+        aux += self.finishedList
+        aux.sort(key=lambda x: x.processID)
+        for i in aux:
+            result.append(self.updateTStats(i))
         return result
     
 #Processing Methods
@@ -121,6 +124,8 @@ class MainForm(QMainWindow, MainWindow):
     def updateTimer(self):
         # Eliminar repeticion de set text timeCounter
         uiChangeFlag = False
+        
+        # Pausado por tabla de PCB
         if(self.bcp):
             self.timer.stop()
             self.BCPWindow = BCP_table(self.getAllProcesses())
@@ -135,7 +140,7 @@ class MainForm(QMainWindow, MainWindow):
             self.bcp = False
             self.pause = False
             self.timer.start(1000)
-                
+        
         if(not self.pause):
             # Pushing Process to Finished Queue by Error
             if(self.error):
@@ -147,6 +152,7 @@ class MainForm(QMainWindow, MainWindow):
             if(self.interruption):
                 #Send process to bloqued List
                 self.actualProcess.setElapsedTime(self.elapsedTime)
+                self.actualProcess = self.updateTStats(self.actualProcess)
                 # Removing and adding to Table
                 self.tablaProcesos.removeRow(0)
                 
@@ -181,9 +187,9 @@ class MainForm(QMainWindow, MainWindow):
             if ((self.newQueue.getLength() == 0) and (self.readyProcesses.getRemainingProcess() == 0) and (self.remainingTime == 0) and (len(self.blockedList) == 0)): 
                 
                 # Last process calculations
+                self.actualProcess.remainingTime = 0
                 self.actualProcess.stats.setEndTime(self.timeCounter)
-                self.actualProcess.stats.setReturnTime(self.timeCounter - self.actualProcess.stats.getAnswerTime())
-                self.actualProcess.stats.setWaitTime(self.actualProcess.stats.getReturnTime() - self.actualProcess.stats.getServiceTime())
+                self.actualProcess = self.updateTStats(self.actualProcess)
                 if(self.error):
                     self.actualProcess.stats.setServiceTime(self.actualProcess.stats.getEndTime() - self.actualProcess.stats.getAnswerTime())
                 else:
@@ -201,61 +207,62 @@ class MainForm(QMainWindow, MainWindow):
                 # Enqueueing first 3 processes
                 for i in range(3):
                     if(self.newQueue.getLength() > 0):
-                        aux = self.newQueue.dequeue()
+                        aux : Process = self.newQueue.dequeue()
                         aux.stats.setArrivalTime(self.timeCounter)
                         self.readyProcesses.addProcess(aux)
                         self.insertReadyRow(aux)
                 # Time changes
                 self.elapsedTime = 0
-                self.actualProcess = self.readyProcesses.getTopProcess() #Proceso Actual
+                self.actualProcess : Process = self.readyProcesses.getTopProcess() #Proceso Actual
                 self.remainingTime = self.actualProcess.getTime() #Tiempo restante del proceso
+                self.actualProcess.stats.setAnswerTime(self.timeCounter)
                 
                 self.updateUI(Updates.NEW)
                 uiChangeFlag = True
                 return
             #Cambio de Proceso
-            if(self.remainingTime == 0): 
-                
+            if(self.remainingTime == 0 ): 
                 # Insert Process to Finished Table
+                self.actualProcess.remainingTime = 0
                 self.insertFinishedRow(self.actualProcess,self.error)
-                if(self.error):
-                    self.error = False
                 self.tablaProcesos.removeRow(0)
                 
                 # Enqueueing new Process
                 self.readyProcesses.removeProcess()
                 if(self.newQueue.getLength() != 0 and self.readyProcesses.getRemainingProcess() < 3):
                     aux = self.newQueue.dequeue()
-                    self.insertReadyRow(aux)
                     aux.stats.setArrivalTime(self.timeCounter)
                     self.readyProcesses.addProcess(aux)
+                    self.insertReadyRow(aux)
                 
                 # Process Counter Update
                 self.textBox_restantes.setText(str(self.readyProcesses.getRemainingProcess()))
                 
                 # End of process time stats
                 self.actualProcess.stats.setEndTime(self.timeCounter)
-                self.actualProcess.stats.setReturnTime(self.timeCounter - self.actualProcess.stats.getAnswerTime())
-                self.actualProcess.stats.setWaitTime(self.actualProcess.stats.getEndTime() - self.actualProcess.stats.getArrivalTime())
+                self.actualProcess = self.updateTStats(self.actualProcess)
                 if(self.error):
                     self.actualProcess.stats.setServiceTime(self.actualProcess.stats.getEndTime() - self.actualProcess.stats.getAnswerTime())
+                    self.actualProcess.error = True
+                    self.error = False
                 else:
-                    self.actualProcess.stats.setServiceTime(self.actualProcess.getTime())
+                    self.actualProcess.stats.setServiceTime(self.elapsedTime)
                 
                 # Try get new process
                 if(self.readyProcesses.getRemainingProcess() != 0): 
                     #Obtenemos un nuevo proceso
                     self.finishedList.append(self.actualProcess)
-                    self.actualProcess = self.readyProcesses.getTopProcess() 
+                    self.actualProcess : Process = self.readyProcesses.getTopProcess() 
+                    self.elapsedTime = self.actualProcess.getElapsedTime()
                     
-                    
-                    if(self.actualProcess.getElapsedTime() != 0):
-                        self.elapsedTime = self.actualProcess.getElapsedTime()
+                    # Ya tiene tiempo transcurrido
+                    if(self.elapsedTime != 0):
                         self.remainingTime = self.actualProcess.getTime() - self.elapsedTime
+                    # Proceso completamente nuevo
                     else:
+                        #Tiempo restante del proceso
                         self.actualProcess.stats.setAnswerTime(self.timeCounter-self.actualProcess.stats.getArrivalTime())
-                        self.elapsedTime = 0 
-                        self.remainingTime = self.actualProcess.getTime() #Tiempo restante del proceso
+                        self.remainingTime = self.actualProcess.getTime() 
                         
                     self.updateUI(Updates.NEW)
                     return
@@ -303,6 +310,7 @@ class MainForm(QMainWindow, MainWindow):
                 print('n')
                 # Generating and Enqueueing new process
                 aux = self.newProcess()
+                aux.stats.setArrivalTime(self.timeCounter)
                 self.readyProcesses.addProcess(aux)
                 self.insertReadyRow(aux)
                 self.textBox_restantes.setText(str(self.readyProcesses.getRemainingProcess()))
@@ -314,7 +322,7 @@ class MainForm(QMainWindow, MainWindow):
         except:
             pass
 
-#Process Creation
+#Process Creation/Maniuplation
     #Generate new Process
     def newProcess(self) -> Process:
         if(self.totalProcess != 0):
@@ -345,6 +353,19 @@ class MainForm(QMainWindow, MainWindow):
                 newProcess = self.newProcess()
                 self.newQueue.enqueue(newProcess)
                 cont += 1
+    
+    # Update Time Stats
+    def updateTStats(self,p : Process) -> Process:
+        # Si ya termino su ejecución
+        if(p.getTime() == 0):
+            p.stats.setReturnTime(p.stats.getEndTime() - p.stats.getArrivalTime())
+        # Si aun no termina su ejecución, pero ya entro a la cola de listos
+        if(p.stats.getArrivalTime() != -1):
+            p.stats.setWaitTime(self.timeCounter - p.stats.getArrivalTime() - p.stats.getServiceTime())
+        # Si es el que se esta ejecutando actualmente
+        if(self.actualProcess.getID() == p.getID()):
+            p.stats.setServiceTime(self.elapsedTime)
+        return p
     
 #Visual Methods
     def updateUI(self,upType) -> None:
