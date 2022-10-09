@@ -28,7 +28,7 @@
    <property name="title">
     <string/>
    </property>
-   <widget class="QTableWidget" name="tableBCP">
+   <widget class="QTableWidget" name="tableTStats">
     <property name="enabled">
      <bool>false</bool>
     </property>

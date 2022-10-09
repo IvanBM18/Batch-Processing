@@ -48,4 +48,10 @@ class Queue:
         return aux
     
     def getList(self) -> list:
-        return self.values
+        result = []
+        indx = 0
+        for i in self.values:
+            if (indx >= self.front):
+                result.append(i)
+            indx += 1
+        return result

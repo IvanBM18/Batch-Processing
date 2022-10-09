@@ -715,15 +715,15 @@ font: 63 13pt &quot;Segoe UI Semibold&quot;;
       <rect>
        <x>120</x>
        <y>80</y>
-       <width>311</width>
-       <height>191</height>
+       <width>301</width>
+       <height>531</height>
       </rect>
      </property>
      <property name="styleSheet">
       <string notr="true">background-color: rgb(52, 62, 64);</string>
      </property>
      <property name="verticalScrollBarPolicy">
-      <enum>Qt::ScrollBarAlwaysOn</enum>
+      <enum>Qt::ScrollBarAsNeeded</enum>
      </property>
      <property name="horizontalScrollBarPolicy">
       <enum>Qt::ScrollBarAlwaysOff</enum>
@@ -732,7 +732,7 @@ font: 63 13pt &quot;Segoe UI Semibold&quot;;
       <enum>QAbstractScrollArea::AdjustToContents</enum>
      </property>
      <property name="autoScroll">
-      <bool>true</bool>
+      <bool>false</bool>
      </property>
      <attribute name="horizontalHeaderDefaultSectionSize">
       <number>104</number>
@@ -805,182 +805,6 @@ border-radius: 4px;</string>
      <property name="text">
       <string/>
      </property>
-    </widget>
-    <widget class="QLabel" name="label_titulo_TiempoC">
-     <property name="geometry">
-      <rect>
-       <x>180</x>
-       <y>310</y>
-       <width>221</width>
-       <height>31</height>
-      </rect>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">color:rgb(0, 153, 117);
-
-font: 63 13pt &quot;Segoe UI Semibold&quot;;
-</string>
-     </property>
-     <property name="text">
-      <string>Tiempos calculados</string>
-     </property>
-    </widget>
-    <widget class="QTableWidget" name="tablePTimeStats">
-     <property name="enabled">
-      <bool>false</bool>
-     </property>
-     <property name="geometry">
-      <rect>
-       <x>30</x>
-       <y>350</y>
-       <width>471</width>
-       <height>271</height>
-      </rect>
-     </property>
-     <property name="acceptDrops">
-      <bool>true</bool>
-     </property>
-     <property name="autoFillBackground">
-      <bool>true</bool>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">background-color: rgb(52, 62, 64);</string>
-     </property>
-     <property name="frameShadow">
-      <enum>QFrame::Raised</enum>
-     </property>
-     <property name="horizontalScrollBarPolicy">
-      <enum>Qt::ScrollBarAlwaysOff</enum>
-     </property>
-     <property name="sizeAdjustPolicy">
-      <enum>QAbstractScrollArea::AdjustToContents</enum>
-     </property>
-     <property name="autoScroll">
-      <bool>true</bool>
-     </property>
-     <property name="autoScrollMargin">
-      <number>8</number>
-     </property>
-     <property name="tabKeyNavigation">
-      <bool>false</bool>
-     </property>
-     <property name="showDropIndicator" stdset="0">
-      <bool>false</bool>
-     </property>
-     <property name="dragEnabled">
-      <bool>true</bool>
-     </property>
-     <property name="dragDropMode">
-      <enum>QAbstractItemView::DragOnly</enum>
-     </property>
-     <property name="alternatingRowColors">
-      <bool>false</bool>
-     </property>
-     <property name="showGrid">
-      <bool>true</bool>
-     </property>
-     <property name="wordWrap">
-      <bool>true</bool>
-     </property>
-     <attribute name="horizontalHeaderVisible">
-      <bool>true</bool>
-     </attribute>
-     <attribute name="horizontalHeaderCascadingSectionResizes">
-      <bool>true</bool>
-     </attribute>
-     <attribute name="horizontalHeaderMinimumSectionSize">
-      <number>25</number>
-     </attribute>
-     <attribute name="horizontalHeaderDefaultSectionSize">
-      <number>67</number>
-     </attribute>
-     <attribute name="horizontalHeaderHighlightSections">
-      <bool>true</bool>
-     </attribute>
-     <attribute name="horizontalHeaderShowSortIndicator" stdset="0">
-      <bool>true</bool>
-     </attribute>
-     <attribute name="horizontalHeaderStretchLastSection">
-      <bool>true</bool>
-     </attribute>
-     <attribute name="verticalHeaderVisible">
-      <bool>false</bool>
-     </attribute>
-     <attribute name="verticalHeaderCascadingSectionResizes">
-      <bool>false</bool>
-     </attribute>
-     <attribute name="verticalHeaderHighlightSections">
-      <bool>false</bool>
-     </attribute>
-     <attribute name="verticalHeaderShowSortIndicator" stdset="0">
-      <bool>false</bool>
-     </attribute>
-     <column>
-      <property name="text">
-       <string notr="true">ID</string>
-      </property>
-      <property name="font">
-       <font>
-        <pointsize>8</pointsize>
-        <kerning>false</kerning>
-       </font>
-      </property>
-     </column>
-     <column>
-      <property name="text">
-       <string>T.L</string>
-      </property>
-      <property name="font">
-       <font>
-        <pointsize>8</pointsize>
-       </font>
-      </property>
-     </column>
-     <column>
-      <property name="text">
-       <string notr="true">T.F</string>
-      </property>
-      <property name="font">
-       <font>
-        <pointsize>8</pointsize>
-       </font>
-      </property>
-     </column>
-     <column>
-      <property name="text">
-       <string>T.Ret</string>
-      </property>
-      <property name="font">
-       <font>
-        <pointsize>8</pointsize>
-       </font>
-      </property>
-     </column>
-     <column>
-      <property name="text">
-       <string>T.Res</string>
-      </property>
-      <property name="font">
-       <font>
-        <pointsize>8</pointsize>
-       </font>
-      </property>
-     </column>
-     <column>
-      <property name="text">
-       <string>T. E.</string>
-      </property>
-      <property name="font">
-       <font>
-        <pointsize>8</pointsize>
-       </font>
-      </property>
-     </column>
-     <column>
-      <property name="text">
-       <string>T.S</string>
-      </property>
-     </column>
     </widget>
    </widget>
   </widget>

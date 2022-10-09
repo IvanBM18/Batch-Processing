@@ -29,7 +29,7 @@ class TimeStats:
         return self.end
     def getAnswerTime(self) -> int:
         return self.answer
-    def getTotalReturnTime(self) -> int:
+    def getReturnTime(self) -> int:
         return self.totalReturn
     def getWaitTime(self) -> int:
         return self.wait
@@ -42,7 +42,7 @@ class TimeStats:
         self.end = t
     def setAnswerTime(self,t : int):
         self.answer = t
-    def setTotalTime(self,t : int):
+    def setReturnTime(self,t : int):
         self.totalReturn = t
     def setWaitTime(self,t : int):
         self.wait = t

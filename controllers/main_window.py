@@ -10,14 +10,15 @@
 # Terminado: Procesos que se salieron de procesos activos
 
 # Por Hacer:
-# Adaptar para que el programa siga, aunque no haya proceso en listo, pero si en E/S
 # Mejorar calculo de las estadisticas
-# Abrir Nueva Tabla de PCB
+# Adaptar para que el programa siga, aunque no haya proceso en listo, pero si en E/S
 
+# A futuro
+# Mejorar/Cambiar uso de QTimer 
 #Library Imports
 import keyboard
 import random
-from typing import Any
+from typing import Any, List
 
 # QT Imports
 from PySide6.QtWidgets import QMainWindow
@@ -36,6 +37,9 @@ from models.uiUpdate import Updates
 
 class MainForm(QMainWindow, MainWindow):
 #Atributtes
+    # BCP Window
+    BCPWindow : BCP_table
+
     # Process Variables
     totalProcess : int = 0
     # Batch with all new Processes
@@ -46,17 +50,19 @@ class MainForm(QMainWindow, MainWindow):
     blockedList = []
     # Finished Process List
     finishedList = []
+    #Indice del proceso creado
+    indxP = 0 
 
+    
     #Variables used in Counting
     timer : QTimer = None  #Timer que se ejecuta cada segundo para actualizar el contador global
-    BCPWindow  : BCP_table
-    
-    #Variables to be used during process Execution
-    actualProcess : Process
     timeCounter = 0 #Contador de Tiempo Global
     elapsedTime = 0 #Contador de Tiempo de Proceso transcurrido
     remainingTime = 0 #Contador Tiempo restante del proceso
-    indxP = 0 #Indice del proceso en el batch en ejecución, en creación indice actual
+    
+    #Variables to be used during process Execution
+    actualProcess : Process
+    BCPWindow  : BCP_table
     interruptedProcesses = False
     
     #Flags for keyboard Press
@@ -71,7 +77,6 @@ class MainForm(QMainWindow, MainWindow):
         super().__init__()
         self.setupUi(self)
         self.setWindowTitle("FCFS")
-        self.BCPWindow = BCP_table()
         # Timer Generation
         self.timer = QTimer(self)
         self.timer.timeout.connect(self.updateTimer)
@@ -100,19 +105,36 @@ class MainForm(QMainWindow, MainWindow):
             self.totalProcess = int(validateEntry)
             self.pushButton_Ejecutar.setEnabled(True)
     
+#Getters
+    # Returns all process wherever they are
+    def getAllProcesses(self) -> List[Process]:
+        result =[]
+        result += self.newQueue.getList()
+        result += self.blockedList
+        result += self.readyProcesses.getProcessList()
+        result += self.finishedList
+        result.sort(key=lambda x: x.processID)
+        return result
+    
 #Processing Methods
     # Updates the timer and the UI
     def updateTimer(self):
         # Eliminar repeticion de set text timeCounter
         uiChangeFlag = False
         if(self.bcp):
+            self.timer.stop()
+            self.BCPWindow = BCP_table(self.getAllProcesses())
+            self.BCPWindow.startTable()
+            
             self.BCPWindow.show()
             # Ciclo para mantener la ventana de BCP abierta
             while self.pause:
                 QCoreApplication.processEvents()
             self.BCPWindow.hide()
+            
             self.bcp = False
             self.pause = False
+            self.timer.start(1000)
                 
         if(not self.pause):
             # Pushing Process to Finished Queue by Error
@@ -160,8 +182,8 @@ class MainForm(QMainWindow, MainWindow):
                 
                 # Last process calculations
                 self.actualProcess.stats.setEndTime(self.timeCounter)
-                self.actualProcess.stats.setTotalTime(self.timeCounter - self.actualProcess.stats.getAnswerTime())
-                self.actualProcess.stats.setWaitTime(self.actualProcess.stats.getTotalReturnTime() - self.actualProcess.stats.getServiceTime())
+                self.actualProcess.stats.setReturnTime(self.timeCounter - self.actualProcess.stats.getAnswerTime())
+                self.actualProcess.stats.setWaitTime(self.actualProcess.stats.getReturnTime() - self.actualProcess.stats.getServiceTime())
                 if(self.error):
                     self.actualProcess.stats.setServiceTime(self.actualProcess.stats.getEndTime() - self.actualProcess.stats.getAnswerTime())
                 else:
@@ -213,7 +235,7 @@ class MainForm(QMainWindow, MainWindow):
                 
                 # End of process time stats
                 self.actualProcess.stats.setEndTime(self.timeCounter)
-                self.actualProcess.stats.setTotalTime(self.timeCounter - self.actualProcess.stats.getAnswerTime())
+                self.actualProcess.stats.setReturnTime(self.timeCounter - self.actualProcess.stats.getAnswerTime())
                 self.actualProcess.stats.setWaitTime(self.actualProcess.stats.getEndTime() - self.actualProcess.stats.getArrivalTime())
                 if(self.error):
                     self.actualProcess.stats.setServiceTime(self.actualProcess.stats.getEndTime() - self.actualProcess.stats.getAnswerTime())
@@ -248,7 +270,6 @@ class MainForm(QMainWindow, MainWindow):
     def startExecution(self):
         self.tablaPTerminados.clearContents()
         self.tablaPbloqueados.clearContents()
-        self.tablePTimeStats.clearContents()
         self.tablaProcesos.clearContents()
         if(self.totalProcess != 0):
             self.timeCounter = 0 #Contador de Tiempo Global
@@ -289,6 +310,7 @@ class MainForm(QMainWindow, MainWindow):
             elif(option == 'b'):
                 self.bcp = True
                 self.pause = True
+                
         except:
             pass
 
@@ -354,8 +376,7 @@ class MainForm(QMainWindow, MainWindow):
                 cont += 1
         # End of Processing
         if(upType == Updates.END):
-            for i in self.finishedList:
-                self.insertTimeRow(i)
+            pass
         self.textBox_contadorGlobal.setText(str(self.timeCounter))
     
     # Inserts row in ProcessTable
@@ -372,19 +393,6 @@ class MainForm(QMainWindow, MainWindow):
         self.tablaPbloqueados.insertRow(n)
         self.tablaPbloqueados.setItem(n,0,QTableWidgetItem(str(process.getID())))
         self.tablaPbloqueados.setItem(n,1,QTableWidgetItem(str(process.getBlockedTime())))
-    
-    #Insert row in Time Table
-    def insertTimeRow(self,process:Process):
-        n = self.tablePTimeStats.rowCount()
-        stat = process.stats
-        self.tablePTimeStats.insertRow(n)
-        self.tablePTimeStats.setItem(n,0,QTableWidgetItem(str(process.getID())))
-        self.tablePTimeStats.setItem(n,1,QTableWidgetItem(str(stat.getArrivalTime())))
-        self.tablePTimeStats.setItem(n,2,QTableWidgetItem(str(stat.getEndTime())))
-        self.tablePTimeStats.setItem(n,3,QTableWidgetItem(str(stat.getTotalReturnTime())))
-        self.tablePTimeStats.setItem(n,4,QTableWidgetItem(str(stat.getAnswerTime())))
-        self.tablePTimeStats.setItem(n,5,QTableWidgetItem(str(stat.getWaitTime())))
-        self.tablePTimeStats.setItem(n,6,QTableWidgetItem(str(stat.getServiceTime())))
     
     #Inserts a row in the finished Table
     def insertFinishedRow(self,row:Process,errorFlag:bool):

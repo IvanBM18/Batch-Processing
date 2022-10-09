@@ -1,4 +1,4 @@
-from models.processsTime import TimeStats
+from models.timeStats import TimeStats
 class Process:
     # Class Atributes
     valueA : int
