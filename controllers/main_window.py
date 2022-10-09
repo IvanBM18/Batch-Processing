@@ -107,6 +107,7 @@ class MainForm(QMainWindow, MainWindow):
         uiChangeFlag = False
         if(self.bcp):
             self.BCPWindow.show()
+            # Ciclo para mantener la ventana de BCP abierta
             while self.pause:
                 QCoreApplication.processEvents()
             self.BCPWindow.hide()
@@ -256,7 +257,6 @@ class MainForm(QMainWindow, MainWindow):
             self.generateProcesses()
             self.timer.start(1000)
             self.pause = False
-            
 
     # Applies on keyboard press
     def onKeyPress(self,event):
@@ -280,6 +280,11 @@ class MainForm(QMainWindow, MainWindow):
             # New Process
             elif(option == 'n'):
                 print('n')
+                # Generating and Enqueueing new process
+                aux = self.newProcess()
+                self.readyProcesses.addProcess(aux)
+                self.insertReadyRow(aux)
+                self.textBox_restantes.setText(str(self.readyProcesses.getRemainingProcess()))
             # BCP Table
             elif(option == 'b'):
                 self.bcp = True
@@ -318,7 +323,6 @@ class MainForm(QMainWindow, MainWindow):
                 newProcess = self.newProcess()
                 self.newQueue.enqueue(newProcess)
                 cont += 1
-            self.indxP = 0
     
 #Visual Methods
     def updateUI(self,upType) -> None:
@@ -353,7 +357,7 @@ class MainForm(QMainWindow, MainWindow):
             for i in self.finishedList:
                 self.insertTimeRow(i)
         self.textBox_contadorGlobal.setText(str(self.timeCounter))
-        
+    
     # Inserts row in ProcessTable
     def insertReadyRow(self,process:Process):
         n = self.tablaProcesos.rowCount()
