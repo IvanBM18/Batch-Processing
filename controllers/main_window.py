@@ -11,6 +11,7 @@
 
 # Por Hacer:
 # Adaptar para que el programa siga, aunque no haya proceso en listo, pero si en E/S
+# BCP no abre si el reloj no esta en movimiento
 
 # A futuro
 # Mejorar/Cambiar uso de QTimer 

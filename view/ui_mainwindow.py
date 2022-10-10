@@ -15,11 +15,10 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
     QFont, QFontDatabase, QGradient, QIcon,
     QImage, QKeySequence, QLinearGradient, QPainter,
     QPalette, QPixmap, QRadialGradient, QTransform)
-from PySide6.QtWidgets import (QAbstractItemView, QAbstractScrollArea, QApplication, QFrame,
-    QGridLayout, QGroupBox, QHeaderView, QLabel,
-    QLineEdit, QMainWindow, QMenuBar, QPushButton,
-    QSizePolicy, QStatusBar, QTableWidget, QTableWidgetItem,
-    QWidget)
+from PySide6.QtWidgets import (QAbstractScrollArea, QApplication, QFrame, QGridLayout,
+    QGroupBox, QHeaderView, QLabel, QLineEdit,
+    QMainWindow, QMenuBar, QPushButton, QSizePolicy,
+    QStatusBar, QTableWidget, QTableWidgetItem, QWidget)
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
@@ -280,12 +279,12 @@ class Ui_MainWindow(object):
         self.tablaPTerminados.setHorizontalHeaderItem(2, __qtablewidgetitem7)
         self.tablaPTerminados.setObjectName(u"tablaPTerminados")
         self.tablaPTerminados.setEnabled(False)
-        self.tablaPTerminados.setGeometry(QRect(120, 80, 311, 191))
+        self.tablaPTerminados.setGeometry(QRect(120, 80, 301, 531))
         self.tablaPTerminados.setStyleSheet(u"background-color: rgb(52, 62, 64);")
-        self.tablaPTerminados.setVerticalScrollBarPolicy(Qt.ScrollBarAlwaysOn)
+        self.tablaPTerminados.setVerticalScrollBarPolicy(Qt.ScrollBarAsNeeded)
         self.tablaPTerminados.setHorizontalScrollBarPolicy(Qt.ScrollBarAlwaysOff)
         self.tablaPTerminados.setSizeAdjustPolicy(QAbstractScrollArea.AdjustToContents)
-        self.tablaPTerminados.setAutoScroll(True)
+        self.tablaPTerminados.setAutoScroll(False)
         self.tablaPTerminados.horizontalHeader().setDefaultSectionSize(104)
         self.tablaPTerminados.verticalHeader().setVisible(False)
         self.label_titulo_Cont = QLabel(self.groupBox_3)
@@ -304,72 +303,6 @@ class Ui_MainWindow(object):
 "color: rgb(255, 255, 255);\n"
 "border: 1px solid rgb(0, 153, 117);\n"
 "border-radius: 4px;")
-        self.label_titulo_TiempoC = QLabel(self.groupBox_3)
-        self.label_titulo_TiempoC.setObjectName(u"label_titulo_TiempoC")
-        self.label_titulo_TiempoC.setGeometry(QRect(180, 310, 221, 31))
-        self.label_titulo_TiempoC.setStyleSheet(u"color:rgb(0, 153, 117);\n"
-"\n"
-"font: 63 13pt \"Segoe UI Semibold\";\n"
-"")
-        self.tablePTimeStats = QTableWidget(self.groupBox_3)
-        if (self.tablePTimeStats.columnCount() < 7):
-            self.tablePTimeStats.setColumnCount(7)
-        font = QFont()
-        font.setPointSize(8)
-        font.setKerning(False)
-        __qtablewidgetitem8 = QTableWidgetItem()
-        __qtablewidgetitem8.setText(u"ID");
-        __qtablewidgetitem8.setFont(font);
-        self.tablePTimeStats.setHorizontalHeaderItem(0, __qtablewidgetitem8)
-        font1 = QFont()
-        font1.setPointSize(8)
-        __qtablewidgetitem9 = QTableWidgetItem()
-        __qtablewidgetitem9.setFont(font1);
-        self.tablePTimeStats.setHorizontalHeaderItem(1, __qtablewidgetitem9)
-        __qtablewidgetitem10 = QTableWidgetItem()
-        __qtablewidgetitem10.setText(u"T.F");
-        __qtablewidgetitem10.setFont(font1);
-        self.tablePTimeStats.setHorizontalHeaderItem(2, __qtablewidgetitem10)
-        __qtablewidgetitem11 = QTableWidgetItem()
-        __qtablewidgetitem11.setFont(font1);
-        self.tablePTimeStats.setHorizontalHeaderItem(3, __qtablewidgetitem11)
-        __qtablewidgetitem12 = QTableWidgetItem()
-        __qtablewidgetitem12.setFont(font1);
-        self.tablePTimeStats.setHorizontalHeaderItem(4, __qtablewidgetitem12)
-        __qtablewidgetitem13 = QTableWidgetItem()
-        __qtablewidgetitem13.setFont(font1);
-        self.tablePTimeStats.setHorizontalHeaderItem(5, __qtablewidgetitem13)
-        __qtablewidgetitem14 = QTableWidgetItem()
-        self.tablePTimeStats.setHorizontalHeaderItem(6, __qtablewidgetitem14)
-        self.tablePTimeStats.setObjectName(u"tablePTimeStats")
-        self.tablePTimeStats.setEnabled(False)
-        self.tablePTimeStats.setGeometry(QRect(30, 350, 471, 271))
-        self.tablePTimeStats.setAcceptDrops(True)
-        self.tablePTimeStats.setAutoFillBackground(True)
-        self.tablePTimeStats.setStyleSheet(u"background-color: rgb(52, 62, 64);")
-        self.tablePTimeStats.setFrameShadow(QFrame.Raised)
-        self.tablePTimeStats.setHorizontalScrollBarPolicy(Qt.ScrollBarAlwaysOff)
-        self.tablePTimeStats.setSizeAdjustPolicy(QAbstractScrollArea.AdjustToContents)
-        self.tablePTimeStats.setAutoScroll(True)
-        self.tablePTimeStats.setAutoScrollMargin(8)
-        self.tablePTimeStats.setTabKeyNavigation(False)
-        self.tablePTimeStats.setProperty("showDropIndicator", False)
-        self.tablePTimeStats.setDragEnabled(True)
-        self.tablePTimeStats.setDragDropMode(QAbstractItemView.DragOnly)
-        self.tablePTimeStats.setAlternatingRowColors(False)
-        self.tablePTimeStats.setShowGrid(True)
-        self.tablePTimeStats.setWordWrap(True)
-        self.tablePTimeStats.horizontalHeader().setVisible(True)
-        self.tablePTimeStats.horizontalHeader().setCascadingSectionResizes(True)
-        self.tablePTimeStats.horizontalHeader().setMinimumSectionSize(25)
-        self.tablePTimeStats.horizontalHeader().setDefaultSectionSize(67)
-        self.tablePTimeStats.horizontalHeader().setHighlightSections(True)
-        self.tablePTimeStats.horizontalHeader().setProperty("showSortIndicator", True)
-        self.tablePTimeStats.horizontalHeader().setStretchLastSection(True)
-        self.tablePTimeStats.verticalHeader().setVisible(False)
-        self.tablePTimeStats.verticalHeader().setCascadingSectionResizes(False)
-        self.tablePTimeStats.verticalHeader().setHighlightSections(False)
-        self.tablePTimeStats.verticalHeader().setProperty("showSortIndicator", False)
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QMenuBar(MainWindow)
         self.menubar.setObjectName(u"menubar")
@@ -423,16 +356,5 @@ class Ui_MainWindow(object):
         ___qtablewidgetitem7.setText(QCoreApplication.translate("MainWindow", u"Resultado", None));
         self.label_titulo_Cont.setText(QCoreApplication.translate("MainWindow", u"Contador", None))
         self.textBox_contadorGlobal.setText("")
-        self.label_titulo_TiempoC.setText(QCoreApplication.translate("MainWindow", u"Tiempos calculados", None))
-        ___qtablewidgetitem8 = self.tablePTimeStats.horizontalHeaderItem(1)
-        ___qtablewidgetitem8.setText(QCoreApplication.translate("MainWindow", u"T.L", None));
-        ___qtablewidgetitem9 = self.tablePTimeStats.horizontalHeaderItem(3)
-        ___qtablewidgetitem9.setText(QCoreApplication.translate("MainWindow", u"T.Ret", None));
-        ___qtablewidgetitem10 = self.tablePTimeStats.horizontalHeaderItem(4)
-        ___qtablewidgetitem10.setText(QCoreApplication.translate("MainWindow", u"T.Res", None));
-        ___qtablewidgetitem11 = self.tablePTimeStats.horizontalHeaderItem(5)
-        ___qtablewidgetitem11.setText(QCoreApplication.translate("MainWindow", u"T. E.", None));
-        ___qtablewidgetitem12 = self.tablePTimeStats.horizontalHeaderItem(6)
-        ___qtablewidgetitem12.setText(QCoreApplication.translate("MainWindow", u"T.S", None));
     # retranslateUi
 
