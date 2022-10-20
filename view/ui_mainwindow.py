@@ -209,7 +209,7 @@ class Ui_MainWindow(object):
 "")
         self.label_id_2 = QLabel(self.groupBox_5)
         self.label_id_2.setObjectName(u"label_id_2")
-        self.label_id_2.setGeometry(QRect(10, 260, 71, 31))
+        self.label_id_2.setGeometry(QRect(10, 260, 101, 31))
         self.label_id_2.setStyleSheet(u"color:rgb(255, 255, 255);\n"
 "font: 10pt \"Segoe UI Emoji\";\n"
 "")
@@ -335,17 +335,17 @@ class Ui_MainWindow(object):
 "border-radius: 4px;")
         self.textBox_quantumGlobal = QLineEdit(self.groupBox_3)
         self.textBox_quantumGlobal.setObjectName(u"textBox_quantumGlobal")
-        self.textBox_quantumGlobal.setGeometry(QRect(110, 630, 71, 35))
+        self.textBox_quantumGlobal.setGeometry(QRect(130, 630, 71, 35))
         self.textBox_quantumGlobal.setMinimumSize(QSize(60, 35))
         self.textBox_quantumGlobal.setMaximumSize(QSize(230, 35))
         self.textBox_quantumGlobal.setStyleSheet(u"background-color: rgb(52, 62, 64);\n"
 "color: rgb(255, 255, 255);\n"
 "border: 1px solid rgb(0, 153, 117);\n"
 "border-radius: 4px;")
-        self.label_titulo_Cont_2 = QLabel(self.groupBox_3)
-        self.label_titulo_Cont_2.setObjectName(u"label_titulo_Cont_2")
-        self.label_titulo_Cont_2.setGeometry(QRect(20, 630, 101, 31))
-        self.label_titulo_Cont_2.setStyleSheet(u"color:rgb(0, 153, 117);\n"
+        self.label_titulo_quatum = QLabel(self.groupBox_3)
+        self.label_titulo_quatum.setObjectName(u"label_titulo_quatum")
+        self.label_titulo_quatum.setGeometry(QRect(30, 630, 91, 31))
+        self.label_titulo_quatum.setStyleSheet(u"color:rgb(0, 153, 117);\n"
 "\n"
 "font: 63 13pt \"Segoe UI Semibold\";\n"
 "")
@@ -386,7 +386,7 @@ class Ui_MainWindow(object):
         self.label_tiempo_t.setText(QCoreApplication.translate("MainWindow", u"T. Transcurrido", None))
         self.label_tiempo_r.setText(QCoreApplication.translate("MainWindow", u"T. Restante", None))
         self.label_id.setText(QCoreApplication.translate("MainWindow", u"ID", None))
-        self.label_id_2.setText(QCoreApplication.translate("MainWindow", u"Quantum", None))
+        self.label_id_2.setText(QCoreApplication.translate("MainWindow", u"T.T. Quantum", None))
         ___qtablewidgetitem2 = self.tablaProcesos.horizontalHeaderItem(0)
         ___qtablewidgetitem2.setText(QCoreApplication.translate("MainWindow", u"ID", None));
         ___qtablewidgetitem3 = self.tablaProcesos.horizontalHeaderItem(1)
@@ -406,6 +406,6 @@ class Ui_MainWindow(object):
         self.label_titulo_Cont.setText(QCoreApplication.translate("MainWindow", u"Contador", None))
         self.textBox_contadorGlobal.setText("")
         self.textBox_quantumGlobal.setText("")
-        self.label_titulo_Cont_2.setText(QCoreApplication.translate("MainWindow", u"Quantum", None))
+        self.label_titulo_quatum.setText(QCoreApplication.translate("MainWindow", u"Quantum", None))
     # retranslateUi
 
