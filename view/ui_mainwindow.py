@@ -3,7 +3,7 @@
 ################################################################################
 ## Form generated from reading UI file 'mainwindow.ui'
 ##
-## Created by: Qt User Interface Compiler version 6.3.1
+## Created by: Qt User Interface Compiler version 6.3.2
 ##
 ## WARNING! All changes made in this file will be lost when recompiling UI file!
 ################################################################################
@@ -15,11 +15,10 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
     QFont, QFontDatabase, QGradient, QIcon,
     QImage, QKeySequence, QLinearGradient, QPainter,
     QPalette, QPixmap, QRadialGradient, QTransform)
-from PySide6.QtWidgets import (QAbstractItemView, QAbstractScrollArea, QApplication, QFrame,
-    QGridLayout, QGroupBox, QHeaderView, QLabel,
-    QLineEdit, QMainWindow, QMenuBar, QPushButton,
-    QSizePolicy, QStatusBar, QTableWidget, QTableWidgetItem,
-    QWidget)
+from PySide6.QtWidgets import (QAbstractScrollArea, QApplication, QFrame, QGridLayout,
+    QGroupBox, QHeaderView, QLabel, QLineEdit,
+    QMainWindow, QMenuBar, QPushButton, QSizePolicy,
+    QStatusBar, QTableWidget, QTableWidgetItem, QWidget)
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
@@ -51,7 +50,7 @@ class Ui_MainWindow(object):
 "")
         self.textBox_NumProcess = QLineEdit(self.groupBox_4)
         self.textBox_NumProcess.setObjectName(u"textBox_NumProcess")
-        self.textBox_NumProcess.setGeometry(QRect(0, 160, 230, 35))
+        self.textBox_NumProcess.setGeometry(QRect(0, 140, 230, 35))
         self.textBox_NumProcess.setMinimumSize(QSize(60, 35))
         self.textBox_NumProcess.setMaximumSize(QSize(230, 35))
         self.textBox_NumProcess.setStyleSheet(u"background-color: rgb(52, 62, 64);\n"
@@ -60,20 +59,20 @@ class Ui_MainWindow(object):
 "border-radius: 4px;")
         self.label_Numero = QLabel(self.groupBox_4)
         self.label_Numero.setObjectName(u"label_Numero")
-        self.label_Numero.setGeometry(QRect(30, 120, 171, 31))
+        self.label_Numero.setGeometry(QRect(20, 110, 171, 21))
         self.label_Numero.setStyleSheet(u"color:rgb(255, 255, 255);\n"
 "font: 10pt \"Segoe UI Emoji\";\n"
 "")
         self.pushButton_Agregar = QPushButton(self.groupBox_4)
         self.pushButton_Agregar.setObjectName(u"pushButton_Agregar")
-        self.pushButton_Agregar.setGeometry(QRect(0, 210, 111, 41))
+        self.pushButton_Agregar.setGeometry(QRect(30, 300, 111, 41))
         self.pushButton_Agregar.setStyleSheet(u"background-color: rgb(0, 153, 117);\n"
 "color: #FFFFFF;\n"
 "font: 75 12pt \"Microsoft YaHei\";\n"
 "border-radius: 10px;")
         self.pushButton_Ejecutar = QPushButton(self.groupBox_4)
         self.pushButton_Ejecutar.setObjectName(u"pushButton_Ejecutar")
-        self.pushButton_Ejecutar.setGeometry(QRect(130, 210, 111, 41))
+        self.pushButton_Ejecutar.setGeometry(QRect(150, 300, 111, 41))
         self.pushButton_Ejecutar.setStyleSheet(u"background-color: rgb(0, 153, 117);\n"
 "color: #FFFFFF;\n"
 "font: 75 12pt \"Microsoft YaHei\";\n"
@@ -101,6 +100,21 @@ class Ui_MainWindow(object):
 "\n"
 "font: 63 13pt \"Segoe UI Semibold\";\n"
 "")
+        self.textBox_NumProcess_2 = QLineEdit(self.groupBox_4)
+        self.textBox_NumProcess_2.setObjectName(u"textBox_NumProcess_2")
+        self.textBox_NumProcess_2.setGeometry(QRect(0, 230, 230, 35))
+        self.textBox_NumProcess_2.setMinimumSize(QSize(60, 35))
+        self.textBox_NumProcess_2.setMaximumSize(QSize(230, 35))
+        self.textBox_NumProcess_2.setStyleSheet(u"background-color: rgb(52, 62, 64);\n"
+"color: rgb(255, 255, 255);\n"
+"border: 1px solid rgb(0, 153, 117);\n"
+"border-radius: 4px;")
+        self.label_Numero_2 = QLabel(self.groupBox_4)
+        self.label_Numero_2.setObjectName(u"label_Numero_2")
+        self.label_Numero_2.setGeometry(QRect(10, 200, 171, 21))
+        self.label_Numero_2.setStyleSheet(u"color:rgb(255, 255, 255);\n"
+"font: 10pt \"Segoe UI Emoji\";\n"
+"")
 
         self.gridLayout.addWidget(self.groupBox_4, 0, 0, 1, 1)
 
@@ -112,7 +126,7 @@ class Ui_MainWindow(object):
         self.groupBox_2.setBaseSize(QSize(9, 6))
         self.groupBox_5 = QGroupBox(self.groupBox_2)
         self.groupBox_5.setObjectName(u"groupBox_5")
-        self.groupBox_5.setGeometry(QRect(30, 300, 321, 311))
+        self.groupBox_5.setGeometry(QRect(30, 300, 321, 361))
         self.groupBox_5.setBaseSize(QSize(7, 7))
         self.groupBox_5.setStyleSheet(u"selection-background-color: rgb(255, 170, 127);\n"
 "border: 0px solid rgb(0, 153, 117);\n"
@@ -156,19 +170,13 @@ class Ui_MainWindow(object):
 "")
         self.textBox_Id_proceso = QLineEdit(self.groupBox_5)
         self.textBox_Id_proceso.setObjectName(u"textBox_Id_proceso")
-        self.textBox_Id_proceso.setGeometry(QRect(140, 260, 141, 35))
+        self.textBox_Id_proceso.setGeometry(QRect(140, 310, 141, 35))
         self.textBox_Id_proceso.setMinimumSize(QSize(60, 35))
         self.textBox_Id_proceso.setMaximumSize(QSize(230, 35))
         self.textBox_Id_proceso.setStyleSheet(u"background-color: rgb(52, 62, 64);\n"
 "color: rgb(255, 255, 255);\n"
 "border: 1px solid rgb(0, 153, 117);\n"
 "border-radius: 4px;")
-        self.label_id = QLabel(self.groupBox_5)
-        self.label_id.setObjectName(u"label_id")
-        self.label_id.setGeometry(QRect(10, 260, 31, 31))
-        self.label_id.setStyleSheet(u"color:rgb(255, 255, 255);\n"
-"font: 10pt \"Segoe UI Emoji\";\n"
-"")
         self.label_tiempo_r = QLabel(self.groupBox_5)
         self.label_tiempo_r.setObjectName(u"label_tiempo_r")
         self.label_tiempo_r.setGeometry(QRect(10, 210, 101, 31))
@@ -184,6 +192,27 @@ class Ui_MainWindow(object):
 "color: rgb(255, 255, 255);\n"
 "border: 1px solid rgb(0, 153, 117);\n"
 "border-radius: 4px;")
+        self.textBox_quantum = QLineEdit(self.groupBox_5)
+        self.textBox_quantum.setObjectName(u"textBox_quantum")
+        self.textBox_quantum.setGeometry(QRect(140, 260, 144, 35))
+        self.textBox_quantum.setMinimumSize(QSize(60, 35))
+        self.textBox_quantum.setMaximumSize(QSize(230, 35))
+        self.textBox_quantum.setStyleSheet(u"background-color: rgb(52, 62, 64);\n"
+"color: rgb(255, 255, 255);\n"
+"border: 1px solid rgb(0, 153, 117);\n"
+"border-radius: 4px;")
+        self.label_id = QLabel(self.groupBox_5)
+        self.label_id.setObjectName(u"label_id")
+        self.label_id.setGeometry(QRect(20, 310, 31, 31))
+        self.label_id.setStyleSheet(u"color:rgb(255, 255, 255);\n"
+"font: 10pt \"Segoe UI Emoji\";\n"
+"")
+        self.label_id_2 = QLabel(self.groupBox_5)
+        self.label_id_2.setObjectName(u"label_id_2")
+        self.label_id_2.setGeometry(QRect(10, 260, 71, 31))
+        self.label_id_2.setStyleSheet(u"color:rgb(255, 255, 255);\n"
+"font: 10pt \"Segoe UI Emoji\";\n"
+"")
         self.tablaProcesos = QTableWidget(self.groupBox_2)
         if (self.tablaProcesos.columnCount() < 3):
             self.tablaProcesos.setColumnCount(3)
@@ -280,96 +309,46 @@ class Ui_MainWindow(object):
         self.tablaPTerminados.setHorizontalHeaderItem(2, __qtablewidgetitem7)
         self.tablaPTerminados.setObjectName(u"tablaPTerminados")
         self.tablaPTerminados.setEnabled(False)
-        self.tablaPTerminados.setGeometry(QRect(120, 80, 311, 191))
+        self.tablaPTerminados.setGeometry(QRect(120, 80, 301, 491))
         self.tablaPTerminados.setStyleSheet(u"background-color: rgb(52, 62, 64);")
-        self.tablaPTerminados.setVerticalScrollBarPolicy(Qt.ScrollBarAlwaysOn)
+        self.tablaPTerminados.setVerticalScrollBarPolicy(Qt.ScrollBarAsNeeded)
         self.tablaPTerminados.setHorizontalScrollBarPolicy(Qt.ScrollBarAlwaysOff)
         self.tablaPTerminados.setSizeAdjustPolicy(QAbstractScrollArea.AdjustToContents)
-        self.tablaPTerminados.setAutoScroll(True)
+        self.tablaPTerminados.setAutoScroll(False)
         self.tablaPTerminados.horizontalHeader().setDefaultSectionSize(104)
         self.tablaPTerminados.verticalHeader().setVisible(False)
         self.label_titulo_Cont = QLabel(self.groupBox_3)
         self.label_titulo_Cont.setObjectName(u"label_titulo_Cont")
-        self.label_titulo_Cont.setGeometry(QRect(20, 630, 101, 31))
+        self.label_titulo_Cont.setGeometry(QRect(290, 630, 101, 31))
         self.label_titulo_Cont.setStyleSheet(u"color:rgb(0, 153, 117);\n"
 "\n"
 "font: 63 13pt \"Segoe UI Semibold\";\n"
 "")
         self.textBox_contadorGlobal = QLineEdit(self.groupBox_3)
         self.textBox_contadorGlobal.setObjectName(u"textBox_contadorGlobal")
-        self.textBox_contadorGlobal.setGeometry(QRect(140, 630, 71, 35))
+        self.textBox_contadorGlobal.setGeometry(QRect(370, 630, 71, 35))
         self.textBox_contadorGlobal.setMinimumSize(QSize(60, 35))
         self.textBox_contadorGlobal.setMaximumSize(QSize(230, 35))
         self.textBox_contadorGlobal.setStyleSheet(u"background-color: rgb(52, 62, 64);\n"
 "color: rgb(255, 255, 255);\n"
 "border: 1px solid rgb(0, 153, 117);\n"
 "border-radius: 4px;")
-        self.label_titulo_TiempoC = QLabel(self.groupBox_3)
-        self.label_titulo_TiempoC.setObjectName(u"label_titulo_TiempoC")
-        self.label_titulo_TiempoC.setGeometry(QRect(180, 310, 221, 31))
-        self.label_titulo_TiempoC.setStyleSheet(u"color:rgb(0, 153, 117);\n"
+        self.textBox_quantumGlobal = QLineEdit(self.groupBox_3)
+        self.textBox_quantumGlobal.setObjectName(u"textBox_quantumGlobal")
+        self.textBox_quantumGlobal.setGeometry(QRect(110, 630, 71, 35))
+        self.textBox_quantumGlobal.setMinimumSize(QSize(60, 35))
+        self.textBox_quantumGlobal.setMaximumSize(QSize(230, 35))
+        self.textBox_quantumGlobal.setStyleSheet(u"background-color: rgb(52, 62, 64);\n"
+"color: rgb(255, 255, 255);\n"
+"border: 1px solid rgb(0, 153, 117);\n"
+"border-radius: 4px;")
+        self.label_titulo_Cont_2 = QLabel(self.groupBox_3)
+        self.label_titulo_Cont_2.setObjectName(u"label_titulo_Cont_2")
+        self.label_titulo_Cont_2.setGeometry(QRect(20, 630, 101, 31))
+        self.label_titulo_Cont_2.setStyleSheet(u"color:rgb(0, 153, 117);\n"
 "\n"
 "font: 63 13pt \"Segoe UI Semibold\";\n"
 "")
-        self.tablePTimeStats = QTableWidget(self.groupBox_3)
-        if (self.tablePTimeStats.columnCount() < 7):
-            self.tablePTimeStats.setColumnCount(7)
-        font = QFont()
-        font.setPointSize(8)
-        font.setKerning(False)
-        __qtablewidgetitem8 = QTableWidgetItem()
-        __qtablewidgetitem8.setText(u"ID");
-        __qtablewidgetitem8.setFont(font);
-        self.tablePTimeStats.setHorizontalHeaderItem(0, __qtablewidgetitem8)
-        font1 = QFont()
-        font1.setPointSize(8)
-        __qtablewidgetitem9 = QTableWidgetItem()
-        __qtablewidgetitem9.setFont(font1);
-        self.tablePTimeStats.setHorizontalHeaderItem(1, __qtablewidgetitem9)
-        __qtablewidgetitem10 = QTableWidgetItem()
-        __qtablewidgetitem10.setText(u"T.F");
-        __qtablewidgetitem10.setFont(font1);
-        self.tablePTimeStats.setHorizontalHeaderItem(2, __qtablewidgetitem10)
-        __qtablewidgetitem11 = QTableWidgetItem()
-        __qtablewidgetitem11.setFont(font1);
-        self.tablePTimeStats.setHorizontalHeaderItem(3, __qtablewidgetitem11)
-        __qtablewidgetitem12 = QTableWidgetItem()
-        __qtablewidgetitem12.setFont(font1);
-        self.tablePTimeStats.setHorizontalHeaderItem(4, __qtablewidgetitem12)
-        __qtablewidgetitem13 = QTableWidgetItem()
-        __qtablewidgetitem13.setFont(font1);
-        self.tablePTimeStats.setHorizontalHeaderItem(5, __qtablewidgetitem13)
-        __qtablewidgetitem14 = QTableWidgetItem()
-        self.tablePTimeStats.setHorizontalHeaderItem(6, __qtablewidgetitem14)
-        self.tablePTimeStats.setObjectName(u"tablePTimeStats")
-        self.tablePTimeStats.setEnabled(False)
-        self.tablePTimeStats.setGeometry(QRect(30, 350, 471, 271))
-        self.tablePTimeStats.setAcceptDrops(True)
-        self.tablePTimeStats.setAutoFillBackground(True)
-        self.tablePTimeStats.setStyleSheet(u"background-color: rgb(52, 62, 64);")
-        self.tablePTimeStats.setFrameShadow(QFrame.Raised)
-        self.tablePTimeStats.setHorizontalScrollBarPolicy(Qt.ScrollBarAlwaysOff)
-        self.tablePTimeStats.setSizeAdjustPolicy(QAbstractScrollArea.AdjustToContents)
-        self.tablePTimeStats.setAutoScroll(True)
-        self.tablePTimeStats.setAutoScrollMargin(8)
-        self.tablePTimeStats.setTabKeyNavigation(False)
-        self.tablePTimeStats.setProperty("showDropIndicator", False)
-        self.tablePTimeStats.setDragEnabled(True)
-        self.tablePTimeStats.setDragDropMode(QAbstractItemView.DragOnly)
-        self.tablePTimeStats.setAlternatingRowColors(False)
-        self.tablePTimeStats.setShowGrid(True)
-        self.tablePTimeStats.setWordWrap(True)
-        self.tablePTimeStats.horizontalHeader().setVisible(True)
-        self.tablePTimeStats.horizontalHeader().setCascadingSectionResizes(True)
-        self.tablePTimeStats.horizontalHeader().setMinimumSectionSize(25)
-        self.tablePTimeStats.horizontalHeader().setDefaultSectionSize(67)
-        self.tablePTimeStats.horizontalHeader().setHighlightSections(True)
-        self.tablePTimeStats.horizontalHeader().setProperty("showSortIndicator", True)
-        self.tablePTimeStats.horizontalHeader().setStretchLastSection(True)
-        self.tablePTimeStats.verticalHeader().setVisible(False)
-        self.tablePTimeStats.verticalHeader().setCascadingSectionResizes(False)
-        self.tablePTimeStats.verticalHeader().setHighlightSections(False)
-        self.tablePTimeStats.verticalHeader().setProperty("showSortIndicator", False)
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QMenuBar(MainWindow)
         self.menubar.setObjectName(u"menubar")
@@ -398,13 +377,16 @@ class Ui_MainWindow(object):
         ___qtablewidgetitem1 = self.tablaPbloqueados.horizontalHeaderItem(1)
         ___qtablewidgetitem1.setText(QCoreApplication.translate("MainWindow", u"T. Bloqueo", None));
         self.label_titulo_ProceL_2.setText(QCoreApplication.translate("MainWindow", u"Procesos Bloqueados", None))
+        self.textBox_NumProcess_2.setText("")
+        self.label_Numero_2.setText(QCoreApplication.translate("MainWindow", u"Quantum ", None))
         self.groupBox_2.setTitle("")
         self.groupBox_5.setTitle("")
         self.label_titulo_procesoEje.setText(QCoreApplication.translate("MainWindow", u"Proceso en ejecuci\u00f3n", None))
         self.label_operacion_4.setText(QCoreApplication.translate("MainWindow", u"Operaci\u00f3n", None))
         self.label_tiempo_t.setText(QCoreApplication.translate("MainWindow", u"T. Transcurrido", None))
-        self.label_id.setText(QCoreApplication.translate("MainWindow", u"ID", None))
         self.label_tiempo_r.setText(QCoreApplication.translate("MainWindow", u"T. Restante", None))
+        self.label_id.setText(QCoreApplication.translate("MainWindow", u"ID", None))
+        self.label_id_2.setText(QCoreApplication.translate("MainWindow", u"Quantum", None))
         ___qtablewidgetitem2 = self.tablaProcesos.horizontalHeaderItem(0)
         ___qtablewidgetitem2.setText(QCoreApplication.translate("MainWindow", u"ID", None));
         ___qtablewidgetitem3 = self.tablaProcesos.horizontalHeaderItem(1)
@@ -423,16 +405,7 @@ class Ui_MainWindow(object):
         ___qtablewidgetitem7.setText(QCoreApplication.translate("MainWindow", u"Resultado", None));
         self.label_titulo_Cont.setText(QCoreApplication.translate("MainWindow", u"Contador", None))
         self.textBox_contadorGlobal.setText("")
-        self.label_titulo_TiempoC.setText(QCoreApplication.translate("MainWindow", u"Tiempos calculados", None))
-        ___qtablewidgetitem8 = self.tablePTimeStats.horizontalHeaderItem(1)
-        ___qtablewidgetitem8.setText(QCoreApplication.translate("MainWindow", u"T.L", None));
-        ___qtablewidgetitem9 = self.tablePTimeStats.horizontalHeaderItem(3)
-        ___qtablewidgetitem9.setText(QCoreApplication.translate("MainWindow", u"T.Ret", None));
-        ___qtablewidgetitem10 = self.tablePTimeStats.horizontalHeaderItem(4)
-        ___qtablewidgetitem10.setText(QCoreApplication.translate("MainWindow", u"T.Res", None));
-        ___qtablewidgetitem11 = self.tablePTimeStats.horizontalHeaderItem(5)
-        ___qtablewidgetitem11.setText(QCoreApplication.translate("MainWindow", u"T. E.", None));
-        ___qtablewidgetitem12 = self.tablePTimeStats.horizontalHeaderItem(6)
-        ___qtablewidgetitem12.setText(QCoreApplication.translate("MainWindow", u"T.S", None));
+        self.textBox_quantumGlobal.setText("")
+        self.label_titulo_Cont_2.setText(QCoreApplication.translate("MainWindow", u"Quantum", None))
     # retranslateUi
 

@@ -68,7 +68,7 @@ font: 87 14pt &quot;Segoe UI Black&quot;;
         <property name="geometry">
          <rect>
           <x>0</x>
-          <y>160</y>
+          <y>140</y>
           <width>230</width>
           <height>35</height>
          </rect>
@@ -98,10 +98,10 @@ border-radius: 4px;</string>
        <widget class="QLabel" name="label_Numero">
         <property name="geometry">
          <rect>
-          <x>30</x>
-          <y>120</y>
+          <x>20</x>
+          <y>110</y>
           <width>171</width>
-          <height>31</height>
+          <height>21</height>
          </rect>
         </property>
         <property name="styleSheet">
@@ -116,8 +116,8 @@ font: 10pt &quot;Segoe UI Emoji&quot;;
        <widget class="QPushButton" name="pushButton_Agregar">
         <property name="geometry">
          <rect>
-          <x>0</x>
-          <y>210</y>
+          <x>30</x>
+          <y>300</y>
           <width>111</width>
           <height>41</height>
          </rect>
@@ -135,8 +135,8 @@ border-radius: 10px;</string>
        <widget class="QPushButton" name="pushButton_Ejecutar">
         <property name="geometry">
          <rect>
-          <x>130</x>
-          <y>210</y>
+          <x>150</x>
+          <y>300</y>
           <width>111</width>
           <height>41</height>
          </rect>
@@ -211,6 +211,55 @@ font: 63 13pt &quot;Segoe UI Semibold&quot;;
          <string>Procesos Bloqueados</string>
         </property>
        </widget>
+       <widget class="QLineEdit" name="textBox_NumProcess_2">
+        <property name="geometry">
+         <rect>
+          <x>0</x>
+          <y>230</y>
+          <width>230</width>
+          <height>35</height>
+         </rect>
+        </property>
+        <property name="minimumSize">
+         <size>
+          <width>60</width>
+          <height>35</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>230</width>
+          <height>35</height>
+         </size>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: rgb(52, 62, 64);
+color: rgb(255, 255, 255);
+border: 1px solid rgb(0, 153, 117);
+border-radius: 4px;</string>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_Numero_2">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>200</y>
+          <width>171</width>
+          <height>21</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">color:rgb(255, 255, 255);
+font: 10pt &quot;Segoe UI Emoji&quot;;
+</string>
+        </property>
+        <property name="text">
+         <string>Quantum </string>
+        </property>
+       </widget>
       </widget>
      </item>
     </layout>
@@ -248,7 +297,7 @@ font: 63 13pt &quot;Segoe UI Semibold&quot;;
        <x>30</x>
        <y>300</y>
        <width>321</width>
-       <height>311</height>
+       <height>361</height>
       </rect>
      </property>
      <property name="baseSize">
@@ -380,7 +429,7 @@ font: 10pt &quot;Segoe UI Emoji&quot;;
       <property name="geometry">
        <rect>
         <x>140</x>
-        <y>260</y>
+        <y>310</y>
         <width>141</width>
         <height>35</height>
        </rect>
@@ -402,24 +451,6 @@ font: 10pt &quot;Segoe UI Emoji&quot;;
 color: rgb(255, 255, 255);
 border: 1px solid rgb(0, 153, 117);
 border-radius: 4px;</string>
-      </property>
-     </widget>
-     <widget class="QLabel" name="label_id">
-      <property name="geometry">
-       <rect>
-        <x>10</x>
-        <y>260</y>
-        <width>31</width>
-        <height>31</height>
-       </rect>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">color:rgb(255, 255, 255);
-font: 10pt &quot;Segoe UI Emoji&quot;;
-</string>
-      </property>
-      <property name="text">
-       <string>ID</string>
       </property>
      </widget>
      <widget class="QLabel" name="label_tiempo_r">
@@ -466,6 +497,70 @@ font: 10pt &quot;Segoe UI Emoji&quot;;
 color: rgb(255, 255, 255);
 border: 1px solid rgb(0, 153, 117);
 border-radius: 4px;</string>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="textBox_quantum">
+      <property name="geometry">
+       <rect>
+        <x>140</x>
+        <y>260</y>
+        <width>144</width>
+        <height>35</height>
+       </rect>
+      </property>
+      <property name="minimumSize">
+       <size>
+        <width>60</width>
+        <height>35</height>
+       </size>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>230</width>
+        <height>35</height>
+       </size>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(52, 62, 64);
+color: rgb(255, 255, 255);
+border: 1px solid rgb(0, 153, 117);
+border-radius: 4px;</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_id">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>310</y>
+        <width>31</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color:rgb(255, 255, 255);
+font: 10pt &quot;Segoe UI Emoji&quot;;
+</string>
+      </property>
+      <property name="text">
+       <string>ID</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_id_2">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>260</y>
+        <width>71</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color:rgb(255, 255, 255);
+font: 10pt &quot;Segoe UI Emoji&quot;;
+</string>
+      </property>
+      <property name="text">
+       <string>Quantum</string>
       </property>
      </widget>
     </widget>
@@ -716,7 +811,7 @@ font: 63 13pt &quot;Segoe UI Semibold&quot;;
        <x>120</x>
        <y>80</y>
        <width>301</width>
-       <height>531</height>
+       <height>491</height>
       </rect>
      </property>
      <property name="styleSheet">
@@ -759,7 +854,7 @@ font: 63 13pt &quot;Segoe UI Semibold&quot;;
     <widget class="QLabel" name="label_titulo_Cont">
      <property name="geometry">
       <rect>
-       <x>20</x>
+       <x>290</x>
        <y>630</y>
        <width>101</width>
        <height>31</height>
@@ -778,7 +873,7 @@ font: 63 13pt &quot;Segoe UI Semibold&quot;;
     <widget class="QLineEdit" name="textBox_contadorGlobal">
      <property name="geometry">
       <rect>
-       <x>140</x>
+       <x>370</x>
        <y>630</y>
        <width>71</width>
        <height>35</height>
@@ -804,6 +899,56 @@ border-radius: 4px;</string>
      </property>
      <property name="text">
       <string/>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="textBox_quantumGlobal">
+     <property name="geometry">
+      <rect>
+       <x>110</x>
+       <y>630</y>
+       <width>71</width>
+       <height>35</height>
+      </rect>
+     </property>
+     <property name="minimumSize">
+      <size>
+       <width>60</width>
+       <height>35</height>
+      </size>
+     </property>
+     <property name="maximumSize">
+      <size>
+       <width>230</width>
+       <height>35</height>
+      </size>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(52, 62, 64);
+color: rgb(255, 255, 255);
+border: 1px solid rgb(0, 153, 117);
+border-radius: 4px;</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_titulo_Cont_2">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>630</y>
+       <width>101</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">color:rgb(0, 153, 117);
+
+font: 63 13pt &quot;Segoe UI Semibold&quot;;
+</string>
+     </property>
+     <property name="text">
+      <string>Quantum</string>
      </property>
     </widget>
    </widget>
