@@ -207,10 +207,10 @@ class Ui_MainWindow(object):
         self.label_id.setStyleSheet(u"color:rgb(255, 255, 255);\n"
 "font: 10pt \"Segoe UI Emoji\";\n"
 "")
-        self.label_id_2 = QLabel(self.groupBox_5)
-        self.label_id_2.setObjectName(u"label_id_2")
-        self.label_id_2.setGeometry(QRect(10, 260, 101, 31))
-        self.label_id_2.setStyleSheet(u"color:rgb(255, 255, 255);\n"
+        self.label_quantum_tt = QLabel(self.groupBox_5)
+        self.label_quantum_tt.setObjectName(u"label_quantum_tt")
+        self.label_quantum_tt.setGeometry(QRect(10, 260, 101, 31))
+        self.label_quantum_tt.setStyleSheet(u"color:rgb(255, 255, 255);\n"
 "font: 10pt \"Segoe UI Emoji\";\n"
 "")
         self.tablaProcesos = QTableWidget(self.groupBox_2)
@@ -386,7 +386,7 @@ class Ui_MainWindow(object):
         self.label_tiempo_t.setText(QCoreApplication.translate("MainWindow", u"T. Transcurrido", None))
         self.label_tiempo_r.setText(QCoreApplication.translate("MainWindow", u"T. Restante", None))
         self.label_id.setText(QCoreApplication.translate("MainWindow", u"ID", None))
-        self.label_id_2.setText(QCoreApplication.translate("MainWindow", u"T.T. Quantum", None))
+        self.label_quantum_tt.setText(QCoreApplication.translate("MainWindow", u"T.T. Quantum", None))
         ___qtablewidgetitem2 = self.tablaProcesos.horizontalHeaderItem(0)
         ___qtablewidgetitem2.setText(QCoreApplication.translate("MainWindow", u"ID", None));
         ___qtablewidgetitem3 = self.tablaProcesos.horizontalHeaderItem(1)

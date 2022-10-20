@@ -545,7 +545,7 @@ font: 10pt &quot;Segoe UI Emoji&quot;;
        <string>ID</string>
       </property>
      </widget>
-     <widget class="QLabel" name="label_id_2">
+     <widget class="QLabel" name="label_quantum_tt">
       <property name="geometry">
        <rect>
         <x>10</x>
