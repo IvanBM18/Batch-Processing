@@ -9,10 +9,12 @@ class Queue:
         self.front = 0
         self.end = -1
         self.values = []
+        self.length = 0
     
     # Class Methods
     def enqueue(self,value) -> None | int:
         self.end += 1
+        self.length += 1
         self.values.append(value)
         return self.end
     
@@ -20,6 +22,7 @@ class Queue:
         if(self.isEmpty() != True):
             index = int(self.front)
             self.front += 1
+            self.length -= 1
             return self.values[index]
     
     def isEmpty(self) -> bool:
@@ -32,7 +35,7 @@ class Queue:
             return self.values[self.front]
     
     def getLength(self):
-        return self.end - self.front + 1
+        return self.length
     
     def toString(self):
         result = ""

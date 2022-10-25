@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1177</width>
+    <width>1197</width>
     <height>788</height>
    </rect>
   </property>
@@ -116,9 +116,9 @@ font: 10pt &quot;Segoe UI Emoji&quot;;
        <widget class="QPushButton" name="pushButton_Agregar">
         <property name="geometry">
          <rect>
-          <x>30</x>
-          <y>300</y>
-          <width>111</width>
+          <x>0</x>
+          <y>290</y>
+          <width>121</width>
           <height>41</height>
          </rect>
         </property>
@@ -129,14 +129,14 @@ font: 75 12pt &quot;Microsoft YaHei&quot;;
 border-radius: 10px;</string>
         </property>
         <property name="text">
-         <string>Agregar</string>
+         <string>Guardar Valores</string>
         </property>
        </widget>
        <widget class="QPushButton" name="pushButton_Ejecutar">
         <property name="geometry">
          <rect>
-          <x>150</x>
-          <y>300</y>
+          <x>130</x>
+          <y>290</y>
           <width>111</width>
           <height>41</height>
          </rect>
@@ -211,7 +211,7 @@ font: 63 13pt &quot;Segoe UI Semibold&quot;;
          <string>Procesos Bloqueados</string>
         </property>
        </widget>
-       <widget class="QLineEdit" name="textBox_NumProcess_2">
+       <widget class="QLineEdit" name="textBox_Quantum">
         <property name="geometry">
          <rect>
           <x>0</x>
@@ -429,7 +429,7 @@ font: 10pt &quot;Segoe UI Emoji&quot;;
       <property name="geometry">
        <rect>
         <x>140</x>
-        <y>310</y>
+        <y>260</y>
         <width>141</width>
         <height>35</height>
        </rect>
@@ -499,39 +499,11 @@ border: 1px solid rgb(0, 153, 117);
 border-radius: 4px;</string>
       </property>
      </widget>
-     <widget class="QLineEdit" name="textBox_quantum">
-      <property name="geometry">
-       <rect>
-        <x>140</x>
-        <y>260</y>
-        <width>144</width>
-        <height>35</height>
-       </rect>
-      </property>
-      <property name="minimumSize">
-       <size>
-        <width>60</width>
-        <height>35</height>
-       </size>
-      </property>
-      <property name="maximumSize">
-       <size>
-        <width>230</width>
-        <height>35</height>
-       </size>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">background-color: rgb(52, 62, 64);
-color: rgb(255, 255, 255);
-border: 1px solid rgb(0, 153, 117);
-border-radius: 4px;</string>
-      </property>
-     </widget>
      <widget class="QLabel" name="label_id">
       <property name="geometry">
        <rect>
-        <x>20</x>
-        <y>310</y>
+        <x>10</x>
+        <y>260</y>
         <width>31</width>
         <height>31</height>
        </rect>
@@ -543,24 +515,6 @@ font: 10pt &quot;Segoe UI Emoji&quot;;
       </property>
       <property name="text">
        <string>ID</string>
-      </property>
-     </widget>
-     <widget class="QLabel" name="label_quantum_tt">
-      <property name="geometry">
-       <rect>
-        <x>10</x>
-        <y>260</y>
-        <width>101</width>
-        <height>31</height>
-       </rect>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">color:rgb(255, 255, 255);
-font: 10pt &quot;Segoe UI Emoji&quot;;
-</string>
-      </property>
-      <property name="text">
-       <string>T.T. Quantum</string>
       </property>
      </widget>
     </widget>
@@ -958,7 +912,7 @@ font: 63 13pt &quot;Segoe UI Semibold&quot;;
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1177</width>
+     <width>1197</width>
      <height>22</height>
     </rect>
    </property>

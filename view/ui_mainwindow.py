@@ -3,7 +3,7 @@
 ################################################################################
 ## Form generated from reading UI file 'mainwindow.ui'
 ##
-## Created by: Qt User Interface Compiler version 6.3.2
+## Created by: Qt User Interface Compiler version 6.3.1
 ##
 ## WARNING! All changes made in this file will be lost when recompiling UI file!
 ################################################################################
@@ -24,7 +24,7 @@ class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         if not MainWindow.objectName():
             MainWindow.setObjectName(u"MainWindow")
-        MainWindow.resize(1177, 788)
+        MainWindow.resize(1197, 788)
         MainWindow.setStyleSheet(u"background-color: rgb(44, 47, 51);\n"
 "selection-color: rgb(255, 170, 255);\n"
 "selection-background-color: rgb(255, 170, 255);\n"
@@ -65,14 +65,14 @@ class Ui_MainWindow(object):
 "")
         self.pushButton_Agregar = QPushButton(self.groupBox_4)
         self.pushButton_Agregar.setObjectName(u"pushButton_Agregar")
-        self.pushButton_Agregar.setGeometry(QRect(30, 300, 111, 41))
+        self.pushButton_Agregar.setGeometry(QRect(0, 290, 121, 41))
         self.pushButton_Agregar.setStyleSheet(u"background-color: rgb(0, 153, 117);\n"
 "color: #FFFFFF;\n"
 "font: 75 12pt \"Microsoft YaHei\";\n"
 "border-radius: 10px;")
         self.pushButton_Ejecutar = QPushButton(self.groupBox_4)
         self.pushButton_Ejecutar.setObjectName(u"pushButton_Ejecutar")
-        self.pushButton_Ejecutar.setGeometry(QRect(150, 300, 111, 41))
+        self.pushButton_Ejecutar.setGeometry(QRect(130, 290, 111, 41))
         self.pushButton_Ejecutar.setStyleSheet(u"background-color: rgb(0, 153, 117);\n"
 "color: #FFFFFF;\n"
 "font: 75 12pt \"Microsoft YaHei\";\n"
@@ -100,12 +100,12 @@ class Ui_MainWindow(object):
 "\n"
 "font: 63 13pt \"Segoe UI Semibold\";\n"
 "")
-        self.textBox_NumProcess_2 = QLineEdit(self.groupBox_4)
-        self.textBox_NumProcess_2.setObjectName(u"textBox_NumProcess_2")
-        self.textBox_NumProcess_2.setGeometry(QRect(0, 230, 230, 35))
-        self.textBox_NumProcess_2.setMinimumSize(QSize(60, 35))
-        self.textBox_NumProcess_2.setMaximumSize(QSize(230, 35))
-        self.textBox_NumProcess_2.setStyleSheet(u"background-color: rgb(52, 62, 64);\n"
+        self.textBox_Quantum = QLineEdit(self.groupBox_4)
+        self.textBox_Quantum.setObjectName(u"textBox_Quantum")
+        self.textBox_Quantum.setGeometry(QRect(0, 230, 230, 35))
+        self.textBox_Quantum.setMinimumSize(QSize(60, 35))
+        self.textBox_Quantum.setMaximumSize(QSize(230, 35))
+        self.textBox_Quantum.setStyleSheet(u"background-color: rgb(52, 62, 64);\n"
 "color: rgb(255, 255, 255);\n"
 "border: 1px solid rgb(0, 153, 117);\n"
 "border-radius: 4px;")
@@ -170,7 +170,7 @@ class Ui_MainWindow(object):
 "")
         self.textBox_Id_proceso = QLineEdit(self.groupBox_5)
         self.textBox_Id_proceso.setObjectName(u"textBox_Id_proceso")
-        self.textBox_Id_proceso.setGeometry(QRect(140, 310, 141, 35))
+        self.textBox_Id_proceso.setGeometry(QRect(140, 260, 141, 35))
         self.textBox_Id_proceso.setMinimumSize(QSize(60, 35))
         self.textBox_Id_proceso.setMaximumSize(QSize(230, 35))
         self.textBox_Id_proceso.setStyleSheet(u"background-color: rgb(52, 62, 64);\n"
@@ -192,25 +192,10 @@ class Ui_MainWindow(object):
 "color: rgb(255, 255, 255);\n"
 "border: 1px solid rgb(0, 153, 117);\n"
 "border-radius: 4px;")
-        self.textBox_quantum = QLineEdit(self.groupBox_5)
-        self.textBox_quantum.setObjectName(u"textBox_quantum")
-        self.textBox_quantum.setGeometry(QRect(140, 260, 144, 35))
-        self.textBox_quantum.setMinimumSize(QSize(60, 35))
-        self.textBox_quantum.setMaximumSize(QSize(230, 35))
-        self.textBox_quantum.setStyleSheet(u"background-color: rgb(52, 62, 64);\n"
-"color: rgb(255, 255, 255);\n"
-"border: 1px solid rgb(0, 153, 117);\n"
-"border-radius: 4px;")
         self.label_id = QLabel(self.groupBox_5)
         self.label_id.setObjectName(u"label_id")
-        self.label_id.setGeometry(QRect(20, 310, 31, 31))
+        self.label_id.setGeometry(QRect(10, 260, 31, 31))
         self.label_id.setStyleSheet(u"color:rgb(255, 255, 255);\n"
-"font: 10pt \"Segoe UI Emoji\";\n"
-"")
-        self.label_quantum_tt = QLabel(self.groupBox_5)
-        self.label_quantum_tt.setObjectName(u"label_quantum_tt")
-        self.label_quantum_tt.setGeometry(QRect(10, 260, 101, 31))
-        self.label_quantum_tt.setStyleSheet(u"color:rgb(255, 255, 255);\n"
 "font: 10pt \"Segoe UI Emoji\";\n"
 "")
         self.tablaProcesos = QTableWidget(self.groupBox_2)
@@ -352,7 +337,7 @@ class Ui_MainWindow(object):
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QMenuBar(MainWindow)
         self.menubar.setObjectName(u"menubar")
-        self.menubar.setGeometry(QRect(0, 0, 1177, 22))
+        self.menubar.setGeometry(QRect(0, 0, 1197, 22))
         MainWindow.setMenuBar(self.menubar)
         self.statusbar = QStatusBar(MainWindow)
         self.statusbar.setObjectName(u"statusbar")
@@ -370,14 +355,14 @@ class Ui_MainWindow(object):
         self.label_titulo.setText(QCoreApplication.translate("MainWindow", u"Capturar inicial", None))
         self.textBox_NumProcess.setText("")
         self.label_Numero.setText(QCoreApplication.translate("MainWindow", u"Numero de procesos", None))
-        self.pushButton_Agregar.setText(QCoreApplication.translate("MainWindow", u"Agregar", None))
+        self.pushButton_Agregar.setText(QCoreApplication.translate("MainWindow", u"Guardar Valores", None))
         self.pushButton_Ejecutar.setText(QCoreApplication.translate("MainWindow", u"Ejecutar", None))
         ___qtablewidgetitem = self.tablaPbloqueados.horizontalHeaderItem(0)
         ___qtablewidgetitem.setText(QCoreApplication.translate("MainWindow", u"ID", None));
         ___qtablewidgetitem1 = self.tablaPbloqueados.horizontalHeaderItem(1)
         ___qtablewidgetitem1.setText(QCoreApplication.translate("MainWindow", u"T. Bloqueo", None));
         self.label_titulo_ProceL_2.setText(QCoreApplication.translate("MainWindow", u"Procesos Bloqueados", None))
-        self.textBox_NumProcess_2.setText("")
+        self.textBox_Quantum.setText("")
         self.label_Numero_2.setText(QCoreApplication.translate("MainWindow", u"Quantum ", None))
         self.groupBox_2.setTitle("")
         self.groupBox_5.setTitle("")
@@ -386,7 +371,6 @@ class Ui_MainWindow(object):
         self.label_tiempo_t.setText(QCoreApplication.translate("MainWindow", u"T. Transcurrido", None))
         self.label_tiempo_r.setText(QCoreApplication.translate("MainWindow", u"T. Restante", None))
         self.label_id.setText(QCoreApplication.translate("MainWindow", u"ID", None))
-        self.label_quantum_tt.setText(QCoreApplication.translate("MainWindow", u"T.T. Quantum", None))
         ___qtablewidgetitem2 = self.tablaProcesos.horizontalHeaderItem(0)
         ___qtablewidgetitem2.setText(QCoreApplication.translate("MainWindow", u"ID", None));
         ___qtablewidgetitem3 = self.tablaProcesos.horizontalHeaderItem(1)
