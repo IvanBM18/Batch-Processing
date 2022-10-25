@@ -4,18 +4,14 @@
 # C = 99 (Continuar)
 # N = 110 (Nuevo) Al presionar N se crea un nuevo proceso
 # B = 98 (Tabla de PCB) Pausa y con C continuas
-#Fin de Quantum Agrega a la cola de listos, no a la de nuevos
+# Fin de Quantum Agrega a la cola de listos, no a la de nuevos
 # Listos: Procesos en la cola de ejecución
 # Bloquados: Procesos que no se pueden ejecutar hasta que termine una operación de E/S
 # Terminado: Procesos que se salieron de procesos activos
 
 # Por Hacer:
-# Porque el tiempo transcurrido en el proceso 0 cambia (Creo que ya)
-# Checar contador Tiempo de quantum (Creo que ya)
-# Checar si un proceso con mucho tiempo restante continua si el quantum termina y este es el unico restante
-# BCP
 # A futuro
-# Mejorar/Cambiar uso de QTimer 
+# Mejorar/Cambiar uso de QTimer (Cambiar por QCoreApplication.processEvents())
 
 #Library Imports
 import keyboard
