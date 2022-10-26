@@ -9,9 +9,6 @@
 # Bloquados: Procesos que no se pueden ejecutar hasta que termine una operación de E/S
 # Terminado: Procesos que se salieron de procesos activos
 
-# Por Hacer:
-# A futuro
-# Mejorar/Cambiar uso de QTimer (Cambiar por QCoreApplication.processEvents())
 
 #Library Imports
 import keyboard
@@ -438,8 +435,6 @@ class MainForm(QMainWindow, MainWindow):
         # Removing and adding to Table
         self.insertReadyRow(self.actualProcess)
         self.readyProcesses.append(self.actualProcess)        
-        
-        
         
 #Visual Methods
     def updateUI(self,upType) -> None:
