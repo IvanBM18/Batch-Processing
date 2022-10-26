@@ -161,7 +161,8 @@ class MainForm(QMainWindow, MainWindow):
             
             # Interrupting Actual Process
             if(self.interruption):
-                self.onInterruption()
+                if(self.actualProcess):
+                    self.onInterruption()
                 QCoreApplication.processEvents()
             
             # End of Processing
@@ -211,7 +212,7 @@ class MainForm(QMainWindow, MainWindow):
                     self.finishedList.append(self.actualProcess)
                     
                 # Enqueueing new Process to ready List
-                if(self.newQueue.getLength() != 0 and len(self.readyProcesses) < 3):
+                if(self.newQueue.getLength() and len(self.readyProcesses) < 3):
                     aux = self.newQueue.dequeue()
                     aux.stats.setArrivalTime(self.timeCounter)
                     self.readyProcesses.append(aux)
@@ -396,20 +397,21 @@ class MainForm(QMainWindow, MainWindow):
         self.actualProcess = self.updateTStats(self.actualProcess)
         # Removing and adding to Table
         self.tablaProcesos.removeRow(0)
+        self.readyProcesses.pop(0)
         
         # ReEnqueueing Process
-        self.readyProcesses.pop(0)
         self.actualProcess.setBlockedTime(7)
         self.blockedProcesses.append(self.actualProcess)
         self.insertBloquedRow(self.actualProcess)
         
         # Adding new process to ready List
-        if(self.newQueue.getLength() > 0):
+        if(self.newQueue.getLength() and len(self.readyProcesses) < 3):
             aux : Process = self.newQueue.dequeue()
             self.readyProcesses.append(aux)
             self.insertReadyRow(aux)
             aux.stats.setArrivalTime(self.timeCounter)
-            
+        
+        if(len(self.readyProcesses)):
             # Adapting Variables to Interruption
             self.actualProcess = self.readyProcesses[0]
             self.elapsedTime = self.actualProcess.getElapsedTime() #Tiempo transcurrido del proceso
@@ -434,8 +436,9 @@ class MainForm(QMainWindow, MainWindow):
         self.actualProcess = self.updateTStats(self.actualProcess)
         # Removing and adding to Table
         self.insertReadyRow(self.actualProcess)
-        self.readyProcesses.append(self.actualProcess)        
-        
+        self.readyProcesses.append(self.actualProcess)
+        self.quantumCounter = self.quantum        
+    
 #Visual Methods
     def updateUI(self,upType) -> None:
         #New Process on Execution
@@ -457,7 +460,7 @@ class MainForm(QMainWindow, MainWindow):
             cont = 0
             time : int
             for i in self.blockedProcesses:
-                if(i.getBlockedTime() != 0):
+                if(i.getBlockedTime()):
                     i.setBlockedTime(i.getBlockedTime() - 1)
                     time = i.getBlockedTime()
                     self.tablaPbloqueados.setItem(cont,1,QTableWidgetItem(str(time)))
@@ -465,7 +468,7 @@ class MainForm(QMainWindow, MainWindow):
                     self.readyProcesses.append(i)
                     self.insertReadyRow(i)
                     self.tablaPbloqueados.removeRow(0)
-                    self.blockedProcesses.remove(i)
+                    self.blockedProcesses.pop(0)
                 cont += 1
         # End of Processing
         if(upType == Updates.END):

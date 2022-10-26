@@ -26,12 +26,12 @@ class Queue:
             return self.values[index]
     
     def isEmpty(self) -> bool:
-        if((self.front == 0 and self.end == (self.front -1))):
+        if(self.length == 0):
             return True
         return False
 
     def getFront(self):
-        if(self.isEmpty() != True):
+        if(not self.isEmpty() ):
             return self.values[self.front]
     
     def getLength(self):
