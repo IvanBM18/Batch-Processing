@@ -3,7 +3,7 @@
 ################################################################################
 ## Form generated from reading UI file 'mainwindow.ui'
 ##
-## Created by: Qt User Interface Compiler version 6.3.2
+## Created by: Qt User Interface Compiler version 6.3.1
 ##
 ## WARNING! All changes made in this file will be lost when recompiling UI file!
 ################################################################################
@@ -1034,7 +1034,7 @@ class Ui_MainWindow(object):
         self.label_titulo_ProcesoTableP.setText(QCoreApplication.translate("MainWindow", u"Tabla de paginas", None))
         self.groupBox_7.setTitle("")
         ___qtablewidgetitem8 = self.tablaPaginacionL.horizontalHeaderItem(1)
-        ___qtablewidgetitem8.setText(QCoreApplication.translate("MainWindow", u"N. Marco", None));
+        ___qtablewidgetitem8.setText(QCoreApplication.translate("MainWindow", u"N. Macro", None));
         ___qtablewidgetitem9 = self.tablaPaginacionL.verticalHeaderItem(0)
         ___qtablewidgetitem9.setText(QCoreApplication.translate("MainWindow", u"1", None));
         ___qtablewidgetitem10 = self.tablaPaginacionL.verticalHeaderItem(1)
@@ -1129,7 +1129,7 @@ class Ui_MainWindow(object):
         self.tablaPaginacionL.setSortingEnabled(__sortingEnabled)
 
         ___qtablewidgetitem53 = self.tablaPaginacionR.horizontalHeaderItem(1)
-        ___qtablewidgetitem53.setText(QCoreApplication.translate("MainWindow", u"N. Marco", None));
+        ___qtablewidgetitem53.setText(QCoreApplication.translate("MainWindow", u"N. Macro", None));
         ___qtablewidgetitem54 = self.tablaPaginacionR.verticalHeaderItem(0)
         ___qtablewidgetitem54.setText(QCoreApplication.translate("MainWindow", u"1", None));
         ___qtablewidgetitem55 = self.tablaPaginacionR.verticalHeaderItem(1)
