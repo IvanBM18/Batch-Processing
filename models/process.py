@@ -12,7 +12,7 @@ class Process:
     error : bool
     
     # Class constructor
-    def __init__(self,valueA,valueB,operation,time,processID) -> None:
+    def __init__(self,valueA,valueB,operation,time,processID,size = 0) -> None:
         self.valueA = valueA
         self.valueB = valueB
         self.operation = operation
@@ -20,6 +20,10 @@ class Process:
         self.processID = processID
         self.elapsedTime = 0
         self.blockedTime = 0
+        if(size != 0):
+            self.size = size
+        else:
+            self.size = 0
         self.error = False
         self.stats = TimeStats()
         
@@ -30,8 +34,14 @@ class Process:
     def setBlockedTime(self,t : int):
         self.blockedTime = t
     
+    def setSize(self,size : int):
+        self.size = size
+    
     def toString(self):
         return str(self.valueA) + self.operation + str(self.valueB) + " = " + str(self.remainingTime)
+    
+    def getSize(self) -> int:
+        return self.size
     
     def getTime(self) -> int:
         return self.remainingTime

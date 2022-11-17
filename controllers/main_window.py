@@ -13,7 +13,7 @@
 #Library Imports
 import keyboard
 import random
-from typing import Any, List
+from typing import List
 from time import sleep
 
 # QT Imports
@@ -35,7 +35,7 @@ class MainForm(QMainWindow, MainWindow):
     # BCP Window
     BCPWindow : BCP_table
 
-    # Process Variables
+# Process Variables
     totalProcess = 0
     # Batch with all new Processes
     readyProcesses = []
@@ -48,7 +48,7 @@ class MainForm(QMainWindow, MainWindow):
     # Updates the actual process Index
     indxP = 0
     
-    #Variables used in Counting
+#Variables used in Counting
     timer : QTimer = None  #Timer que se ejecuta cada segundo para actualizar el contador global
     quantum = 0 #Quantum Measure
     quantumCounter = 0 #Quantum Counter
@@ -56,12 +56,14 @@ class MainForm(QMainWindow, MainWindow):
     elapsedTime = 0 #Contador de Tiempo de Proceso transcurrido
     remainingTime = 0 #Contador Tiempo restante del proceso
     
-    #Variables to be used during process Execution
+#Variables to be used during process Execution
     actualProcess : Process
     BCPWindow  : BCP_table
     interruptedProcesses = False
+    pageTable = []
+    pageTable.extend([0] * 40)
     
-    #Flags for keyboard Press
+#Flags for keyboard Press
     pause = True
     error = False
     interruption = False
@@ -74,14 +76,20 @@ class MainForm(QMainWindow, MainWindow):
         self.setupUi(self)
         self.setWindowTitle("Round-Robin (RR)")
         # Timer Generation
-        self.timer = QTimer(self)
-        self.timer.timeout.connect(self.updateTimer)
+        # self.timer = QTimer(self)
+        # self.timer.timeout.connect(self.updateTimer)
         #Button Listeners
         self.pushButton_Agregar.clicked.connect(self.setValues)
         self.pushButton_Ejecutar.clicked.connect(self.startExecution)
         self.pushButton_Ejecutar.setEnabled(False)
         
+        keyboard.on_press(self.onKeyPress)
         
+        self.progressBar_43.setStyleSheet("QProgressBar::chunk{background-color: red;}")
+        self.progressBar_42.setStyleSheet("QProgressBar::chunk{background-color: red;}")
+        self.progressBar_41.setStyleSheet("QProgressBar::chunk{background-color : red;}")
+        self.progressBar_40.setStyleSheet("QProgressBar::chunk{background-color: red;}")
+        self.progressBar_40.setValue(100)
     
 #Setters
     def setValues(self):
@@ -325,10 +333,9 @@ class MainForm(QMainWindow, MainWindow):
             
             self.textBox_quantumGlobal.setText(str(self.quantum))
             self.updateUI(Updates.NEW)
-            keyboard.on_press(self.onKeyPress)
+            QCoreApplication.processEvents()
             self.execute()
-            
-
+    
     # End of Processing
     def endExecution(self):
         # Last process calculations
@@ -342,13 +349,14 @@ class MainForm(QMainWindow, MainWindow):
         
         #Updating UI
         self.updateUI(Updates.END)
+    
         print("Procesamiento Terminado!")
     
     # Applies on keyboard press
     def onKeyPress(self,event):
         try:
             option = str(event.name).lower()
-            print(f'Key {event.name} pressed')
+            # print(f'Key {event.name} pressed')
             # Pause
             if(option == 'p'): 
                 self.pause = True
@@ -363,9 +371,11 @@ class MainForm(QMainWindow, MainWindow):
                 
             # Interrupt
             elif(option == 'e'):
+                print("Interrupcion")
                 self.interruption = True
             # Error
             elif(option == 'w'):
+                print("Error")
                 self.error = True
             # New Process
             elif(option == 'n'):
@@ -436,7 +446,7 @@ class MainForm(QMainWindow, MainWindow):
                 operation = "%"
             elif(procesNum == 5):
                 operation = "^"	
-            newProcess = Process((random.randint(1,100)),(random.randint(1,100)),operation,(random.randint(6,16)),indexP)
+            newProcess = Process((random.randint(1,100)),(random.randint(1,100)),operation,(random.randint(6,16)),indexP,(random.randint(6,28)))
         return newProcess
     
     #Generate new Process
@@ -556,6 +566,10 @@ class MainForm(QMainWindow, MainWindow):
             self.textBox_restantes.setText(str(self.newQueue.getLength()))
             self.quantumCounter = self.quantum
             self.textBox_quantumGlobal.setText(str(self.quantumCounter))
+            # Next Process to enter Ready Queue
+            if(self.newQueue.getLength()):
+                self.textBox_proximo_id.setText(str(self.newQueue.getFront().getID()))
+                self.textBox_proximo_size.setText(str(self.newQueue.getFront().getSize()))
         #Only Changes in Remaining Time/Elapsed Time
         if(upType == Updates.TIMER):
             self.textBox_tiempo_transcurrido.setText(str(self.elapsedTime))
