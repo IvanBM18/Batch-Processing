@@ -10,6 +10,8 @@
 # Terminado: Procesos que se salieron de procesos activos
 
 # Tabla BCP, Mostrar casilla vacia en lugar de  -1 en los tiempos
+# Si hay  interrupcion, y se terminan los procesos, se sigue ejecutado el proceso que estaba ejecutando
+# como copia
 
 #Library Imports
 import keyboard
@@ -85,13 +87,13 @@ class MainForm(QMainWindow, MainWindow):
         self.pushButton_Ejecutar.clicked.connect(self.startExecution)
         self.pushButton_Ejecutar.setEnabled(False)
         
-        keyboard.on_press(self.onKeyPress)
         
+        for i in range(40):
+            self.changeTablePage(i,"lightgreen",5)
         self.progressBar_43.setStyleSheet("QProgressBar::chunk{background-color: red;}")
         self.progressBar_42.setStyleSheet("QProgressBar::chunk{background-color: red;}")
         self.progressBar_41.setStyleSheet("QProgressBar::chunk{background-color : red;}")
         self.progressBar_40.setStyleSheet("QProgressBar::chunk{background-color: red;}")
-        self.progressBar_40.setValue(100)
     
 #Setters
     def setValues(self):
@@ -141,7 +143,7 @@ class MainForm(QMainWindow, MainWindow):
     
     # Returns a color in hexadecimal
     def getRandomRGBColor(self) -> str:
-        randomColor = "#".join([str(hex(random.randint(0, 255)))[2:] for _ in range(3)])
+        randomColor = "#" + ''.join([str(hex(random.randint(0, 255)))[2:].rjust(2,'0') for _ in range(3)])
         return randomColor
     
 #Processing Methods
@@ -257,7 +259,7 @@ class MainForm(QMainWindow, MainWindow):
     
     # Execute Lot Processing
     def execute(self):
-        
+        keyboard.on_press(self.onKeyPress)
         while(not self.noProcessesLeft()):
             if(self.pause):
                 continue
@@ -278,8 +280,9 @@ class MainForm(QMainWindow, MainWindow):
             # Process Change
             if(self.isChangeNeeded()):
                 # Removing Process from Ready Queue
-                self.tablaProcesos.removeRow(0) 
-                self.readyProcesses.pop(0) 
+                if(len(self.readyProcesses)):
+                    self.tablaProcesos.removeRow(0) 
+                    self.readyProcesses.pop(0) 
                 
                 # Change due to Quantum
                 if(not self.quantumCounter and self.remainingTime):
@@ -292,7 +295,7 @@ class MainForm(QMainWindow, MainWindow):
                 # Enqueueing new Process to ready List
                 if(self.newQueue.getLength() and len(self.readyProcesses) < 3):
                     # If Theres Memory Space Available
-                    auxMemory = self.memory.reserveMemory(self.newQueue.getFront().getSize())
+                    auxMemory = self.reserveSpace(self.newQueue.getFront().getSize())
                     if(auxMemory != None):
                         aux : Process = self.newQueue.dequeue()
                         aux.setPageList(auxMemory)
@@ -347,6 +350,7 @@ class MainForm(QMainWindow, MainWindow):
             
             self.textBox_quantumGlobal.setText(str(self.quantum))
             self.updateUI(Updates.NEW)
+            
             QCoreApplication.processEvents()
             self.execute()
     
@@ -427,7 +431,7 @@ class MainForm(QMainWindow, MainWindow):
             return False
         if(len(self.blockedProcesses)):
             return False
-        if(self.remainingTime):
+        if(self.remainingTime > 0):
             return False
         return True
 
@@ -520,10 +524,14 @@ class MainForm(QMainWindow, MainWindow):
         
         # Adding new process to ready List
         if(self.newQueue.getLength() and len(self.readyProcesses) < 3):
-            aux : Process = self.newQueue.dequeue()
-            self.readyProcesses.append(aux)
-            self.insertReadyRow(aux)
-            aux.stats.setArrivalTime(self.timeCounter)
+            # If Theres Memory Space Available
+            auxMemory = self.reserveSpace(self.newQueue.getFront().getSize())
+            if(auxMemory != None):
+                aux : Process = self.newQueue.dequeue()
+                aux.setPageList(auxMemory)
+                aux.stats.setArrivalTime(self.timeCounter)
+                self.readyProcesses.append(aux)
+                self.insertReadyRow(aux)
         
         if(len(self.readyProcesses)):
             # Adapting Variables to Interruption
@@ -578,13 +586,15 @@ class MainForm(QMainWindow, MainWindow):
         color = self.getRandomRGBColor()
         pages = self.memory.reserveMemory(size)
         for i in pages:
-            self.changeTablePage(i,color)
+            self.changeTablePage(i,color,5)
+        self.changeTablePage(pages[-1],color,5 if size%5 == 0 else size%5)
+        QCoreApplication.processEvents()
         return pages
     
     # Frees Memory for a Process
     def freeSpace(self,pages) -> None:
         for i in pages:
-            self.changeTablePage(i,"green")
+            self.changeTablePage(i,"lightgreen",5)
         self.memory.freeMemory(pages)
     
 #Visual Methods
@@ -602,6 +612,9 @@ class MainForm(QMainWindow, MainWindow):
             if(self.newQueue.getLength()):
                 self.textBox_proximo_id.setText(str(self.newQueue.getFront().getID()))
                 self.textBox_proximo_size.setText(str(self.newQueue.getFront().getSize()))
+            else:
+                self.textBox_proximo_id.setText("N/A")
+                self.textBox_proximo_size.setText("0")
         #Only Changes in Remaining Time/Elapsed Time
         if(upType == Updates.TIMER):
             self.textBox_tiempo_transcurrido.setText(str(self.elapsedTime))
@@ -657,86 +670,126 @@ class MainForm(QMainWindow, MainWindow):
             self.tablaPTerminados.setItem(n,2,QTableWidgetItem(str(row.getResult())))
     
     # Updates the table of pages
-    def changeTablePage(self,indx: int, color : str):
+    def changeTablePage(self,indx: int, color : str, progress:int):
         if(indx == 0):
             self.progressBar.setStyleSheet("QProgressBar::chunk {background-color: " + color + ";}")
+            self.progressBar.setValue(progress*20)
         elif(indx == 1):
             self.progressBar_1.setStyleSheet("QProgressBar::chunk {background-color: " + color + ";}")
+            self.progressBar_1.setValue(progress*20)
         elif(indx == 2):
             self.progressBar_2.setStyleSheet("QProgressBar::chunk {background-color: " + color + ";}")
+            self.progressBar_2.setValue(progress*20)
         elif(indx == 3):
             self.progressBar_3.setStyleSheet("QProgressBar::chunk {background-color: " + color + ";}")
+            self.progressBar_3.setValue(progress*20)
         elif(indx == 4):
             self.progressBar_4.setStyleSheet("QProgressBar::chunk {background-color: " + color + ";}")
+            self.progressBar_4.setValue(progress*20)
         elif(indx == 5):
             self.progressBar_5.setStyleSheet("QProgressBar::chunk {background-color: " + color + ";}")
+            self.progressBar_5.setValue(progress*20)
         elif(indx == 6):
             self.progressBar_6.setStyleSheet("QProgressBar::chunk {background-color: " + color + ";}")
+            self.progressBar_6.setValue(progress*20)
         elif(indx == 7):
             self.progressBar_7.setStyleSheet("QProgressBar::chunk {background-color: " + color + ";}")
+            self.progressBar_7.setValue(progress*20)
         elif(indx == 8):
             self.progressBar_8.setStyleSheet("QProgressBar::chunk {background-color: " + color + ";}")
+            self.progressBar_8.setValue(progress*20)
         elif(indx == 9):
             self.progressBar_9.setStyleSheet("QProgressBar::chunk {background-color: " + color + ";}")  
+            self.progressBar_9.setValue(progress*20)
         elif(indx == 10):
             self.progressBar_10.setStyleSheet("QProgressBar::chunk {background-color: " + color + ";}")
+            self.progressBar_10.setValue(progress*20)
         elif(indx == 11):
             self.progressBar_11.setStyleSheet("QProgressBar::chunk {background-color: " + color + ";}")
+            self.progressBar_11.setValue(progress*20)
         elif(indx == 12):
             self.progressBar_12.setStyleSheet("QProgressBar::chunk {background-color: " + color + ";}")
+            self.progressBar_12.setValue(progress*20)
         elif(indx == 13):
             self.progressBar_13.setStyleSheet("QProgressBar::chunk {background-color: " + color + ";}")
+            self.progressBar_13.setValue(progress*20)
         elif(indx == 14):
             self.progressBar_14.setStyleSheet("QProgressBar::chunk {background-color: " + color + ";}")
+            self.progressBar_14.setValue(progress*20)
         elif(indx == 15):
             self.progressBar_15.setStyleSheet("QProgressBar::chunk {background-color: " + color + ";}")
+            self.progressBar_15.setValue(progress*20)
         elif(indx == 16):
             self.progressBar_16.setStyleSheet("QProgressBar::chunk {background-color: " + color + ";}")
+            self.progressBar_16.setValue(progress*20)
         elif(indx == 17):
             self.progressBar_17.setStyleSheet("QProgressBar::chunk {background-color: " + color + ";}")
+            self.progressBar_17.setValue(progress*20)
         elif(indx == 18):
             self.progressBar_18.setStyleSheet("QProgressBar::chunk {background-color: " + color + ";}")
+            self.progressBar_18.setValue(progress*20)
         elif(indx == 19):
             self.progressBar_19.setStyleSheet("QProgressBar::chunk {background-color: " + color + ";}")
+            self.progressBar_19.setValue(progress*20)
         elif(indx == 20):
             self.progressBar_20.setStyleSheet("QProgressBar::chunk {background-color: " + color + ";}")
+            self.progressBar_20.setValue(progress*20)
         elif(indx == 21):
             self.progressBar_21.setStyleSheet("QProgressBar::chunk {background-color: " + color + ";}")
+            self.progressBar_21.setValue(progress*20)
         elif(indx == 22):
             self.progressBar_22.setStyleSheet("QProgressBar::chunk {background-color: " + color + ";}")
+            self.progressBar_22.setValue(progress*20)
         elif(indx == 23):
             self.progressBar_23.setStyleSheet("QProgressBar::chunk {background-color: " + color + ";}")
+            self.progressBar_23.setValue(progress*20)
         elif(indx == 24):
             self.progressBar_24.setStyleSheet("QProgressBar::chunk {background-color: " + color + ";}")
+            self.progressBar_24.setValue(progress*20)
         elif(indx == 25):
             self.progressBar_25.setStyleSheet("QProgressBar::chunk {background-color: " + color + ";}")
+            self.progressBar_25.setValue(progress*20)
         elif(indx == 26):
             self.progressBar_26.setStyleSheet("QProgressBar::chunk {background-color: " + color + ";}")
+            self.progressBar_26.setValue(progress*20)
         elif(indx == 27):
             self.progressBar_27.setStyleSheet("QProgressBar::chunk {background-color: " + color + ";}")
+            self.progressBar_27.setValue(progress*20)
         elif(indx == 28):
             self.progressBar_28.setStyleSheet("QProgressBar::chunk {background-color: " + color + ";}")
+            self.progressBar_28.setValue(progress*20)
         elif(indx == 29):
             self.progressBar_29.setStyleSheet("QProgressBar::chunk {background-color: " + color + ";}")
+            self.progressBar_29.setValue(progress*20)
         elif(indx == 30):
-            self.progressBar_30.setStyleSheet("QProgressBar::chunk {background-color: " + color + ";}")
+            self.progressBar_30.setStyleSheet("QProgr/essBar::chunk {background-color: " + color + ";}")
+            self.progressBar_30.setValue(progress*20)
         elif(indx == 31):
             self.progressBar_31.setStyleSheet("QProgressBar::chunk {background-color: " + color + ";}")
+            self.progressBar_31.setValue(progress*20)
         elif(indx == 32):
             self.progressBar_32.setStyleSheet("QProgressBar::chunk {background-color: " + color + ";}")
+            self.progressBar_32.setValue(progress*20)
         elif(indx == 33):
             self.progressBar_33.setStyleSheet("QProgressBar::chunk {background-color: " + color + ";}")
+            self.progressBar_33.setValue(progress*20)
         elif(indx == 34):
             self.progressBar_34.setStyleSheet("QProgressBar::chunk {background-color: " + color + ";}")
+            self.progressBar_34.setValue(progress*20)
         elif(indx == 35):
             self.progressBar_35.setStyleSheet("QProgressBar::chunk {background-color: " + color + ";}")
+            self.progressBar_35.setValue(progress*20)
         elif(indx == 36):
             self.progressBar_36.setStyleSheet("QProgressBar::chunk {background-color: " + color + ";}")
+            self.progressBar_36.setValue(progress*20)
         elif(indx == 37):
             self.progressBar_37.setStyleSheet("QProgressBar::chunk {background-color: " + color + ";}")
+            self.progressBar_37.setValue(progress*20)
         elif(indx == 38):
             self.progressBar_38.setStyleSheet("QProgressBar::chunk {background-color: " + color + ";}")
+            self.progressBar_38.setValue(progress*20)
         elif(indx == 39):
             self.progressBar_39.setStyleSheet("QProgressBar::chunk {background-color: " + color + ";}")
+            self.progressBar_39.setValue(progress*20)
         else:
             return
