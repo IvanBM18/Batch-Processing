@@ -10,8 +10,7 @@
 # Terminado: Procesos que se salieron de procesos activos
 
 # Tabla BCP, Mostrar casilla vacia en lugar de  -1 en los tiempos
-# Si hay  interrupcion, y se terminan los procesos, se sigue ejecutado el proceso que estaba ejecutando
-# como copia
+# Abrir Tabla BCP
 
 #Library Imports
 import keyboard
@@ -53,7 +52,6 @@ class MainForm(QMainWindow, MainWindow):
     indxP = 0
     
 #Variables used in Counting
-    timer : QTimer = None  #Timer que se ejecuta cada segundo para actualizar el contador global
     quantum = 0 #Quantum Measure
     quantumCounter = 0 #Quantum Counter
     timeCounter = 0 #Contador de Tiempo Global
@@ -147,122 +145,23 @@ class MainForm(QMainWindow, MainWindow):
         return randomColor
     
 #Processing Methods
-    # Updates the timer and the UI
-    def updateTimer(self):
-        # Eliminar repeticion de set text timeCounter
-        
-        # Pausado por tabla de PCB
-        if(self.bcp):
-            self.timer.stop()
-            self.BCPWindow = BCP_table(self.getAllProcesses())
-            self.BCPWindow.startTable()
-            
-            self.BCPWindow.show()
-            # Ciclo para mantener la ventana de BCP abierta
-            while self.pause:
-                QCoreApplication.processEvents()
-            self.BCPWindow.hide()
-            
-            self.bcp = False
-            self.pause = False
-            self.timer.start(1000)
-        
-        if(not self.pause):
-            # Pushing Process to Finished Queue by Error
-            if(self.error):
-                self.remainingTime = 0
-            
-            # If there is a process bloqued
-            if(self.interruptedProcesses):
-                self.updateUI(Updates.BLOCKED)
-            
-            # Interrupting Actual Process
-            if(self.interruption):
-                if(self.actualProcess):
-                    self.onInterruption()
-                QCoreApplication.processEvents()
-            
-            # End of Processing
-            if(self.noProcessesLeft()): 
-                self.actualProcess.stats.setEndTime(self.timeCounter)
-                self.actualProcess = self.updateTStats(self.actualProcess)
-                if(self.error):
-                    self.actualProcess.stats.setServiceTime(self.actualProcess.stats.getEndTime() - self.actualProcess.stats.getAnswerTime())
-                else:
-                    self.actualProcess.stats.setServiceTime(self.actualProcess.getTime())
-                self.finishedList.append(self.actualProcess)
-                
-                #Updating UI
-                self.updateUI(Updates.END)
-                print("Procesamiento Terminado!")
-                self.timer.stop()
-                return
-            
-            # Proccess Change
-            if(self.isChangeNeeded()):
-                # Removing Process from Ready Queue
-                self.tablaProcesos.removeRow(0) 
-                self.readyProcesses.pop(0) 
-                
-                # Change due to Quantum
-                if(not self.quantumCounter and self.remainingTime ):
-                    self.onQuantumEnd()
-                    QCoreApplication.processEvents()
-                # Change due time end
-                else:
-                    # End of process time stats
-                    self.actualProcess.remainingTime = 0
-                    self.actualProcess.stats.setEndTime(self.timeCounter)
-                    self.actualProcess = self.updateTStats(self.actualProcess)
-                    if(self.error):
-                        self.actualProcess.stats.setServiceTime(self.actualProcess.stats.getEndTime() - self.actualProcess.stats.getAnswerTime())
-                        self.actualProcess.error = True
-                        self.error = False
-                    else:
-                        self.actualProcess.stats.setServiceTime(self.elapsedTime)
-                    
-                    # Insert Process to Finished Table
-                    self.insertFinishedRow(self.actualProcess,self.error)
-                    self.finishedList.append(self.actualProcess)
-                    
-                # Enqueueing new Process to ready List
-                if(self.newQueue.getLength() and len(self.readyProcesses) < 3):
-                    aux = self.newQueue.dequeue()
-                    aux.stats.setArrivalTime(self.timeCounter)
-                    self.readyProcesses.append(aux)
-                    self.insertReadyRow(aux)
-                    
-                # Setting a new actual Process
-                if(self.readyProcesses): 
-                    #Gain a new process
-                    self.actualProcess : Process = self.readyProcesses[0] 
-                    self.elapsedTime = self.actualProcess.getElapsedTime()
-                    
-                    # Calculating new remaining time
-                    if(self.elapsedTime):
-                        self.remainingTime = self.actualProcess.getTime() - self.elapsedTime
-                    # Completely new Process
-                    else:
-                        #Tiempo restante del proceso
-                        self.actualProcess.stats.setAnswerTime(self.timeCounter-self.actualProcess.stats.getArrivalTime())
-                        self.remainingTime = self.actualProcess.getTime() 
-                        
-                    self.updateUI(Updates.NEW)
-                return
-            #Normal Execution
-            else: 
-                self.timeCounter += 1
-                self.elapsedTime += 1
-                self.remainingTime -= 1
-                self.quantumCounter -= 1
-                self.updateUI(Updates.TIMER)
-    
     # Execute Lot Processing
     def execute(self):
         keyboard.on_press(self.onKeyPress)
         while(not self.noProcessesLeft()):
             if(self.pause):
                 continue
+            
+            if(self.bcp):
+                self.BCPWindow = BCP_table(self.getAllProcesses())
+                self.BCPWindow.startTable()
+                self.BCPWindow.show()
+                while(self.bcp):
+                    QCoreApplication.processEvents()
+                    continue
+                self.BCPWindow.hide()
+                self.bcp = False
+            
             # Ending Process due to error
             if(self.error): 
                 self.remainingTime = 0
@@ -386,7 +285,6 @@ class MainForm(QMainWindow, MainWindow):
                 else:
                     self.pause = False
                     self.bcp = False
-                
             # Interrupt
             elif(option == 'e'):
                 print("Interrupcion")
@@ -410,16 +308,8 @@ class MainForm(QMainWindow, MainWindow):
             # BCP Table
             elif(option == 'b'):
                 self.bcp = True
-                self.pause = True
-
-                self.BCPWindow = BCP_table(self.getAllProcesses())
-                self.BCPWindow.startTable()
-                
-                self.BCPWindow.show()
                 # Ciclo para mantener la ventana de BCP abierta
-                while self.pause:
-                    QCoreApplication.processEvents()
-                self.BCPWindow.hide()
+                
         except:
             pass
     
