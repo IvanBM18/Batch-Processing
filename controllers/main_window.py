@@ -14,6 +14,7 @@
 import keyboard
 import random
 from typing import Any, List
+from time import sleep
 
 # QT Imports
 from PySide6.QtWidgets import QMainWindow
@@ -79,8 +80,7 @@ class MainForm(QMainWindow, MainWindow):
         self.pushButton_Agregar.clicked.connect(self.setValues)
         self.pushButton_Ejecutar.clicked.connect(self.startExecution)
         self.pushButton_Ejecutar.setEnabled(False)
-        #Keboard Listener
-        keyboard.on_press(self.onKeyPress)
+        
         
     
 #Setters
@@ -167,7 +167,6 @@ class MainForm(QMainWindow, MainWindow):
             
             # End of Processing
             if(self.noProcessesLeft()): 
-                # Last process calculations
                 self.actualProcess.stats.setEndTime(self.timeCounter)
                 self.actualProcess = self.updateTStats(self.actualProcess)
                 if(self.error):
@@ -178,7 +177,6 @@ class MainForm(QMainWindow, MainWindow):
                 
                 #Updating UI
                 self.updateUI(Updates.END)
-                self.counting = False
                 print("Procesamiento Terminado!")
                 self.timer.stop()
                 return
@@ -193,7 +191,6 @@ class MainForm(QMainWindow, MainWindow):
                 if(not self.quantumCounter and self.remainingTime ):
                     self.onQuantumEnd()
                     QCoreApplication.processEvents()
-                    
                 # Change due time end
                 else:
                     # End of process time stats
@@ -241,19 +238,77 @@ class MainForm(QMainWindow, MainWindow):
                 self.elapsedTime += 1
                 self.remainingTime -= 1
                 self.quantumCounter -= 1
-                self.updateUI(Updates.UPDATE)
+                self.updateUI(Updates.TIMER)
+    
+    # Execute Lot Processing
+    def execute(self):
+        
+        while(not self.noProcessesLeft()):
+            if(self.pause):
+                continue
+            # Ending Process due to error
+            if(self.error): 
+                self.remainingTime = 0
+                
+            # If there is a process bloqued
+            if(self.interruptedProcesses):
+                self.updateUI(Updates.BLOCKED)
+            
+            # Interrupting Actual Process
+            if(self.interruption):
+                if(self.actualProcess):
+                    self.onInterruption()
+                    QCoreApplication.processEvents()
+            
+            # Process Change
+            if(self.isChangeNeeded()):
+                # Removing Process from Ready Queue
+                self.tablaProcesos.removeRow(0) 
+                self.readyProcesses.pop(0) 
+                
+                # Change due to Quantum
+                if(not self.quantumCounter and self.remainingTime):
+                    self.onQuantumEnd()
+                    QCoreApplication.processEvents()
+                # Change due proceess end
+                else:
+                    self.onProcessEnd()
+                    
+                # Enqueueing new Process to ready List
+                if(self.newQueue.getLength() and len(self.readyProcesses) < 3):
+                    aux : Process = self.newQueue.dequeue()
+                    aux.stats.setArrivalTime(self.timeCounter)
+                    self.readyProcesses.append(aux)
+                    self.insertReadyRow(aux)
+                    
+                # Geting a new actual Process
+                if(self.readyProcesses):
+                    self.onNewProcess()
+                    
+                QCoreApplication.processEvents()
+                    
+            self.timeCounter += 1
+            self.elapsedTime += 1
+            self.remainingTime -= 1
+            self.quantumCounter -= 1
+            self.updateUI(Updates.TIMER)
+            QCoreApplication.processEvents()
+            sleep(1)
+        
+        if(self.noProcessesLeft()):
+            self.endExecution()
     
     #Starts Task Processing
     def startExecution(self) -> None:
         self.tablaPTerminados.clearContents()
         self.tablaPbloqueados.clearContents()
         self.tablaProcesos.clearContents()
+        
         if(self.totalProcess != 0):
             self.timeCounter = 0 #Contador de Tiempo Global
             self.elapsedTime = 0 #Contador de Tiempo de Proceso
             self.remainingTime = 0 #Tiempo restante del proceso
             self.generateProcesses()
-            self.timer.start(1000)
             self.pause = False
             for _ in range(3):
                 if(self.newQueue.getLength() > 0):
@@ -270,29 +325,50 @@ class MainForm(QMainWindow, MainWindow):
             
             self.textBox_quantumGlobal.setText(str(self.quantum))
             self.updateUI(Updates.NEW)
+            keyboard.on_press(self.onKeyPress)
+            self.execute()
+            
 
+    # End of Processing
+    def endExecution(self):
+        # Last process calculations
+        self.actualProcess.stats.setEndTime(self.timeCounter)
+        self.actualProcess = self.updateTStats(self.actualProcess)
+        if(self.error):
+            self.actualProcess.stats.setServiceTime(self.actualProcess.stats.getEndTime() - self.actualProcess.stats.getAnswerTime())
+        else:
+            self.actualProcess.stats.setServiceTime(self.actualProcess.getTime())
+        self.finishedList.append(self.actualProcess)
+        
+        #Updating UI
+        self.updateUI(Updates.END)
+        print("Procesamiento Terminado!")
+    
     # Applies on keyboard press
     def onKeyPress(self,event):
         try:
             option = str(event.name).lower()
+            print(f'Key {event.name} pressed')
             # Pause
             if(option == 'p'): 
                 self.pause = True
             # Continue
             elif(option == 'c'):
-                self.pause = False
-                self.bcp = False
+                if(self.pause):
+                    self.pause = False
+                    self.bcp = False
+                else:
+                    self.pause = False
+                    self.bcp = False
+                
             # Interrupt
             elif(option == 'e'):
-                print('e')
                 self.interruption = True
             # Error
             elif(option == 'w'):
-                print('w')
                 self.error = True
             # New Process
             elif(option == 'n'):
-                print('n')
                 # Generating and Enqueueing new process
                 aux = self.newProcess(self.indxP)
                 self.indxP += 1
@@ -307,18 +383,15 @@ class MainForm(QMainWindow, MainWindow):
             elif(option == 'b'):
                 self.bcp = True
                 self.pause = True
+
+                self.BCPWindow = BCP_table(self.getAllProcesses())
+                self.BCPWindow.startTable()
                 
-                if(self.noProcessesLeft()):
-                    self.BCPWindow = BCP_table(self.getAllProcesses())
-                    self.BCPWindow.startTable()
-                    
-                    self.BCPWindow.show()
-                    # Ciclo para mantener la ventana de BCP abierta
-                    while self.pause:
-                        QCoreApplication.processEvents()
-                    self.BCPWindow.hide()
-                    
-                    self.bcp = False
+                self.BCPWindow.show()
+                # Ciclo para mantener la ventana de BCP abierta
+                while self.pause:
+                    QCoreApplication.processEvents()
+                self.BCPWindow.hide()
         except:
             pass
     
@@ -335,7 +408,7 @@ class MainForm(QMainWindow, MainWindow):
         return True
 
     # Asks if process Ends
-    def isChangeNeeded(self) -> None:
+    def isChangeNeeded(self) -> bool:
         if(not self.quantumCounter):
             return True
         if(not self.remainingTime):
@@ -390,6 +463,23 @@ class MainForm(QMainWindow, MainWindow):
             p.stats.setServiceTime(self.elapsedTime)
         return p
     
+    # Handles the process change
+    def onNewProcess(self) -> None:
+        #Gain a new process
+        self.actualProcess : Process = self.readyProcesses[0] 
+        self.elapsedTime = self.actualProcess.getElapsedTime()
+        
+        # Calculating new remaining time
+        if(self.elapsedTime):
+            self.remainingTime = self.actualProcess.getTime() - self.elapsedTime
+        # New Process
+        else:
+            #Tiempo restante del proceso
+            self.actualProcess.stats.setAnswerTime(self.timeCounter-self.actualProcess.stats.getArrivalTime())
+            self.remainingTime = self.actualProcess.getTime() 
+            
+        self.updateUI(Updates.NEW)
+    
     # Handles Process Interruption
     def onInterruption(self) -> None:
         #Send process to bloqued List
@@ -439,6 +529,22 @@ class MainForm(QMainWindow, MainWindow):
         self.readyProcesses.append(self.actualProcess)
         self.quantumCounter = self.quantum        
     
+    # Handles Process End
+    def onProcessEnd(self) -> None:
+        self.actualProcess.remainingTime = 0
+        self.actualProcess.stats.setEndTime(self.timeCounter)
+        self.actualProcess = self.updateTStats(self.actualProcess)
+        if(self.error):
+            self.actualProcess.stats.setServiceTime(self.actualProcess.stats.getEndTime() - self.actualProcess.stats.getAnswerTime())
+            self.actualProcess.error = True
+            self.error = False
+        else:
+            self.actualProcess.stats.setServiceTime(self.elapsedTime)
+        
+        # Insert Process to Finished Table
+        self.insertFinishedRow(self.actualProcess,self.error)
+        self.finishedList.append(self.actualProcess)
+    
 #Visual Methods
     def updateUI(self,upType) -> None:
         #New Process on Execution
@@ -451,7 +557,7 @@ class MainForm(QMainWindow, MainWindow):
             self.quantumCounter = self.quantum
             self.textBox_quantumGlobal.setText(str(self.quantumCounter))
         #Only Changes in Remaining Time/Elapsed Time
-        if(upType == Updates.UPDATE):
+        if(upType == Updates.TIMER):
             self.textBox_tiempo_transcurrido.setText(str(self.elapsedTime))
             self.textBox_tiempo_restante.setText(str(self.remainingTime))
             self.textBox_quantumGlobal.setText(str(self.quantumCounter))

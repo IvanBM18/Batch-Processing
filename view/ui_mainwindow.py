@@ -1129,7 +1129,7 @@ class Ui_MainWindow(object):
         self.tablaPaginacionL.setSortingEnabled(__sortingEnabled)
 
         ___qtablewidgetitem53 = self.tablaPaginacionR.horizontalHeaderItem(1)
-        ___qtablewidgetitem53.setText(QCoreApplication.translate("MainWindow", u"N. Macro", None));
+        ___qtablewidgetitem53.setText(QCoreApplication.translate("MainWindow", u"N. Marco", None));
         ___qtablewidgetitem54 = self.tablaPaginacionR.verticalHeaderItem(0)
         ___qtablewidgetitem54.setText(QCoreApplication.translate("MainWindow", u"1", None));
         ___qtablewidgetitem55 = self.tablaPaginacionR.verticalHeaderItem(1)
