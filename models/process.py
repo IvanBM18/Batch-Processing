@@ -26,6 +26,7 @@ class Process:
             self.size = 0
         self.error = False
         self.stats = TimeStats()
+        self.pageList = set()
         
     # Class Methods
     def setElapsedTime(self,t : int):
@@ -36,6 +37,19 @@ class Process:
     
     def setSize(self,size : int):
         self.size = size
+    
+    def setPageList(self,pageList : list):
+        self.pageList = set(pageList)
+    
+    def addPage(self,page : int):
+        self.pageList.add(page)
+    
+    def deleteLastPage(self) -> int:
+        return self.pageList.pop()
+    
+    def clearPageList(self) -> list:
+        aux = [self.pageList.pop() for i in range(len(self.pageList))]
+        return aux
     
     def toString(self):
         return str(self.valueA) + self.operation + str(self.valueB) + " = " + str(self.remainingTime)

@@ -9,6 +9,7 @@
 # Bloquados: Procesos que no se pueden ejecutar hasta que termine una operación de E/S
 # Terminado: Procesos que se salieron de procesos activos
 
+# Tabla BCP, Mostrar casilla vacia en lugar de  -1 en los tiempos
 
 #Library Imports
 import keyboard
@@ -29,6 +30,7 @@ from controllers.table_bcp import BCP_table
 from models.queue import Queue
 from models.process import Process
 from models.uiUpdate import Updates
+from models.memory import Memory
 
 class MainForm(QMainWindow, MainWindow):
 #Atributtes
@@ -60,14 +62,14 @@ class MainForm(QMainWindow, MainWindow):
     actualProcess : Process
     BCPWindow  : BCP_table
     interruptedProcesses = False
-    pageTable = []
-    pageTable.extend([0] * 40)
+    memory : Memory 
     
 #Flags for keyboard Press
     pause = True
     error = False
     interruption = False
     bcp = False
+    
     
     #Constructor
     def __init__(self):
@@ -136,6 +138,11 @@ class MainForm(QMainWindow, MainWindow):
         for i in aux:
             result.append(self.updateTStats(i))
         return result
+    
+    # Returns a color in hexadecimal
+    def getRandomRGBColor(self) -> str:
+        randomColor = "#".join([str(hex(random.randint(0, 255)))[2:] for _ in range(3)])
+        return randomColor
     
 #Processing Methods
     # Updates the timer and the UI
@@ -284,10 +291,14 @@ class MainForm(QMainWindow, MainWindow):
                     
                 # Enqueueing new Process to ready List
                 if(self.newQueue.getLength() and len(self.readyProcesses) < 3):
-                    aux : Process = self.newQueue.dequeue()
-                    aux.stats.setArrivalTime(self.timeCounter)
-                    self.readyProcesses.append(aux)
-                    self.insertReadyRow(aux)
+                    # If Theres Memory Space Available
+                    auxMemory = self.memory.reserveMemory(self.newQueue.getFront().getSize())
+                    if(auxMemory != None):
+                        aux : Process = self.newQueue.dequeue()
+                        aux.setPageList(auxMemory)
+                        aux.stats.setArrivalTime(self.timeCounter)
+                        self.readyProcesses.append(aux)
+                        self.insertReadyRow(aux)
                     
                 # Geting a new actual Process
                 if(self.readyProcesses):
@@ -313,6 +324,7 @@ class MainForm(QMainWindow, MainWindow):
         self.tablaProcesos.clearContents()
         
         if(self.totalProcess != 0):
+            self.memory = Memory()
             self.timeCounter = 0 #Contador de Tiempo Global
             self.elapsedTime = 0 #Contador de Tiempo de Proceso
             self.remainingTime = 0 #Tiempo restante del proceso
@@ -322,8 +334,10 @@ class MainForm(QMainWindow, MainWindow):
                 if(self.newQueue.getLength() > 0):
                     aux : Process = self.newQueue.dequeue()
                     aux.stats.setArrivalTime(self.timeCounter)
+                    aux.setPageList(self.reserveSpace(aux.getSize()))
                     self.readyProcesses.append(aux)
                     self.insertReadyRow(aux)
+                    
             # Time changes
             self.elapsedTime = 0
             self.actualProcess : Process = self.readyProcesses[0] #Proceso Actual
@@ -554,6 +568,24 @@ class MainForm(QMainWindow, MainWindow):
         # Insert Process to Finished Table
         self.insertFinishedRow(self.actualProcess,self.error)
         self.finishedList.append(self.actualProcess)
+        
+        # Free Memory
+        self.freeSpace(self.actualProcess.pageList)
+    
+#Memory Management
+    # Reserves Memory for a new Process
+    def reserveSpace(self,size) -> None:
+        color = self.getRandomRGBColor()
+        pages = self.memory.reserveMemory(size)
+        for i in pages:
+            self.changeTablePage(i,color)
+        return pages
+    
+    # Frees Memory for a Process
+    def freeSpace(self,pages) -> None:
+        for i in pages:
+            self.changeTablePage(i,"green")
+        self.memory.freeMemory(pages)
     
 #Visual Methods
     def updateUI(self,upType) -> None:
@@ -623,3 +655,88 @@ class MainForm(QMainWindow, MainWindow):
             self.tablaPTerminados.setItem(n,2,QTableWidgetItem("Error"))
         else:
             self.tablaPTerminados.setItem(n,2,QTableWidgetItem(str(row.getResult())))
+    
+    # Updates the table of pages
+    def changeTablePage(self,indx: int, color : str):
+        if(indx == 0):
+            self.progressBar.setStyleSheet("QProgressBar::chunk {background-color: " + color + ";}")
+        elif(indx == 1):
+            self.progressBar_1.setStyleSheet("QProgressBar::chunk {background-color: " + color + ";}")
+        elif(indx == 2):
+            self.progressBar_2.setStyleSheet("QProgressBar::chunk {background-color: " + color + ";}")
+        elif(indx == 3):
+            self.progressBar_3.setStyleSheet("QProgressBar::chunk {background-color: " + color + ";}")
+        elif(indx == 4):
+            self.progressBar_4.setStyleSheet("QProgressBar::chunk {background-color: " + color + ";}")
+        elif(indx == 5):
+            self.progressBar_5.setStyleSheet("QProgressBar::chunk {background-color: " + color + ";}")
+        elif(indx == 6):
+            self.progressBar_6.setStyleSheet("QProgressBar::chunk {background-color: " + color + ";}")
+        elif(indx == 7):
+            self.progressBar_7.setStyleSheet("QProgressBar::chunk {background-color: " + color + ";}")
+        elif(indx == 8):
+            self.progressBar_8.setStyleSheet("QProgressBar::chunk {background-color: " + color + ";}")
+        elif(indx == 9):
+            self.progressBar_9.setStyleSheet("QProgressBar::chunk {background-color: " + color + ";}")  
+        elif(indx == 10):
+            self.progressBar_10.setStyleSheet("QProgressBar::chunk {background-color: " + color + ";}")
+        elif(indx == 11):
+            self.progressBar_11.setStyleSheet("QProgressBar::chunk {background-color: " + color + ";}")
+        elif(indx == 12):
+            self.progressBar_12.setStyleSheet("QProgressBar::chunk {background-color: " + color + ";}")
+        elif(indx == 13):
+            self.progressBar_13.setStyleSheet("QProgressBar::chunk {background-color: " + color + ";}")
+        elif(indx == 14):
+            self.progressBar_14.setStyleSheet("QProgressBar::chunk {background-color: " + color + ";}")
+        elif(indx == 15):
+            self.progressBar_15.setStyleSheet("QProgressBar::chunk {background-color: " + color + ";}")
+        elif(indx == 16):
+            self.progressBar_16.setStyleSheet("QProgressBar::chunk {background-color: " + color + ";}")
+        elif(indx == 17):
+            self.progressBar_17.setStyleSheet("QProgressBar::chunk {background-color: " + color + ";}")
+        elif(indx == 18):
+            self.progressBar_18.setStyleSheet("QProgressBar::chunk {background-color: " + color + ";}")
+        elif(indx == 19):
+            self.progressBar_19.setStyleSheet("QProgressBar::chunk {background-color: " + color + ";}")
+        elif(indx == 20):
+            self.progressBar_20.setStyleSheet("QProgressBar::chunk {background-color: " + color + ";}")
+        elif(indx == 21):
+            self.progressBar_21.setStyleSheet("QProgressBar::chunk {background-color: " + color + ";}")
+        elif(indx == 22):
+            self.progressBar_22.setStyleSheet("QProgressBar::chunk {background-color: " + color + ";}")
+        elif(indx == 23):
+            self.progressBar_23.setStyleSheet("QProgressBar::chunk {background-color: " + color + ";}")
+        elif(indx == 24):
+            self.progressBar_24.setStyleSheet("QProgressBar::chunk {background-color: " + color + ";}")
+        elif(indx == 25):
+            self.progressBar_25.setStyleSheet("QProgressBar::chunk {background-color: " + color + ";}")
+        elif(indx == 26):
+            self.progressBar_26.setStyleSheet("QProgressBar::chunk {background-color: " + color + ";}")
+        elif(indx == 27):
+            self.progressBar_27.setStyleSheet("QProgressBar::chunk {background-color: " + color + ";}")
+        elif(indx == 28):
+            self.progressBar_28.setStyleSheet("QProgressBar::chunk {background-color: " + color + ";}")
+        elif(indx == 29):
+            self.progressBar_29.setStyleSheet("QProgressBar::chunk {background-color: " + color + ";}")
+        elif(indx == 30):
+            self.progressBar_30.setStyleSheet("QProgressBar::chunk {background-color: " + color + ";}")
+        elif(indx == 31):
+            self.progressBar_31.setStyleSheet("QProgressBar::chunk {background-color: " + color + ";}")
+        elif(indx == 32):
+            self.progressBar_32.setStyleSheet("QProgressBar::chunk {background-color: " + color + ";}")
+        elif(indx == 33):
+            self.progressBar_33.setStyleSheet("QProgressBar::chunk {background-color: " + color + ";}")
+        elif(indx == 34):
+            self.progressBar_34.setStyleSheet("QProgressBar::chunk {background-color: " + color + ";}")
+        elif(indx == 35):
+            self.progressBar_35.setStyleSheet("QProgressBar::chunk {background-color: " + color + ";}")
+        elif(indx == 36):
+            self.progressBar_36.setStyleSheet("QProgressBar::chunk {background-color: " + color + ";}")
+        elif(indx == 37):
+            self.progressBar_37.setStyleSheet("QProgressBar::chunk {background-color: " + color + ";}")
+        elif(indx == 38):
+            self.progressBar_38.setStyleSheet("QProgressBar::chunk {background-color: " + color + ";}")
+        elif(indx == 39):
+            self.progressBar_39.setStyleSheet("QProgressBar::chunk {background-color: " + color + ";}")
+        else:
+            return
