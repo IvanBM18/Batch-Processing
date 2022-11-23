@@ -3,7 +3,7 @@
 ################################################################################
 ## Form generated from reading UI file 'mainwindow.ui'
 ##
-## Created by: Qt User Interface Compiler version 6.3.1
+## Created by: Qt User Interface Compiler version 6.3.2
 ##
 ## WARNING! All changes made in this file will be lost when recompiling UI file!
 ################################################################################
@@ -25,7 +25,7 @@ class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         if not MainWindow.objectName():
             MainWindow.setObjectName(u"MainWindow")
-        MainWindow.resize(1510, 674)
+        MainWindow.resize(1510, 762)
         MainWindow.setStyleSheet(u"background-color: rgb(44, 47, 51);\n"
 "selection-color: rgb(255, 170, 255);\n"
 "selection-background-color: rgb(255, 170, 255);\n"
@@ -34,7 +34,7 @@ class Ui_MainWindow(object):
         self.centralwidget.setObjectName(u"centralwidget")
         self.groupBox = QGroupBox(self.centralwidget)
         self.groupBox.setObjectName(u"groupBox")
-        self.groupBox.setGeometry(QRect(10, 10, 271, 641))
+        self.groupBox.setGeometry(QRect(10, 0, 271, 741))
         self.groupBox.setStyleSheet(u"border-color: rgb(44, 47, 51);")
         self.gridLayout = QGridLayout(self.groupBox)
         self.gridLayout.setObjectName(u"gridLayout")
@@ -45,13 +45,13 @@ class Ui_MainWindow(object):
 "")
         self.label_titulo = QLabel(self.groupBox_4)
         self.label_titulo.setObjectName(u"label_titulo")
-        self.label_titulo.setGeometry(QRect(40, 40, 221, 31))
+        self.label_titulo.setGeometry(QRect(40, 0, 221, 31))
         self.label_titulo.setStyleSheet(u"color:rgb(0, 153, 117);\n"
 "font: 87 14pt \"Segoe UI Black\";\n"
 "")
         self.textBox_NumProcess = QLineEdit(self.groupBox_4)
         self.textBox_NumProcess.setObjectName(u"textBox_NumProcess")
-        self.textBox_NumProcess.setGeometry(QRect(0, 110, 230, 35))
+        self.textBox_NumProcess.setGeometry(QRect(0, 60, 230, 35))
         self.textBox_NumProcess.setMinimumSize(QSize(60, 35))
         self.textBox_NumProcess.setMaximumSize(QSize(230, 35))
         self.textBox_NumProcess.setStyleSheet(u"background-color: rgb(52, 62, 64);\n"
@@ -60,21 +60,21 @@ class Ui_MainWindow(object):
 "border-radius: 4px;")
         self.label_Numero = QLabel(self.groupBox_4)
         self.label_Numero.setObjectName(u"label_Numero")
-        self.label_Numero.setGeometry(QRect(10, 80, 171, 21))
+        self.label_Numero.setGeometry(QRect(0, 30, 171, 21))
         self.label_Numero.setAutoFillBackground(False)
         self.label_Numero.setStyleSheet(u"color:rgb(255, 255, 255);\n"
 "font: 10pt \"Segoe UI Emoji\";\n"
 "")
         self.pushButton_Agregar = QPushButton(self.groupBox_4)
         self.pushButton_Agregar.setObjectName(u"pushButton_Agregar")
-        self.pushButton_Agregar.setGeometry(QRect(0, 250, 121, 41))
+        self.pushButton_Agregar.setGeometry(QRect(0, 180, 121, 41))
         self.pushButton_Agregar.setStyleSheet(u"background-color: rgb(0, 153, 117);\n"
 "color: #FFFFFF;\n"
 "font: 75 12pt \"Microsoft YaHei\";\n"
 "border-radius: 10px;")
         self.pushButton_Ejecutar = QPushButton(self.groupBox_4)
         self.pushButton_Ejecutar.setObjectName(u"pushButton_Ejecutar")
-        self.pushButton_Ejecutar.setGeometry(QRect(130, 250, 111, 41))
+        self.pushButton_Ejecutar.setGeometry(QRect(130, 180, 111, 41))
         self.pushButton_Ejecutar.setStyleSheet(u"background-color: rgb(0, 153, 117);\n"
 "color: #FFFFFF;\n"
 "font: 75 12pt \"Microsoft YaHei\";\n"
@@ -88,7 +88,7 @@ class Ui_MainWindow(object):
         self.tablaPbloqueados.setHorizontalHeaderItem(1, __qtablewidgetitem1)
         self.tablaPbloqueados.setObjectName(u"tablaPbloqueados")
         self.tablaPbloqueados.setEnabled(False)
-        self.tablaPbloqueados.setGeometry(QRect(20, 350, 211, 251))
+        self.tablaPbloqueados.setGeometry(QRect(20, 260, 211, 181))
         self.tablaPbloqueados.setStyleSheet(u"background-color: rgb(52, 62, 64);")
         self.tablaPbloqueados.setVerticalScrollBarPolicy(Qt.ScrollBarAlwaysOff)
         self.tablaPbloqueados.setHorizontalScrollBarPolicy(Qt.ScrollBarAlwaysOff)
@@ -97,14 +97,14 @@ class Ui_MainWindow(object):
         self.tablaPbloqueados.verticalHeader().setVisible(False)
         self.label_titulo_ProceL_2 = QLabel(self.groupBox_4)
         self.label_titulo_ProceL_2.setObjectName(u"label_titulo_ProceL_2")
-        self.label_titulo_ProceL_2.setGeometry(QRect(40, 310, 171, 31))
+        self.label_titulo_ProceL_2.setGeometry(QRect(40, 230, 171, 21))
         self.label_titulo_ProceL_2.setStyleSheet(u"color:rgb(0, 153, 117);\n"
 "\n"
 "font: 63 13pt \"Segoe UI Semibold\";\n"
 "")
         self.textBox_Quantum = QLineEdit(self.groupBox_4)
         self.textBox_Quantum.setObjectName(u"textBox_Quantum")
-        self.textBox_Quantum.setGeometry(QRect(0, 190, 230, 35))
+        self.textBox_Quantum.setGeometry(QRect(0, 130, 230, 35))
         self.textBox_Quantum.setMinimumSize(QSize(60, 35))
         self.textBox_Quantum.setMaximumSize(QSize(230, 35))
         self.textBox_Quantum.setStyleSheet(u"background-color: rgb(52, 62, 64);\n"
@@ -113,8 +113,77 @@ class Ui_MainWindow(object):
 "border-radius: 4px;")
         self.label_Numero_2 = QLabel(self.groupBox_4)
         self.label_Numero_2.setObjectName(u"label_Numero_2")
-        self.label_Numero_2.setGeometry(QRect(10, 160, 171, 21))
+        self.label_Numero_2.setGeometry(QRect(0, 100, 61, 21))
         self.label_Numero_2.setStyleSheet(u"color:rgb(255, 255, 255);\n"
+"font: 10pt \"Segoe UI Emoji\";\n"
+"")
+        self.label_titulo_ProceL_3 = QLabel(self.groupBox_4)
+        self.label_titulo_ProceL_3.setObjectName(u"label_titulo_ProceL_3")
+        self.label_titulo_ProceL_3.setGeometry(QRect(30, 450, 171, 21))
+        self.label_titulo_ProceL_3.setAutoFillBackground(True)
+        self.label_titulo_ProceL_3.setStyleSheet(u"color:rgb(0, 153, 117);\n"
+"\n"
+"font: 63 13pt \"Segoe UI Semibold\";\n"
+"")
+        self.tablaPsuspendidos = QTableWidget(self.groupBox_4)
+        if (self.tablaPsuspendidos.columnCount() < 2):
+            self.tablaPsuspendidos.setColumnCount(2)
+        __qtablewidgetitem2 = QTableWidgetItem()
+        self.tablaPsuspendidos.setHorizontalHeaderItem(0, __qtablewidgetitem2)
+        __qtablewidgetitem3 = QTableWidgetItem()
+        self.tablaPsuspendidos.setHorizontalHeaderItem(1, __qtablewidgetitem3)
+        self.tablaPsuspendidos.setObjectName(u"tablaPsuspendidos")
+        self.tablaPsuspendidos.setEnabled(False)
+        self.tablaPsuspendidos.setGeometry(QRect(20, 480, 211, 181))
+        self.tablaPsuspendidos.setStyleSheet(u"background-color: rgb(52, 62, 64);")
+        self.tablaPsuspendidos.setVerticalScrollBarPolicy(Qt.ScrollBarAlwaysOff)
+        self.tablaPsuspendidos.setHorizontalScrollBarPolicy(Qt.ScrollBarAlwaysOff)
+        self.tablaPsuspendidos.setSizeAdjustPolicy(QAbstractScrollArea.AdjustToContents)
+        self.tablaPsuspendidos.horizontalHeader().setDefaultSectionSize(104)
+        self.tablaPsuspendidos.verticalHeader().setVisible(False)
+        self.textBox_suspended = QLineEdit(self.groupBox_4)
+        self.textBox_suspended.setObjectName(u"textBox_suspended")
+        self.textBox_suspended.setGeometry(QRect(205, 445, 41, 31))
+        self.textBox_suspended.setMaximumSize(QSize(230, 35))
+        self.textBox_suspended.setStyleSheet(u"background-color: rgb(52, 62, 64);\n"
+"color: rgb(255, 255, 255);\n"
+"border: 1px solid rgb(0, 153, 117);\n"
+"border-radius: 4px;")
+        self.label_titulo_ProceL_4 = QLabel(self.groupBox_4)
+        self.label_titulo_ProceL_4.setObjectName(u"label_titulo_ProceL_4")
+        self.label_titulo_ProceL_4.setGeometry(QRect(41, 663, 171, 21))
+        self.label_titulo_ProceL_4.setStyleSheet(u"color:rgb(0, 153, 117);\n"
+"\n"
+"font: 63 13pt \"Segoe UI Semibold\";\n"
+"")
+        self.label_id_return = QLabel(self.groupBox_4)
+        self.label_id_return.setObjectName(u"label_id_return")
+        self.label_id_return.setGeometry(QRect(30, 690, 21, 21))
+        self.label_id_return.setAutoFillBackground(False)
+        self.label_id_return.setStyleSheet(u"color:rgb(255, 255, 255);\n"
+"font: 10pt \"Segoe UI Emoji\";\n"
+"")
+        self.textBox_return_id = QLineEdit(self.groupBox_4)
+        self.textBox_return_id.setObjectName(u"textBox_return_id")
+        self.textBox_return_id.setGeometry(QRect(60, 690, 51, 31))
+        self.textBox_return_id.setMaximumSize(QSize(230, 35))
+        self.textBox_return_id.setStyleSheet(u"background-color: rgb(52, 62, 64);\n"
+"color: rgb(255, 255, 255);\n"
+"border: 1px solid rgb(0, 153, 117);\n"
+"border-radius: 4px;")
+        self.textBox_return_id_2 = QLineEdit(self.groupBox_4)
+        self.textBox_return_id_2.setObjectName(u"textBox_return_id_2")
+        self.textBox_return_id_2.setGeometry(QRect(183, 689, 51, 31))
+        self.textBox_return_id_2.setMaximumSize(QSize(230, 35))
+        self.textBox_return_id_2.setStyleSheet(u"background-color: rgb(52, 62, 64);\n"
+"color: rgb(255, 255, 255);\n"
+"border: 1px solid rgb(0, 153, 117);\n"
+"border-radius: 4px;")
+        self.label_id_return2 = QLabel(self.groupBox_4)
+        self.label_id_return2.setObjectName(u"label_id_return2")
+        self.label_id_return2.setGeometry(QRect(130, 690, 51, 21))
+        self.label_id_return2.setAutoFillBackground(False)
+        self.label_id_return2.setStyleSheet(u"color:rgb(255, 255, 255);\n"
 "font: 10pt \"Segoe UI Emoji\";\n"
 "")
 
@@ -123,146 +192,148 @@ class Ui_MainWindow(object):
         self.groupBox_2 = QGroupBox(self.centralwidget)
         self.groupBox_2.setObjectName(u"groupBox_2")
         self.groupBox_2.setEnabled(False)
-        self.groupBox_2.setGeometry(QRect(279, 10, 371, 641))
+        self.groupBox_2.setGeometry(QRect(279, 0, 371, 741))
         self.groupBox_2.setSizeIncrement(QSize(6, 6))
         self.groupBox_2.setBaseSize(QSize(9, 6))
         self.groupBox_5 = QGroupBox(self.groupBox_2)
         self.groupBox_5.setObjectName(u"groupBox_5")
-        self.groupBox_5.setGeometry(QRect(10, 260, 321, 341))
-        self.groupBox_5.setBaseSize(QSize(7, 7))
+        self.groupBox_5.setEnabled(False)
+        self.groupBox_5.setGeometry(QRect(60, 480, 263, 246))
+#if QT_CONFIG(tooltip)
+        self.groupBox_5.setToolTip(u"")
+#endif // QT_CONFIG(tooltip)
+#if QT_CONFIG(statustip)
+        self.groupBox_5.setStatusTip(u"")
+#endif // QT_CONFIG(statustip)
+#if QT_CONFIG(whatsthis)
+        self.groupBox_5.setWhatsThis(u"")
+#endif // QT_CONFIG(whatsthis)
+#if QT_CONFIG(accessibility)
+        self.groupBox_5.setAccessibleName(u"")
+#endif // QT_CONFIG(accessibility)
+#if QT_CONFIG(accessibility)
+        self.groupBox_5.setAccessibleDescription(u"")
+#endif // QT_CONFIG(accessibility)
+        self.groupBox_5.setAutoFillBackground(True)
         self.groupBox_5.setStyleSheet(u"selection-background-color: rgb(255, 170, 127);\n"
 "border: 0px solid rgb(0, 153, 117);\n"
 "")
+        self.groupBox_5.setFlat(True)
+        self.gridLayout_2 = QGridLayout(self.groupBox_5)
+        self.gridLayout_2.setObjectName(u"gridLayout_2")
         self.label_titulo_procesoEje = QLabel(self.groupBox_5)
         self.label_titulo_procesoEje.setObjectName(u"label_titulo_procesoEje")
-        self.label_titulo_procesoEje.setGeometry(QRect(90, 90, 221, 31))
         self.label_titulo_procesoEje.setStyleSheet(u"color:rgb(0, 153, 117);\n"
 "\n"
 "font: 63 13pt \"Segoe UI Semibold\";\n"
 "")
+
+        self.gridLayout_2.addWidget(self.label_titulo_procesoEje, 0, 1, 1, 2)
+
+        self.label_operacion_4 = QLabel(self.groupBox_5)
+        self.label_operacion_4.setObjectName(u"label_operacion_4")
+        self.label_operacion_4.setStyleSheet(u"color:rgb(255, 255, 255);\n"
+"font: 10pt \"Segoe UI Emoji\";\n"
+"")
+
+        self.gridLayout_2.addWidget(self.label_operacion_4, 1, 0, 1, 2)
+
         self.textBox_operacion = QLineEdit(self.groupBox_5)
         self.textBox_operacion.setObjectName(u"textBox_operacion")
-        self.textBox_operacion.setGeometry(QRect(150, 120, 141, 35))
         self.textBox_operacion.setMinimumSize(QSize(60, 35))
         self.textBox_operacion.setMaximumSize(QSize(230, 35))
         self.textBox_operacion.setStyleSheet(u"background-color: rgb(52, 62, 64);\n"
 "color: rgb(255, 255, 255);\n"
 "border: 1px solid rgb(0, 153, 117);\n"
 "border-radius: 4px;")
-        self.label_operacion_4 = QLabel(self.groupBox_5)
-        self.label_operacion_4.setObjectName(u"label_operacion_4")
-        self.label_operacion_4.setGeometry(QRect(20, 120, 81, 31))
-        self.label_operacion_4.setStyleSheet(u"color:rgb(255, 255, 255);\n"
+
+        self.gridLayout_2.addWidget(self.textBox_operacion, 1, 2, 1, 1)
+
+        self.label_tiempo_t = QLabel(self.groupBox_5)
+        self.label_tiempo_t.setObjectName(u"label_tiempo_t")
+        self.label_tiempo_t.setStyleSheet(u"color:rgb(255, 255, 255);\n"
 "font: 10pt \"Segoe UI Emoji\";\n"
 "")
+
+        self.gridLayout_2.addWidget(self.label_tiempo_t, 2, 0, 1, 2)
+
         self.textBox_tiempo_transcurrido = QLineEdit(self.groupBox_5)
         self.textBox_tiempo_transcurrido.setObjectName(u"textBox_tiempo_transcurrido")
-        self.textBox_tiempo_transcurrido.setGeometry(QRect(150, 160, 141, 35))
         self.textBox_tiempo_transcurrido.setMinimumSize(QSize(60, 35))
         self.textBox_tiempo_transcurrido.setMaximumSize(QSize(230, 35))
         self.textBox_tiempo_transcurrido.setStyleSheet(u"background-color: rgb(52, 62, 64);\n"
 "color: rgb(255, 255, 255);\n"
 "border: 1px solid rgb(0, 153, 117);\n"
 "border-radius: 4px;")
-        self.label_tiempo_t = QLabel(self.groupBox_5)
-        self.label_tiempo_t.setObjectName(u"label_tiempo_t")
-        self.label_tiempo_t.setGeometry(QRect(20, 160, 111, 31))
-        self.label_tiempo_t.setStyleSheet(u"color:rgb(255, 255, 255);\n"
-"font: 10pt \"Segoe UI Emoji\";\n"
-"")
-        self.textBox_Id_proceso = QLineEdit(self.groupBox_5)
-        self.textBox_Id_proceso.setObjectName(u"textBox_Id_proceso")
-        self.textBox_Id_proceso.setGeometry(QRect(150, 240, 141, 35))
-        self.textBox_Id_proceso.setMinimumSize(QSize(60, 35))
-        self.textBox_Id_proceso.setMaximumSize(QSize(230, 35))
-        self.textBox_Id_proceso.setStyleSheet(u"background-color: rgb(52, 62, 64);\n"
-"color: rgb(255, 255, 255);\n"
-"border: 1px solid rgb(0, 153, 117);\n"
-"border-radius: 4px;")
+
+        self.gridLayout_2.addWidget(self.textBox_tiempo_transcurrido, 2, 2, 1, 1)
+
         self.label_tiempo_r = QLabel(self.groupBox_5)
         self.label_tiempo_r.setObjectName(u"label_tiempo_r")
-        self.label_tiempo_r.setGeometry(QRect(20, 200, 101, 31))
         self.label_tiempo_r.setStyleSheet(u"color:rgb(255, 255, 255);\n"
 "font: 10pt \"Segoe UI Emoji\";\n"
 "")
+
+        self.gridLayout_2.addWidget(self.label_tiempo_r, 3, 0, 1, 2)
+
         self.textBox_tiempo_restante = QLineEdit(self.groupBox_5)
         self.textBox_tiempo_restante.setObjectName(u"textBox_tiempo_restante")
-        self.textBox_tiempo_restante.setGeometry(QRect(150, 200, 141, 35))
         self.textBox_tiempo_restante.setMinimumSize(QSize(60, 35))
         self.textBox_tiempo_restante.setMaximumSize(QSize(230, 35))
         self.textBox_tiempo_restante.setStyleSheet(u"background-color: rgb(52, 62, 64);\n"
 "color: rgb(255, 255, 255);\n"
 "border: 1px solid rgb(0, 153, 117);\n"
 "border-radius: 4px;")
+
+        self.gridLayout_2.addWidget(self.textBox_tiempo_restante, 3, 2, 1, 1)
+
         self.label_id = QLabel(self.groupBox_5)
         self.label_id.setObjectName(u"label_id")
-        self.label_id.setGeometry(QRect(20, 240, 31, 31))
         self.label_id.setStyleSheet(u"color:rgb(255, 255, 255);\n"
 "font: 10pt \"Segoe UI Emoji\";\n"
 "")
-        self.textBox_proximo_size = QLineEdit(self.groupBox_5)
-        self.textBox_proximo_size.setObjectName(u"textBox_proximo_size")
-        self.textBox_proximo_size.setGeometry(QRect(230, 50, 61, 35))
-        self.textBox_proximo_size.setMinimumSize(QSize(60, 35))
-        self.textBox_proximo_size.setMaximumSize(QSize(230, 35))
-        self.textBox_proximo_size.setStyleSheet(u"background-color: rgb(52, 62, 64);\n"
+
+        self.gridLayout_2.addWidget(self.label_id, 4, 0, 1, 1)
+
+        self.textBox_Id_proceso = QLineEdit(self.groupBox_5)
+        self.textBox_Id_proceso.setObjectName(u"textBox_Id_proceso")
+        self.textBox_Id_proceso.setMinimumSize(QSize(60, 35))
+        self.textBox_Id_proceso.setMaximumSize(QSize(230, 35))
+        self.textBox_Id_proceso.setStyleSheet(u"background-color: rgb(52, 62, 64);\n"
 "color: rgb(255, 255, 255);\n"
 "border: 1px solid rgb(0, 153, 117);\n"
 "border-radius: 4px;")
-        self.textBox_proximo_id = QLineEdit(self.groupBox_5)
-        self.textBox_proximo_id.setObjectName(u"textBox_proximo_id")
-        self.textBox_proximo_id.setGeometry(QRect(90, 50, 61, 35))
-        self.textBox_proximo_id.setMinimumSize(QSize(60, 35))
-        self.textBox_proximo_id.setMaximumSize(QSize(230, 35))
-        self.textBox_proximo_id.setStyleSheet(u"background-color: rgb(52, 62, 64);\n"
-"color: rgb(255, 255, 255);\n"
-"border: 1px solid rgb(0, 153, 117);\n"
-"border-radius: 4px;")
-        self.label_titulo_Nuevos_2 = QLabel(self.groupBox_5)
-        self.label_titulo_Nuevos_2.setObjectName(u"label_titulo_Nuevos_2")
-        self.label_titulo_Nuevos_2.setGeometry(QRect(80, 10, 151, 31))
-        self.label_titulo_Nuevos_2.setStyleSheet(u"color:rgb(0, 153, 117);\n"
-"\n"
-"font: 63 13pt \"Segoe UI Semibold\";\n"
-"")
-        self.label_Numero_tamanio = QLabel(self.groupBox_5)
-        self.label_Numero_tamanio.setObjectName(u"label_Numero_tamanio")
-        self.label_Numero_tamanio.setGeometry(QRect(170, 60, 51, 21))
-        self.label_Numero_tamanio.setAutoFillBackground(True)
-        self.label_Numero_tamanio.setStyleSheet(u"color:rgb(255, 255, 255);\n"
+
+        self.gridLayout_2.addWidget(self.textBox_Id_proceso, 4, 2, 1, 1)
+
+        self.label_id_quantum = QLabel(self.groupBox_5)
+        self.label_id_quantum.setObjectName(u"label_id_quantum")
+        self.label_id_quantum.setStyleSheet(u"color:rgb(255, 255, 255);\n"
 "font: 10pt \"Segoe UI Emoji\";\n"
 "")
-        self.label_Numero_id = QLabel(self.groupBox_5)
-        self.label_Numero_id.setObjectName(u"label_Numero_id")
-        self.label_Numero_id.setGeometry(QRect(50, 60, 21, 21))
-        self.label_Numero_id.setAutoFillBackground(False)
-        self.label_Numero_id.setStyleSheet(u"color:rgb(255, 255, 255);\n"
-"font: 10pt \"Segoe UI Emoji\";\n"
-"")
+
+        self.gridLayout_2.addWidget(self.label_id_quantum, 5, 0, 1, 1)
+
         self.textBox_Id_quantum = QLineEdit(self.groupBox_5)
         self.textBox_Id_quantum.setObjectName(u"textBox_Id_quantum")
-        self.textBox_Id_quantum.setGeometry(QRect(150, 280, 141, 35))
         self.textBox_Id_quantum.setMinimumSize(QSize(60, 35))
         self.textBox_Id_quantum.setMaximumSize(QSize(230, 35))
         self.textBox_Id_quantum.setStyleSheet(u"background-color: rgb(52, 62, 64);\n"
 "color: rgb(255, 255, 255);\n"
 "border: 1px solid rgb(0, 153, 117);\n"
 "border-radius: 4px;")
-        self.label_id_quantum = QLabel(self.groupBox_5)
-        self.label_id_quantum.setObjectName(u"label_id_quantum")
-        self.label_id_quantum.setGeometry(QRect(20, 280, 61, 31))
-        self.label_id_quantum.setStyleSheet(u"color:rgb(255, 255, 255);\n"
-"font: 10pt \"Segoe UI Emoji\";\n"
-"")
+
+        self.gridLayout_2.addWidget(self.textBox_Id_quantum, 5, 2, 1, 1)
+
         self.tablaProcesos = QTableWidget(self.groupBox_2)
         if (self.tablaProcesos.columnCount() < 3):
             self.tablaProcesos.setColumnCount(3)
-        __qtablewidgetitem2 = QTableWidgetItem()
-        self.tablaProcesos.setHorizontalHeaderItem(0, __qtablewidgetitem2)
-        __qtablewidgetitem3 = QTableWidgetItem()
-        self.tablaProcesos.setHorizontalHeaderItem(1, __qtablewidgetitem3)
         __qtablewidgetitem4 = QTableWidgetItem()
-        self.tablaProcesos.setHorizontalHeaderItem(2, __qtablewidgetitem4)
+        self.tablaProcesos.setHorizontalHeaderItem(0, __qtablewidgetitem4)
+        __qtablewidgetitem5 = QTableWidgetItem()
+        self.tablaProcesos.setHorizontalHeaderItem(1, __qtablewidgetitem5)
+        __qtablewidgetitem6 = QTableWidgetItem()
+        self.tablaProcesos.setHorizontalHeaderItem(2, __qtablewidgetitem6)
         self.tablaProcesos.setObjectName(u"tablaProcesos")
         self.tablaProcesos.setEnabled(False)
         self.tablaProcesos.setGeometry(QRect(20, 60, 315, 181))
@@ -308,49 +379,94 @@ class Ui_MainWindow(object):
         self.tablaProcesos.verticalHeader().setHighlightSections(False)
         self.label_titulo_ProceL = QLabel(self.groupBox_2)
         self.label_titulo_ProceL.setObjectName(u"label_titulo_ProceL")
-        self.label_titulo_ProceL.setGeometry(QRect(20, 20, 131, 31))
+        self.label_titulo_ProceL.setGeometry(QRect(120, 20, 131, 31))
         self.label_titulo_ProceL.setStyleSheet(u"color:rgb(0, 153, 117);\n"
 "\n"
 "font: 63 13pt \"Segoe UI Semibold\";\n"
 "")
-        self.label_titulo_Nuevos = QLabel(self.groupBox_2)
+        self.groupBox_8 = QGroupBox(self.groupBox_2)
+        self.groupBox_8.setObjectName(u"groupBox_8")
+        self.groupBox_8.setGeometry(QRect(50, 250, 261, 91))
+        self.label_titulo_Nuevos = QLabel(self.groupBox_8)
         self.label_titulo_Nuevos.setObjectName(u"label_titulo_Nuevos")
-        self.label_titulo_Nuevos.setGeometry(QRect(210, 10, 61, 31))
+        self.label_titulo_Nuevos.setGeometry(QRect(70, 10, 131, 21))
         self.label_titulo_Nuevos.setStyleSheet(u"color:rgb(0, 153, 117);\n"
 "\n"
 "font: 63 13pt \"Segoe UI Semibold\";\n"
 "")
-        self.textBox_restantes = QLineEdit(self.groupBox_2)
+        self.textBox_restantes = QLineEdit(self.groupBox_8)
         self.textBox_restantes.setObjectName(u"textBox_restantes")
-        self.textBox_restantes.setGeometry(QRect(280, 10, 61, 35))
+        self.textBox_restantes.setGeometry(QRect(100, 40, 61, 35))
         self.textBox_restantes.setMinimumSize(QSize(60, 35))
         self.textBox_restantes.setMaximumSize(QSize(230, 35))
         self.textBox_restantes.setStyleSheet(u"background-color: rgb(52, 62, 64);\n"
 "color: rgb(255, 255, 255);\n"
 "border: 1px solid rgb(0, 153, 117);\n"
 "border-radius: 4px;")
+        self.groupBox_9 = QGroupBox(self.groupBox_2)
+        self.groupBox_9.setObjectName(u"groupBox_9")
+        self.groupBox_9.setGeometry(QRect(50, 360, 261, 121))
+        self.label_titulo_Nuevos_2 = QLabel(self.groupBox_9)
+        self.label_titulo_Nuevos_2.setObjectName(u"label_titulo_Nuevos_2")
+        self.label_titulo_Nuevos_2.setGeometry(QRect(60, 10, 151, 21))
+        self.label_titulo_Nuevos_2.setStyleSheet(u"color:rgb(0, 153, 117);\n"
+"\n"
+"font: 63 13pt \"Segoe UI Semibold\";\n"
+"")
+        self.label_Numero_tamanio = QLabel(self.groupBox_9)
+        self.label_Numero_tamanio.setObjectName(u"label_Numero_tamanio")
+        self.label_Numero_tamanio.setGeometry(QRect(160, 40, 51, 21))
+        self.label_Numero_tamanio.setAutoFillBackground(False)
+        self.label_Numero_tamanio.setStyleSheet(u"color:rgb(255, 255, 255);\n"
+"font: 10pt \"Segoe UI Emoji\";\n"
+"")
+        self.label_Numero_id = QLabel(self.groupBox_9)
+        self.label_Numero_id.setObjectName(u"label_Numero_id")
+        self.label_Numero_id.setGeometry(QRect(40, 40, 21, 21))
+        self.label_Numero_id.setAutoFillBackground(False)
+        self.label_Numero_id.setStyleSheet(u"color:rgb(255, 255, 255);\n"
+"font: 10pt \"Segoe UI Emoji\";\n"
+"")
+        self.textBox_proximo_size = QLineEdit(self.groupBox_9)
+        self.textBox_proximo_size.setObjectName(u"textBox_proximo_size")
+        self.textBox_proximo_size.setGeometry(QRect(160, 70, 61, 35))
+        self.textBox_proximo_size.setMinimumSize(QSize(60, 35))
+        self.textBox_proximo_size.setMaximumSize(QSize(230, 35))
+        self.textBox_proximo_size.setStyleSheet(u"background-color: rgb(52, 62, 64);\n"
+"color: rgb(255, 255, 255);\n"
+"border: 1px solid rgb(0, 153, 117);\n"
+"border-radius: 4px;")
+        self.textBox_proximo_id = QLineEdit(self.groupBox_9)
+        self.textBox_proximo_id.setObjectName(u"textBox_proximo_id")
+        self.textBox_proximo_id.setGeometry(QRect(20, 70, 61, 35))
+        self.textBox_proximo_id.setMinimumSize(QSize(60, 35))
+        self.textBox_proximo_id.setMaximumSize(QSize(230, 35))
+        self.textBox_proximo_id.setStyleSheet(u"background-color: rgb(52, 62, 64);\n"
+"color: rgb(255, 255, 255);\n"
+"border: 1px solid rgb(0, 153, 117);\n"
+"border-radius: 4px;")
         self.groupBox_3 = QGroupBox(self.centralwidget)
         self.groupBox_3.setObjectName(u"groupBox_3")
-        self.groupBox_3.setGeometry(QRect(630, 10, 401, 641))
+        self.groupBox_3.setGeometry(QRect(630, 0, 401, 741))
         self.label_titulo_ProcesoT = QLabel(self.groupBox_3)
         self.label_titulo_ProcesoT.setObjectName(u"label_titulo_ProcesoT")
         self.label_titulo_ProcesoT.setGeometry(QRect(70, 20, 221, 31))
         self.label_titulo_ProcesoT.setStyleSheet(u"color:rgb(0, 153, 117);\n"
 "\n"
-"font: 63 13pt \"Segoe UI Semibold\";\n"
+"font: 63 16pt \"Segoe UI Semibold\";\n"
 "")
         self.tablaPTerminados = QTableWidget(self.groupBox_3)
         if (self.tablaPTerminados.columnCount() < 3):
             self.tablaPTerminados.setColumnCount(3)
-        __qtablewidgetitem5 = QTableWidgetItem()
-        self.tablaPTerminados.setHorizontalHeaderItem(0, __qtablewidgetitem5)
-        __qtablewidgetitem6 = QTableWidgetItem()
-        self.tablaPTerminados.setHorizontalHeaderItem(1, __qtablewidgetitem6)
         __qtablewidgetitem7 = QTableWidgetItem()
-        self.tablaPTerminados.setHorizontalHeaderItem(2, __qtablewidgetitem7)
+        self.tablaPTerminados.setHorizontalHeaderItem(0, __qtablewidgetitem7)
+        __qtablewidgetitem8 = QTableWidgetItem()
+        self.tablaPTerminados.setHorizontalHeaderItem(1, __qtablewidgetitem8)
+        __qtablewidgetitem9 = QTableWidgetItem()
+        self.tablaPTerminados.setHorizontalHeaderItem(2, __qtablewidgetitem9)
         self.tablaPTerminados.setObjectName(u"tablaPTerminados")
         self.tablaPTerminados.setEnabled(False)
-        self.tablaPTerminados.setGeometry(QRect(40, 60, 301, 491))
+        self.tablaPTerminados.setGeometry(QRect(40, 60, 301, 571))
         self.tablaPTerminados.setStyleSheet(u"background-color: rgb(52, 62, 64);")
         self.tablaPTerminados.setVerticalScrollBarPolicy(Qt.ScrollBarAsNeeded)
         self.tablaPTerminados.setHorizontalScrollBarPolicy(Qt.ScrollBarAlwaysOff)
@@ -364,14 +480,14 @@ class Ui_MainWindow(object):
         self.tablaPTerminados.verticalHeader().setVisible(False)
         self.label_titulo_Cont = QLabel(self.groupBox_3)
         self.label_titulo_Cont.setObjectName(u"label_titulo_Cont")
-        self.label_titulo_Cont.setGeometry(QRect(230, 580, 101, 31))
+        self.label_titulo_Cont.setGeometry(QRect(210, 670, 91, 31))
         self.label_titulo_Cont.setStyleSheet(u"color:rgb(0, 153, 117);\n"
 "\n"
 "font: 63 13pt \"Segoe UI Semibold\";\n"
 "")
         self.textBox_contadorGlobal = QLineEdit(self.groupBox_3)
         self.textBox_contadorGlobal.setObjectName(u"textBox_contadorGlobal")
-        self.textBox_contadorGlobal.setGeometry(QRect(320, 580, 71, 35))
+        self.textBox_contadorGlobal.setGeometry(QRect(300, 670, 71, 35))
         self.textBox_contadorGlobal.setMinimumSize(QSize(60, 35))
         self.textBox_contadorGlobal.setMaximumSize(QSize(230, 35))
         self.textBox_contadorGlobal.setStyleSheet(u"background-color: rgb(52, 62, 64);\n"
@@ -380,7 +496,7 @@ class Ui_MainWindow(object):
 "border-radius: 4px;")
         self.textBox_quantumGlobal = QLineEdit(self.groupBox_3)
         self.textBox_quantumGlobal.setObjectName(u"textBox_quantumGlobal")
-        self.textBox_quantumGlobal.setGeometry(QRect(130, 580, 71, 35))
+        self.textBox_quantumGlobal.setGeometry(QRect(120, 670, 71, 35))
         self.textBox_quantumGlobal.setMinimumSize(QSize(60, 35))
         self.textBox_quantumGlobal.setMaximumSize(QSize(230, 35))
         self.textBox_quantumGlobal.setStyleSheet(u"background-color: rgb(52, 62, 64);\n"
@@ -389,140 +505,140 @@ class Ui_MainWindow(object):
 "border-radius: 4px;")
         self.label_titulo_quatum = QLabel(self.groupBox_3)
         self.label_titulo_quatum.setObjectName(u"label_titulo_quatum")
-        self.label_titulo_quatum.setGeometry(QRect(30, 580, 91, 31))
+        self.label_titulo_quatum.setGeometry(QRect(20, 670, 91, 31))
         self.label_titulo_quatum.setStyleSheet(u"color:rgb(0, 153, 117);\n"
 "\n"
 "font: 63 13pt \"Segoe UI Semibold\";\n"
 "")
         self.groupBox_6 = QGroupBox(self.centralwidget)
         self.groupBox_6.setObjectName(u"groupBox_6")
-        self.groupBox_6.setGeometry(QRect(1030, 10, 471, 641))
+        self.groupBox_6.setGeometry(QRect(1030, 0, 471, 741))
         self.label_titulo_ProcesoTableP = QLabel(self.groupBox_6)
         self.label_titulo_ProcesoTableP.setObjectName(u"label_titulo_ProcesoTableP")
-        self.label_titulo_ProcesoTableP.setGeometry(QRect(170, 40, 131, 31))
+        self.label_titulo_ProcesoTableP.setGeometry(QRect(160, 70, 181, 41))
         self.label_titulo_ProcesoTableP.setAutoFillBackground(False)
         self.label_titulo_ProcesoTableP.setStyleSheet(u"color:rgb(0, 153, 117);\n"
 "\n"
-"font: 63 13pt \"Segoe UI Semibold\";\n"
+"font: 63 18pt \"Segoe UI Semibold\";\n"
 "")
         self.groupBox_7 = QGroupBox(self.groupBox_6)
         self.groupBox_7.setObjectName(u"groupBox_7")
-        self.groupBox_7.setGeometry(QRect(40, 100, 421, 491))
+        self.groupBox_7.setGeometry(QRect(40, 140, 421, 491))
         self.tablaPaginacionL = QTableWidget(self.groupBox_7)
         if (self.tablaPaginacionL.columnCount() < 3):
             self.tablaPaginacionL.setColumnCount(3)
-        __qtablewidgetitem8 = QTableWidgetItem()
-        __qtablewidgetitem8.setText(u"ID");
-        __qtablewidgetitem8.setBackground(QColor(0, 2, 0));
-        self.tablaPaginacionL.setHorizontalHeaderItem(0, __qtablewidgetitem8)
-        __qtablewidgetitem9 = QTableWidgetItem()
-        self.tablaPaginacionL.setHorizontalHeaderItem(1, __qtablewidgetitem9)
         __qtablewidgetitem10 = QTableWidgetItem()
-        self.tablaPaginacionL.setHorizontalHeaderItem(2, __qtablewidgetitem10)
+        __qtablewidgetitem10.setText(u"ID");
+        __qtablewidgetitem10.setBackground(QColor(0, 2, 0));
+        self.tablaPaginacionL.setHorizontalHeaderItem(0, __qtablewidgetitem10)
+        __qtablewidgetitem11 = QTableWidgetItem()
+        self.tablaPaginacionL.setHorizontalHeaderItem(1, __qtablewidgetitem11)
+        __qtablewidgetitem12 = QTableWidgetItem()
+        self.tablaPaginacionL.setHorizontalHeaderItem(2, __qtablewidgetitem12)
         if (self.tablaPaginacionL.rowCount() < 22):
             self.tablaPaginacionL.setRowCount(22)
-        __qtablewidgetitem11 = QTableWidgetItem()
-        self.tablaPaginacionL.setVerticalHeaderItem(0, __qtablewidgetitem11)
-        __qtablewidgetitem12 = QTableWidgetItem()
-        self.tablaPaginacionL.setVerticalHeaderItem(1, __qtablewidgetitem12)
         __qtablewidgetitem13 = QTableWidgetItem()
-        self.tablaPaginacionL.setVerticalHeaderItem(2, __qtablewidgetitem13)
+        self.tablaPaginacionL.setVerticalHeaderItem(0, __qtablewidgetitem13)
         __qtablewidgetitem14 = QTableWidgetItem()
-        self.tablaPaginacionL.setVerticalHeaderItem(3, __qtablewidgetitem14)
+        self.tablaPaginacionL.setVerticalHeaderItem(1, __qtablewidgetitem14)
         __qtablewidgetitem15 = QTableWidgetItem()
-        self.tablaPaginacionL.setVerticalHeaderItem(4, __qtablewidgetitem15)
+        self.tablaPaginacionL.setVerticalHeaderItem(2, __qtablewidgetitem15)
         __qtablewidgetitem16 = QTableWidgetItem()
-        self.tablaPaginacionL.setVerticalHeaderItem(5, __qtablewidgetitem16)
+        self.tablaPaginacionL.setVerticalHeaderItem(3, __qtablewidgetitem16)
         __qtablewidgetitem17 = QTableWidgetItem()
-        self.tablaPaginacionL.setVerticalHeaderItem(6, __qtablewidgetitem17)
+        self.tablaPaginacionL.setVerticalHeaderItem(4, __qtablewidgetitem17)
         __qtablewidgetitem18 = QTableWidgetItem()
-        self.tablaPaginacionL.setVerticalHeaderItem(7, __qtablewidgetitem18)
+        self.tablaPaginacionL.setVerticalHeaderItem(5, __qtablewidgetitem18)
         __qtablewidgetitem19 = QTableWidgetItem()
-        self.tablaPaginacionL.setVerticalHeaderItem(8, __qtablewidgetitem19)
+        self.tablaPaginacionL.setVerticalHeaderItem(6, __qtablewidgetitem19)
         __qtablewidgetitem20 = QTableWidgetItem()
-        self.tablaPaginacionL.setVerticalHeaderItem(9, __qtablewidgetitem20)
+        self.tablaPaginacionL.setVerticalHeaderItem(7, __qtablewidgetitem20)
         __qtablewidgetitem21 = QTableWidgetItem()
-        self.tablaPaginacionL.setVerticalHeaderItem(10, __qtablewidgetitem21)
+        self.tablaPaginacionL.setVerticalHeaderItem(8, __qtablewidgetitem21)
         __qtablewidgetitem22 = QTableWidgetItem()
-        self.tablaPaginacionL.setVerticalHeaderItem(11, __qtablewidgetitem22)
+        self.tablaPaginacionL.setVerticalHeaderItem(9, __qtablewidgetitem22)
         __qtablewidgetitem23 = QTableWidgetItem()
-        self.tablaPaginacionL.setVerticalHeaderItem(12, __qtablewidgetitem23)
+        self.tablaPaginacionL.setVerticalHeaderItem(10, __qtablewidgetitem23)
         __qtablewidgetitem24 = QTableWidgetItem()
-        self.tablaPaginacionL.setVerticalHeaderItem(13, __qtablewidgetitem24)
+        self.tablaPaginacionL.setVerticalHeaderItem(11, __qtablewidgetitem24)
         __qtablewidgetitem25 = QTableWidgetItem()
-        self.tablaPaginacionL.setVerticalHeaderItem(14, __qtablewidgetitem25)
+        self.tablaPaginacionL.setVerticalHeaderItem(12, __qtablewidgetitem25)
         __qtablewidgetitem26 = QTableWidgetItem()
-        self.tablaPaginacionL.setVerticalHeaderItem(15, __qtablewidgetitem26)
+        self.tablaPaginacionL.setVerticalHeaderItem(13, __qtablewidgetitem26)
         __qtablewidgetitem27 = QTableWidgetItem()
-        self.tablaPaginacionL.setVerticalHeaderItem(16, __qtablewidgetitem27)
+        self.tablaPaginacionL.setVerticalHeaderItem(14, __qtablewidgetitem27)
         __qtablewidgetitem28 = QTableWidgetItem()
-        self.tablaPaginacionL.setVerticalHeaderItem(17, __qtablewidgetitem28)
+        self.tablaPaginacionL.setVerticalHeaderItem(15, __qtablewidgetitem28)
         __qtablewidgetitem29 = QTableWidgetItem()
-        self.tablaPaginacionL.setVerticalHeaderItem(18, __qtablewidgetitem29)
+        self.tablaPaginacionL.setVerticalHeaderItem(16, __qtablewidgetitem29)
         __qtablewidgetitem30 = QTableWidgetItem()
-        self.tablaPaginacionL.setVerticalHeaderItem(19, __qtablewidgetitem30)
+        self.tablaPaginacionL.setVerticalHeaderItem(17, __qtablewidgetitem30)
         __qtablewidgetitem31 = QTableWidgetItem()
-        self.tablaPaginacionL.setVerticalHeaderItem(20, __qtablewidgetitem31)
+        self.tablaPaginacionL.setVerticalHeaderItem(18, __qtablewidgetitem31)
         __qtablewidgetitem32 = QTableWidgetItem()
-        self.tablaPaginacionL.setVerticalHeaderItem(21, __qtablewidgetitem32)
+        self.tablaPaginacionL.setVerticalHeaderItem(19, __qtablewidgetitem32)
+        __qtablewidgetitem33 = QTableWidgetItem()
+        self.tablaPaginacionL.setVerticalHeaderItem(20, __qtablewidgetitem33)
+        __qtablewidgetitem34 = QTableWidgetItem()
+        self.tablaPaginacionL.setVerticalHeaderItem(21, __qtablewidgetitem34)
         brush = QBrush(QColor(85, 255, 0, 255))
         brush.setStyle(Qt.NoBrush)
         brush1 = QBrush(QColor(255, 170, 0, 255))
         brush1.setStyle(Qt.NoBrush)
-        __qtablewidgetitem33 = QTableWidgetItem()
-        __qtablewidgetitem33.setTextAlignment(Qt.AlignCenter);
-        __qtablewidgetitem33.setBackground(brush1);
-        __qtablewidgetitem33.setForeground(brush);
-        __qtablewidgetitem33.setFlags(Qt.ItemIsSelectable|Qt.ItemIsEditable|Qt.ItemIsDragEnabled|Qt.ItemIsDropEnabled|Qt.ItemIsUserCheckable|Qt.ItemIsEnabled|Qt.ItemIsAutoTristate);
-        self.tablaPaginacionL.setItem(0, 0, __qtablewidgetitem33)
-        __qtablewidgetitem34 = QTableWidgetItem()
-        self.tablaPaginacionL.setItem(0, 1, __qtablewidgetitem34)
         __qtablewidgetitem35 = QTableWidgetItem()
-        self.tablaPaginacionL.setItem(1, 1, __qtablewidgetitem35)
+        __qtablewidgetitem35.setTextAlignment(Qt.AlignCenter);
+        __qtablewidgetitem35.setBackground(brush1);
+        __qtablewidgetitem35.setForeground(brush);
+        __qtablewidgetitem35.setFlags(Qt.ItemIsSelectable|Qt.ItemIsEditable|Qt.ItemIsDragEnabled|Qt.ItemIsDropEnabled|Qt.ItemIsUserCheckable|Qt.ItemIsEnabled|Qt.ItemIsAutoTristate);
+        self.tablaPaginacionL.setItem(0, 0, __qtablewidgetitem35)
         __qtablewidgetitem36 = QTableWidgetItem()
-        self.tablaPaginacionL.setItem(2, 1, __qtablewidgetitem36)
+        self.tablaPaginacionL.setItem(0, 1, __qtablewidgetitem36)
         __qtablewidgetitem37 = QTableWidgetItem()
-        self.tablaPaginacionL.setItem(3, 1, __qtablewidgetitem37)
+        self.tablaPaginacionL.setItem(1, 1, __qtablewidgetitem37)
         __qtablewidgetitem38 = QTableWidgetItem()
-        self.tablaPaginacionL.setItem(4, 1, __qtablewidgetitem38)
+        self.tablaPaginacionL.setItem(2, 1, __qtablewidgetitem38)
         __qtablewidgetitem39 = QTableWidgetItem()
-        self.tablaPaginacionL.setItem(5, 1, __qtablewidgetitem39)
+        self.tablaPaginacionL.setItem(3, 1, __qtablewidgetitem39)
         __qtablewidgetitem40 = QTableWidgetItem()
-        self.tablaPaginacionL.setItem(6, 1, __qtablewidgetitem40)
+        self.tablaPaginacionL.setItem(4, 1, __qtablewidgetitem40)
         __qtablewidgetitem41 = QTableWidgetItem()
-        self.tablaPaginacionL.setItem(7, 1, __qtablewidgetitem41)
+        self.tablaPaginacionL.setItem(5, 1, __qtablewidgetitem41)
         __qtablewidgetitem42 = QTableWidgetItem()
-        self.tablaPaginacionL.setItem(8, 1, __qtablewidgetitem42)
+        self.tablaPaginacionL.setItem(6, 1, __qtablewidgetitem42)
         __qtablewidgetitem43 = QTableWidgetItem()
-        self.tablaPaginacionL.setItem(9, 1, __qtablewidgetitem43)
+        self.tablaPaginacionL.setItem(7, 1, __qtablewidgetitem43)
         __qtablewidgetitem44 = QTableWidgetItem()
-        self.tablaPaginacionL.setItem(10, 1, __qtablewidgetitem44)
+        self.tablaPaginacionL.setItem(8, 1, __qtablewidgetitem44)
         __qtablewidgetitem45 = QTableWidgetItem()
-        self.tablaPaginacionL.setItem(11, 1, __qtablewidgetitem45)
+        self.tablaPaginacionL.setItem(9, 1, __qtablewidgetitem45)
         __qtablewidgetitem46 = QTableWidgetItem()
-        self.tablaPaginacionL.setItem(12, 0, __qtablewidgetitem46)
+        self.tablaPaginacionL.setItem(10, 1, __qtablewidgetitem46)
         __qtablewidgetitem47 = QTableWidgetItem()
-        self.tablaPaginacionL.setItem(12, 1, __qtablewidgetitem47)
+        self.tablaPaginacionL.setItem(11, 1, __qtablewidgetitem47)
         __qtablewidgetitem48 = QTableWidgetItem()
-        self.tablaPaginacionL.setItem(13, 0, __qtablewidgetitem48)
+        self.tablaPaginacionL.setItem(12, 0, __qtablewidgetitem48)
         __qtablewidgetitem49 = QTableWidgetItem()
-        self.tablaPaginacionL.setItem(13, 1, __qtablewidgetitem49)
+        self.tablaPaginacionL.setItem(12, 1, __qtablewidgetitem49)
         __qtablewidgetitem50 = QTableWidgetItem()
-        self.tablaPaginacionL.setItem(14, 1, __qtablewidgetitem50)
+        self.tablaPaginacionL.setItem(13, 0, __qtablewidgetitem50)
         __qtablewidgetitem51 = QTableWidgetItem()
-        self.tablaPaginacionL.setItem(15, 1, __qtablewidgetitem51)
+        self.tablaPaginacionL.setItem(13, 1, __qtablewidgetitem51)
         __qtablewidgetitem52 = QTableWidgetItem()
-        self.tablaPaginacionL.setItem(16, 1, __qtablewidgetitem52)
+        self.tablaPaginacionL.setItem(14, 1, __qtablewidgetitem52)
         __qtablewidgetitem53 = QTableWidgetItem()
-        self.tablaPaginacionL.setItem(17, 1, __qtablewidgetitem53)
+        self.tablaPaginacionL.setItem(15, 1, __qtablewidgetitem53)
         __qtablewidgetitem54 = QTableWidgetItem()
-        self.tablaPaginacionL.setItem(18, 1, __qtablewidgetitem54)
+        self.tablaPaginacionL.setItem(16, 1, __qtablewidgetitem54)
         __qtablewidgetitem55 = QTableWidgetItem()
-        self.tablaPaginacionL.setItem(19, 1, __qtablewidgetitem55)
+        self.tablaPaginacionL.setItem(17, 1, __qtablewidgetitem55)
         __qtablewidgetitem56 = QTableWidgetItem()
-        self.tablaPaginacionL.setItem(20, 1, __qtablewidgetitem56)
+        self.tablaPaginacionL.setItem(18, 1, __qtablewidgetitem56)
         __qtablewidgetitem57 = QTableWidgetItem()
-        self.tablaPaginacionL.setItem(21, 1, __qtablewidgetitem57)
+        self.tablaPaginacionL.setItem(19, 1, __qtablewidgetitem57)
+        __qtablewidgetitem58 = QTableWidgetItem()
+        self.tablaPaginacionL.setItem(20, 1, __qtablewidgetitem58)
+        __qtablewidgetitem59 = QTableWidgetItem()
+        self.tablaPaginacionL.setItem(21, 1, __qtablewidgetitem59)
         self.tablaPaginacionL.setObjectName(u"tablaPaginacionL")
         self.tablaPaginacionL.setEnabled(False)
         self.tablaPaginacionL.setGeometry(QRect(20, 10, 171, 471))
@@ -563,118 +679,118 @@ class Ui_MainWindow(object):
         self.tablaPaginacionR = QTableWidget(self.groupBox_7)
         if (self.tablaPaginacionR.columnCount() < 3):
             self.tablaPaginacionR.setColumnCount(3)
-        __qtablewidgetitem58 = QTableWidgetItem()
-        __qtablewidgetitem58.setText(u"ID");
-        __qtablewidgetitem58.setBackground(QColor(0, 2, 0));
-        self.tablaPaginacionR.setHorizontalHeaderItem(0, __qtablewidgetitem58)
-        __qtablewidgetitem59 = QTableWidgetItem()
-        self.tablaPaginacionR.setHorizontalHeaderItem(1, __qtablewidgetitem59)
         __qtablewidgetitem60 = QTableWidgetItem()
-        self.tablaPaginacionR.setHorizontalHeaderItem(2, __qtablewidgetitem60)
+        __qtablewidgetitem60.setText(u"ID");
+        __qtablewidgetitem60.setBackground(QColor(0, 2, 0));
+        self.tablaPaginacionR.setHorizontalHeaderItem(0, __qtablewidgetitem60)
+        __qtablewidgetitem61 = QTableWidgetItem()
+        self.tablaPaginacionR.setHorizontalHeaderItem(1, __qtablewidgetitem61)
+        __qtablewidgetitem62 = QTableWidgetItem()
+        self.tablaPaginacionR.setHorizontalHeaderItem(2, __qtablewidgetitem62)
         if (self.tablaPaginacionR.rowCount() < 22):
             self.tablaPaginacionR.setRowCount(22)
-        __qtablewidgetitem61 = QTableWidgetItem()
-        self.tablaPaginacionR.setVerticalHeaderItem(0, __qtablewidgetitem61)
-        __qtablewidgetitem62 = QTableWidgetItem()
-        self.tablaPaginacionR.setVerticalHeaderItem(1, __qtablewidgetitem62)
         __qtablewidgetitem63 = QTableWidgetItem()
-        self.tablaPaginacionR.setVerticalHeaderItem(2, __qtablewidgetitem63)
+        self.tablaPaginacionR.setVerticalHeaderItem(0, __qtablewidgetitem63)
         __qtablewidgetitem64 = QTableWidgetItem()
-        self.tablaPaginacionR.setVerticalHeaderItem(3, __qtablewidgetitem64)
+        self.tablaPaginacionR.setVerticalHeaderItem(1, __qtablewidgetitem64)
         __qtablewidgetitem65 = QTableWidgetItem()
-        self.tablaPaginacionR.setVerticalHeaderItem(4, __qtablewidgetitem65)
+        self.tablaPaginacionR.setVerticalHeaderItem(2, __qtablewidgetitem65)
         __qtablewidgetitem66 = QTableWidgetItem()
-        self.tablaPaginacionR.setVerticalHeaderItem(5, __qtablewidgetitem66)
+        self.tablaPaginacionR.setVerticalHeaderItem(3, __qtablewidgetitem66)
         __qtablewidgetitem67 = QTableWidgetItem()
-        self.tablaPaginacionR.setVerticalHeaderItem(6, __qtablewidgetitem67)
+        self.tablaPaginacionR.setVerticalHeaderItem(4, __qtablewidgetitem67)
         __qtablewidgetitem68 = QTableWidgetItem()
-        self.tablaPaginacionR.setVerticalHeaderItem(7, __qtablewidgetitem68)
+        self.tablaPaginacionR.setVerticalHeaderItem(5, __qtablewidgetitem68)
         __qtablewidgetitem69 = QTableWidgetItem()
-        self.tablaPaginacionR.setVerticalHeaderItem(8, __qtablewidgetitem69)
+        self.tablaPaginacionR.setVerticalHeaderItem(6, __qtablewidgetitem69)
         __qtablewidgetitem70 = QTableWidgetItem()
-        self.tablaPaginacionR.setVerticalHeaderItem(9, __qtablewidgetitem70)
+        self.tablaPaginacionR.setVerticalHeaderItem(7, __qtablewidgetitem70)
         __qtablewidgetitem71 = QTableWidgetItem()
-        self.tablaPaginacionR.setVerticalHeaderItem(10, __qtablewidgetitem71)
+        self.tablaPaginacionR.setVerticalHeaderItem(8, __qtablewidgetitem71)
         __qtablewidgetitem72 = QTableWidgetItem()
-        self.tablaPaginacionR.setVerticalHeaderItem(11, __qtablewidgetitem72)
+        self.tablaPaginacionR.setVerticalHeaderItem(9, __qtablewidgetitem72)
         __qtablewidgetitem73 = QTableWidgetItem()
-        self.tablaPaginacionR.setVerticalHeaderItem(12, __qtablewidgetitem73)
+        self.tablaPaginacionR.setVerticalHeaderItem(10, __qtablewidgetitem73)
         __qtablewidgetitem74 = QTableWidgetItem()
-        self.tablaPaginacionR.setVerticalHeaderItem(13, __qtablewidgetitem74)
+        self.tablaPaginacionR.setVerticalHeaderItem(11, __qtablewidgetitem74)
         __qtablewidgetitem75 = QTableWidgetItem()
-        self.tablaPaginacionR.setVerticalHeaderItem(14, __qtablewidgetitem75)
+        self.tablaPaginacionR.setVerticalHeaderItem(12, __qtablewidgetitem75)
         __qtablewidgetitem76 = QTableWidgetItem()
-        self.tablaPaginacionR.setVerticalHeaderItem(15, __qtablewidgetitem76)
+        self.tablaPaginacionR.setVerticalHeaderItem(13, __qtablewidgetitem76)
         __qtablewidgetitem77 = QTableWidgetItem()
-        self.tablaPaginacionR.setVerticalHeaderItem(16, __qtablewidgetitem77)
+        self.tablaPaginacionR.setVerticalHeaderItem(14, __qtablewidgetitem77)
         __qtablewidgetitem78 = QTableWidgetItem()
-        self.tablaPaginacionR.setVerticalHeaderItem(17, __qtablewidgetitem78)
+        self.tablaPaginacionR.setVerticalHeaderItem(15, __qtablewidgetitem78)
         __qtablewidgetitem79 = QTableWidgetItem()
-        self.tablaPaginacionR.setVerticalHeaderItem(18, __qtablewidgetitem79)
+        self.tablaPaginacionR.setVerticalHeaderItem(16, __qtablewidgetitem79)
         __qtablewidgetitem80 = QTableWidgetItem()
-        self.tablaPaginacionR.setVerticalHeaderItem(19, __qtablewidgetitem80)
+        self.tablaPaginacionR.setVerticalHeaderItem(17, __qtablewidgetitem80)
         __qtablewidgetitem81 = QTableWidgetItem()
-        self.tablaPaginacionR.setVerticalHeaderItem(20, __qtablewidgetitem81)
+        self.tablaPaginacionR.setVerticalHeaderItem(18, __qtablewidgetitem81)
         __qtablewidgetitem82 = QTableWidgetItem()
-        self.tablaPaginacionR.setVerticalHeaderItem(21, __qtablewidgetitem82)
+        self.tablaPaginacionR.setVerticalHeaderItem(19, __qtablewidgetitem82)
+        __qtablewidgetitem83 = QTableWidgetItem()
+        self.tablaPaginacionR.setVerticalHeaderItem(20, __qtablewidgetitem83)
+        __qtablewidgetitem84 = QTableWidgetItem()
+        self.tablaPaginacionR.setVerticalHeaderItem(21, __qtablewidgetitem84)
         brush2 = QBrush(QColor(85, 255, 0, 255))
         brush2.setStyle(Qt.NoBrush)
         brush3 = QBrush(QColor(255, 170, 0, 255))
         brush3.setStyle(Qt.NoBrush)
-        __qtablewidgetitem83 = QTableWidgetItem()
-        __qtablewidgetitem83.setTextAlignment(Qt.AlignCenter);
-        __qtablewidgetitem83.setBackground(brush3);
-        __qtablewidgetitem83.setForeground(brush2);
-        __qtablewidgetitem83.setFlags(Qt.ItemIsSelectable|Qt.ItemIsEditable|Qt.ItemIsDragEnabled|Qt.ItemIsDropEnabled|Qt.ItemIsUserCheckable|Qt.ItemIsEnabled|Qt.ItemIsAutoTristate);
-        self.tablaPaginacionR.setItem(0, 0, __qtablewidgetitem83)
-        __qtablewidgetitem84 = QTableWidgetItem()
-        self.tablaPaginacionR.setItem(0, 1, __qtablewidgetitem84)
         __qtablewidgetitem85 = QTableWidgetItem()
-        self.tablaPaginacionR.setItem(1, 1, __qtablewidgetitem85)
+        __qtablewidgetitem85.setTextAlignment(Qt.AlignCenter);
+        __qtablewidgetitem85.setBackground(brush3);
+        __qtablewidgetitem85.setForeground(brush2);
+        __qtablewidgetitem85.setFlags(Qt.ItemIsSelectable|Qt.ItemIsEditable|Qt.ItemIsDragEnabled|Qt.ItemIsDropEnabled|Qt.ItemIsUserCheckable|Qt.ItemIsEnabled|Qt.ItemIsAutoTristate);
+        self.tablaPaginacionR.setItem(0, 0, __qtablewidgetitem85)
         __qtablewidgetitem86 = QTableWidgetItem()
-        self.tablaPaginacionR.setItem(2, 1, __qtablewidgetitem86)
+        self.tablaPaginacionR.setItem(0, 1, __qtablewidgetitem86)
         __qtablewidgetitem87 = QTableWidgetItem()
-        self.tablaPaginacionR.setItem(3, 1, __qtablewidgetitem87)
+        self.tablaPaginacionR.setItem(1, 1, __qtablewidgetitem87)
         __qtablewidgetitem88 = QTableWidgetItem()
-        self.tablaPaginacionR.setItem(4, 1, __qtablewidgetitem88)
+        self.tablaPaginacionR.setItem(2, 1, __qtablewidgetitem88)
         __qtablewidgetitem89 = QTableWidgetItem()
-        self.tablaPaginacionR.setItem(5, 1, __qtablewidgetitem89)
+        self.tablaPaginacionR.setItem(3, 1, __qtablewidgetitem89)
         __qtablewidgetitem90 = QTableWidgetItem()
-        self.tablaPaginacionR.setItem(6, 1, __qtablewidgetitem90)
+        self.tablaPaginacionR.setItem(4, 1, __qtablewidgetitem90)
         __qtablewidgetitem91 = QTableWidgetItem()
-        self.tablaPaginacionR.setItem(7, 1, __qtablewidgetitem91)
+        self.tablaPaginacionR.setItem(5, 1, __qtablewidgetitem91)
         __qtablewidgetitem92 = QTableWidgetItem()
-        self.tablaPaginacionR.setItem(8, 1, __qtablewidgetitem92)
+        self.tablaPaginacionR.setItem(6, 1, __qtablewidgetitem92)
         __qtablewidgetitem93 = QTableWidgetItem()
-        self.tablaPaginacionR.setItem(9, 1, __qtablewidgetitem93)
+        self.tablaPaginacionR.setItem(7, 1, __qtablewidgetitem93)
         __qtablewidgetitem94 = QTableWidgetItem()
-        self.tablaPaginacionR.setItem(10, 1, __qtablewidgetitem94)
+        self.tablaPaginacionR.setItem(8, 1, __qtablewidgetitem94)
         __qtablewidgetitem95 = QTableWidgetItem()
-        self.tablaPaginacionR.setItem(11, 1, __qtablewidgetitem95)
+        self.tablaPaginacionR.setItem(9, 1, __qtablewidgetitem95)
         __qtablewidgetitem96 = QTableWidgetItem()
-        self.tablaPaginacionR.setItem(12, 0, __qtablewidgetitem96)
+        self.tablaPaginacionR.setItem(10, 1, __qtablewidgetitem96)
         __qtablewidgetitem97 = QTableWidgetItem()
-        self.tablaPaginacionR.setItem(12, 1, __qtablewidgetitem97)
+        self.tablaPaginacionR.setItem(11, 1, __qtablewidgetitem97)
         __qtablewidgetitem98 = QTableWidgetItem()
-        self.tablaPaginacionR.setItem(13, 0, __qtablewidgetitem98)
+        self.tablaPaginacionR.setItem(12, 0, __qtablewidgetitem98)
         __qtablewidgetitem99 = QTableWidgetItem()
-        self.tablaPaginacionR.setItem(13, 1, __qtablewidgetitem99)
+        self.tablaPaginacionR.setItem(12, 1, __qtablewidgetitem99)
         __qtablewidgetitem100 = QTableWidgetItem()
-        self.tablaPaginacionR.setItem(14, 1, __qtablewidgetitem100)
+        self.tablaPaginacionR.setItem(13, 0, __qtablewidgetitem100)
         __qtablewidgetitem101 = QTableWidgetItem()
-        self.tablaPaginacionR.setItem(15, 1, __qtablewidgetitem101)
+        self.tablaPaginacionR.setItem(13, 1, __qtablewidgetitem101)
         __qtablewidgetitem102 = QTableWidgetItem()
-        self.tablaPaginacionR.setItem(16, 1, __qtablewidgetitem102)
+        self.tablaPaginacionR.setItem(14, 1, __qtablewidgetitem102)
         __qtablewidgetitem103 = QTableWidgetItem()
-        self.tablaPaginacionR.setItem(17, 1, __qtablewidgetitem103)
+        self.tablaPaginacionR.setItem(15, 1, __qtablewidgetitem103)
         __qtablewidgetitem104 = QTableWidgetItem()
-        self.tablaPaginacionR.setItem(18, 1, __qtablewidgetitem104)
+        self.tablaPaginacionR.setItem(16, 1, __qtablewidgetitem104)
         __qtablewidgetitem105 = QTableWidgetItem()
-        self.tablaPaginacionR.setItem(19, 1, __qtablewidgetitem105)
+        self.tablaPaginacionR.setItem(17, 1, __qtablewidgetitem105)
         __qtablewidgetitem106 = QTableWidgetItem()
-        self.tablaPaginacionR.setItem(20, 1, __qtablewidgetitem106)
+        self.tablaPaginacionR.setItem(18, 1, __qtablewidgetitem106)
         __qtablewidgetitem107 = QTableWidgetItem()
-        self.tablaPaginacionR.setItem(21, 1, __qtablewidgetitem107)
+        self.tablaPaginacionR.setItem(19, 1, __qtablewidgetitem107)
+        __qtablewidgetitem108 = QTableWidgetItem()
+        self.tablaPaginacionR.setItem(20, 1, __qtablewidgetitem108)
+        __qtablewidgetitem109 = QTableWidgetItem()
+        self.tablaPaginacionR.setItem(21, 1, __qtablewidgetitem109)
         self.tablaPaginacionR.setObjectName(u"tablaPaginacionR")
         self.tablaPaginacionR.setEnabled(False)
         self.tablaPaginacionR.setGeometry(QRect(230, 10, 171, 471))
@@ -999,33 +1115,42 @@ class Ui_MainWindow(object):
         self.label_titulo_ProceL_2.setText(QCoreApplication.translate("MainWindow", u"Procesos Bloqueados", None))
         self.textBox_Quantum.setText("")
         self.label_Numero_2.setText(QCoreApplication.translate("MainWindow", u"Quantum ", None))
+        self.label_titulo_ProceL_3.setText(QCoreApplication.translate("MainWindow", u"Procesos Suspendidos", None))
+        ___qtablewidgetitem2 = self.tablaPsuspendidos.horizontalHeaderItem(0)
+        ___qtablewidgetitem2.setText(QCoreApplication.translate("MainWindow", u"ID", None));
+        ___qtablewidgetitem3 = self.tablaPsuspendidos.horizontalHeaderItem(1)
+        ___qtablewidgetitem3.setText(QCoreApplication.translate("MainWindow", u"Tama\u00f1o", None));
+        self.label_titulo_ProceL_4.setText(QCoreApplication.translate("MainWindow", u"Procesos a regresar", None))
+        self.label_id_return.setText(QCoreApplication.translate("MainWindow", u"ID", None))
+        self.label_id_return2.setText(QCoreApplication.translate("MainWindow", u"Tama\u00f1o", None))
         self.groupBox_2.setTitle("")
-        self.groupBox_5.setTitle("")
         self.label_titulo_procesoEje.setText(QCoreApplication.translate("MainWindow", u"Proceso en ejecuci\u00f3n", None))
         self.label_operacion_4.setText(QCoreApplication.translate("MainWindow", u"Operaci\u00f3n", None))
         self.label_tiempo_t.setText(QCoreApplication.translate("MainWindow", u"T. Transcurrido", None))
         self.label_tiempo_r.setText(QCoreApplication.translate("MainWindow", u"T. Restante", None))
         self.label_id.setText(QCoreApplication.translate("MainWindow", u"ID", None))
+        self.label_id_quantum.setText(QCoreApplication.translate("MainWindow", u"Quantum", None))
+        ___qtablewidgetitem4 = self.tablaProcesos.horizontalHeaderItem(0)
+        ___qtablewidgetitem4.setText(QCoreApplication.translate("MainWindow", u"ID", None));
+        ___qtablewidgetitem5 = self.tablaProcesos.horizontalHeaderItem(1)
+        ___qtablewidgetitem5.setText(QCoreApplication.translate("MainWindow", u"T. M\u00e1x", None));
+        ___qtablewidgetitem6 = self.tablaProcesos.horizontalHeaderItem(2)
+        ___qtablewidgetitem6.setText(QCoreApplication.translate("MainWindow", u"T. Transcurrido", None));
+        self.label_titulo_ProceL.setText(QCoreApplication.translate("MainWindow", u"Procesos listos", None))
+        self.groupBox_8.setTitle("")
+        self.label_titulo_Nuevos.setText(QCoreApplication.translate("MainWindow", u"Nuevos procesos:", None))
+        self.groupBox_9.setTitle("")
         self.label_titulo_Nuevos_2.setText(QCoreApplication.translate("MainWindow", u"Proximo a ingresar", None))
         self.label_Numero_tamanio.setText(QCoreApplication.translate("MainWindow", u"Tama\u00f1o", None))
         self.label_Numero_id.setText(QCoreApplication.translate("MainWindow", u"ID", None))
-        self.label_id_quantum.setText(QCoreApplication.translate("MainWindow", u"Quantum", None))
-        ___qtablewidgetitem2 = self.tablaProcesos.horizontalHeaderItem(0)
-        ___qtablewidgetitem2.setText(QCoreApplication.translate("MainWindow", u"ID", None));
-        ___qtablewidgetitem3 = self.tablaProcesos.horizontalHeaderItem(1)
-        ___qtablewidgetitem3.setText(QCoreApplication.translate("MainWindow", u"T. M\u00e1x", None));
-        ___qtablewidgetitem4 = self.tablaProcesos.horizontalHeaderItem(2)
-        ___qtablewidgetitem4.setText(QCoreApplication.translate("MainWindow", u"T. Transcurrido", None));
-        self.label_titulo_ProceL.setText(QCoreApplication.translate("MainWindow", u"Procesos listos", None))
-        self.label_titulo_Nuevos.setText(QCoreApplication.translate("MainWindow", u"Nuevos:", None))
         self.groupBox_3.setTitle("")
         self.label_titulo_ProcesoT.setText(QCoreApplication.translate("MainWindow", u"Procesos Terminados", None))
-        ___qtablewidgetitem5 = self.tablaPTerminados.horizontalHeaderItem(0)
-        ___qtablewidgetitem5.setText(QCoreApplication.translate("MainWindow", u"ID", None));
-        ___qtablewidgetitem6 = self.tablaPTerminados.horizontalHeaderItem(1)
-        ___qtablewidgetitem6.setText(QCoreApplication.translate("MainWindow", u"Operaci\u00f3n", None));
-        ___qtablewidgetitem7 = self.tablaPTerminados.horizontalHeaderItem(2)
-        ___qtablewidgetitem7.setText(QCoreApplication.translate("MainWindow", u"Resultado", None));
+        ___qtablewidgetitem7 = self.tablaPTerminados.horizontalHeaderItem(0)
+        ___qtablewidgetitem7.setText(QCoreApplication.translate("MainWindow", u"ID", None));
+        ___qtablewidgetitem8 = self.tablaPTerminados.horizontalHeaderItem(1)
+        ___qtablewidgetitem8.setText(QCoreApplication.translate("MainWindow", u"Operaci\u00f3n", None));
+        ___qtablewidgetitem9 = self.tablaPTerminados.horizontalHeaderItem(2)
+        ___qtablewidgetitem9.setText(QCoreApplication.translate("MainWindow", u"Resultado", None));
         self.label_titulo_Cont.setText(QCoreApplication.translate("MainWindow", u"Contador", None))
         self.textBox_contadorGlobal.setText("")
         self.textBox_quantumGlobal.setText("")
@@ -1033,194 +1158,194 @@ class Ui_MainWindow(object):
         self.groupBox_6.setTitle("")
         self.label_titulo_ProcesoTableP.setText(QCoreApplication.translate("MainWindow", u"Tabla de paginas", None))
         self.groupBox_7.setTitle("")
-        ___qtablewidgetitem8 = self.tablaPaginacionL.horizontalHeaderItem(1)
-        ___qtablewidgetitem8.setText(QCoreApplication.translate("MainWindow", u"N. Macro", None));
-        ___qtablewidgetitem9 = self.tablaPaginacionL.verticalHeaderItem(0)
-        ___qtablewidgetitem9.setText(QCoreApplication.translate("MainWindow", u"1", None));
-        ___qtablewidgetitem10 = self.tablaPaginacionL.verticalHeaderItem(1)
-        ___qtablewidgetitem10.setText(QCoreApplication.translate("MainWindow", u"2", None));
-        ___qtablewidgetitem11 = self.tablaPaginacionL.verticalHeaderItem(2)
-        ___qtablewidgetitem11.setText(QCoreApplication.translate("MainWindow", u"3", None));
-        ___qtablewidgetitem12 = self.tablaPaginacionL.verticalHeaderItem(3)
-        ___qtablewidgetitem12.setText(QCoreApplication.translate("MainWindow", u"4", None));
-        ___qtablewidgetitem13 = self.tablaPaginacionL.verticalHeaderItem(4)
-        ___qtablewidgetitem13.setText(QCoreApplication.translate("MainWindow", u"5", None));
-        ___qtablewidgetitem14 = self.tablaPaginacionL.verticalHeaderItem(5)
-        ___qtablewidgetitem14.setText(QCoreApplication.translate("MainWindow", u"6", None));
-        ___qtablewidgetitem15 = self.tablaPaginacionL.verticalHeaderItem(6)
-        ___qtablewidgetitem15.setText(QCoreApplication.translate("MainWindow", u"7", None));
-        ___qtablewidgetitem16 = self.tablaPaginacionL.verticalHeaderItem(7)
-        ___qtablewidgetitem16.setText(QCoreApplication.translate("MainWindow", u"8", None));
-        ___qtablewidgetitem17 = self.tablaPaginacionL.verticalHeaderItem(8)
-        ___qtablewidgetitem17.setText(QCoreApplication.translate("MainWindow", u"9", None));
-        ___qtablewidgetitem18 = self.tablaPaginacionL.verticalHeaderItem(9)
-        ___qtablewidgetitem18.setText(QCoreApplication.translate("MainWindow", u"10", None));
-        ___qtablewidgetitem19 = self.tablaPaginacionL.verticalHeaderItem(10)
-        ___qtablewidgetitem19.setText(QCoreApplication.translate("MainWindow", u"11", None));
-        ___qtablewidgetitem20 = self.tablaPaginacionL.verticalHeaderItem(11)
-        ___qtablewidgetitem20.setText(QCoreApplication.translate("MainWindow", u"12", None));
-        ___qtablewidgetitem21 = self.tablaPaginacionL.verticalHeaderItem(12)
-        ___qtablewidgetitem21.setText(QCoreApplication.translate("MainWindow", u"13", None));
-        ___qtablewidgetitem22 = self.tablaPaginacionL.verticalHeaderItem(13)
-        ___qtablewidgetitem22.setText(QCoreApplication.translate("MainWindow", u"14", None));
-        ___qtablewidgetitem23 = self.tablaPaginacionL.verticalHeaderItem(14)
-        ___qtablewidgetitem23.setText(QCoreApplication.translate("MainWindow", u"15", None));
-        ___qtablewidgetitem24 = self.tablaPaginacionL.verticalHeaderItem(15)
-        ___qtablewidgetitem24.setText(QCoreApplication.translate("MainWindow", u"16", None));
-        ___qtablewidgetitem25 = self.tablaPaginacionL.verticalHeaderItem(16)
-        ___qtablewidgetitem25.setText(QCoreApplication.translate("MainWindow", u"17", None));
-        ___qtablewidgetitem26 = self.tablaPaginacionL.verticalHeaderItem(17)
-        ___qtablewidgetitem26.setText(QCoreApplication.translate("MainWindow", u"18", None));
-        ___qtablewidgetitem27 = self.tablaPaginacionL.verticalHeaderItem(18)
-        ___qtablewidgetitem27.setText(QCoreApplication.translate("MainWindow", u"19", None));
-        ___qtablewidgetitem28 = self.tablaPaginacionL.verticalHeaderItem(19)
-        ___qtablewidgetitem28.setText(QCoreApplication.translate("MainWindow", u"20", None));
-        ___qtablewidgetitem29 = self.tablaPaginacionL.verticalHeaderItem(20)
-        ___qtablewidgetitem29.setText(QCoreApplication.translate("MainWindow", u"21", None));
-        ___qtablewidgetitem30 = self.tablaPaginacionL.verticalHeaderItem(21)
-        ___qtablewidgetitem30.setText(QCoreApplication.translate("MainWindow", u"22", None));
+        ___qtablewidgetitem10 = self.tablaPaginacionL.horizontalHeaderItem(1)
+        ___qtablewidgetitem10.setText(QCoreApplication.translate("MainWindow", u"N. Marco", None));
+        ___qtablewidgetitem11 = self.tablaPaginacionL.verticalHeaderItem(0)
+        ___qtablewidgetitem11.setText(QCoreApplication.translate("MainWindow", u"1", None));
+        ___qtablewidgetitem12 = self.tablaPaginacionL.verticalHeaderItem(1)
+        ___qtablewidgetitem12.setText(QCoreApplication.translate("MainWindow", u"2", None));
+        ___qtablewidgetitem13 = self.tablaPaginacionL.verticalHeaderItem(2)
+        ___qtablewidgetitem13.setText(QCoreApplication.translate("MainWindow", u"3", None));
+        ___qtablewidgetitem14 = self.tablaPaginacionL.verticalHeaderItem(3)
+        ___qtablewidgetitem14.setText(QCoreApplication.translate("MainWindow", u"4", None));
+        ___qtablewidgetitem15 = self.tablaPaginacionL.verticalHeaderItem(4)
+        ___qtablewidgetitem15.setText(QCoreApplication.translate("MainWindow", u"5", None));
+        ___qtablewidgetitem16 = self.tablaPaginacionL.verticalHeaderItem(5)
+        ___qtablewidgetitem16.setText(QCoreApplication.translate("MainWindow", u"6", None));
+        ___qtablewidgetitem17 = self.tablaPaginacionL.verticalHeaderItem(6)
+        ___qtablewidgetitem17.setText(QCoreApplication.translate("MainWindow", u"7", None));
+        ___qtablewidgetitem18 = self.tablaPaginacionL.verticalHeaderItem(7)
+        ___qtablewidgetitem18.setText(QCoreApplication.translate("MainWindow", u"8", None));
+        ___qtablewidgetitem19 = self.tablaPaginacionL.verticalHeaderItem(8)
+        ___qtablewidgetitem19.setText(QCoreApplication.translate("MainWindow", u"9", None));
+        ___qtablewidgetitem20 = self.tablaPaginacionL.verticalHeaderItem(9)
+        ___qtablewidgetitem20.setText(QCoreApplication.translate("MainWindow", u"10", None));
+        ___qtablewidgetitem21 = self.tablaPaginacionL.verticalHeaderItem(10)
+        ___qtablewidgetitem21.setText(QCoreApplication.translate("MainWindow", u"11", None));
+        ___qtablewidgetitem22 = self.tablaPaginacionL.verticalHeaderItem(11)
+        ___qtablewidgetitem22.setText(QCoreApplication.translate("MainWindow", u"12", None));
+        ___qtablewidgetitem23 = self.tablaPaginacionL.verticalHeaderItem(12)
+        ___qtablewidgetitem23.setText(QCoreApplication.translate("MainWindow", u"13", None));
+        ___qtablewidgetitem24 = self.tablaPaginacionL.verticalHeaderItem(13)
+        ___qtablewidgetitem24.setText(QCoreApplication.translate("MainWindow", u"14", None));
+        ___qtablewidgetitem25 = self.tablaPaginacionL.verticalHeaderItem(14)
+        ___qtablewidgetitem25.setText(QCoreApplication.translate("MainWindow", u"15", None));
+        ___qtablewidgetitem26 = self.tablaPaginacionL.verticalHeaderItem(15)
+        ___qtablewidgetitem26.setText(QCoreApplication.translate("MainWindow", u"16", None));
+        ___qtablewidgetitem27 = self.tablaPaginacionL.verticalHeaderItem(16)
+        ___qtablewidgetitem27.setText(QCoreApplication.translate("MainWindow", u"17", None));
+        ___qtablewidgetitem28 = self.tablaPaginacionL.verticalHeaderItem(17)
+        ___qtablewidgetitem28.setText(QCoreApplication.translate("MainWindow", u"18", None));
+        ___qtablewidgetitem29 = self.tablaPaginacionL.verticalHeaderItem(18)
+        ___qtablewidgetitem29.setText(QCoreApplication.translate("MainWindow", u"19", None));
+        ___qtablewidgetitem30 = self.tablaPaginacionL.verticalHeaderItem(19)
+        ___qtablewidgetitem30.setText(QCoreApplication.translate("MainWindow", u"20", None));
+        ___qtablewidgetitem31 = self.tablaPaginacionL.verticalHeaderItem(20)
+        ___qtablewidgetitem31.setText(QCoreApplication.translate("MainWindow", u"21", None));
+        ___qtablewidgetitem32 = self.tablaPaginacionL.verticalHeaderItem(21)
+        ___qtablewidgetitem32.setText(QCoreApplication.translate("MainWindow", u"22", None));
 
         __sortingEnabled = self.tablaPaginacionL.isSortingEnabled()
         self.tablaPaginacionL.setSortingEnabled(False)
-        ___qtablewidgetitem31 = self.tablaPaginacionL.item(0, 1)
-        ___qtablewidgetitem31.setText(QCoreApplication.translate("MainWindow", u"0", None));
-        ___qtablewidgetitem32 = self.tablaPaginacionL.item(1, 1)
-        ___qtablewidgetitem32.setText(QCoreApplication.translate("MainWindow", u"2", None));
-        ___qtablewidgetitem33 = self.tablaPaginacionL.item(2, 1)
-        ___qtablewidgetitem33.setText(QCoreApplication.translate("MainWindow", u"4", None));
-        ___qtablewidgetitem34 = self.tablaPaginacionL.item(3, 1)
-        ___qtablewidgetitem34.setText(QCoreApplication.translate("MainWindow", u"6", None));
-        ___qtablewidgetitem35 = self.tablaPaginacionL.item(4, 1)
-        ___qtablewidgetitem35.setText(QCoreApplication.translate("MainWindow", u"8", None));
-        ___qtablewidgetitem36 = self.tablaPaginacionL.item(5, 1)
-        ___qtablewidgetitem36.setText(QCoreApplication.translate("MainWindow", u"10", None));
-        ___qtablewidgetitem37 = self.tablaPaginacionL.item(6, 1)
-        ___qtablewidgetitem37.setText(QCoreApplication.translate("MainWindow", u"12", None));
-        ___qtablewidgetitem38 = self.tablaPaginacionL.item(7, 1)
-        ___qtablewidgetitem38.setText(QCoreApplication.translate("MainWindow", u"14", None));
-        ___qtablewidgetitem39 = self.tablaPaginacionL.item(8, 1)
-        ___qtablewidgetitem39.setText(QCoreApplication.translate("MainWindow", u"16", None));
-        ___qtablewidgetitem40 = self.tablaPaginacionL.item(9, 1)
-        ___qtablewidgetitem40.setText(QCoreApplication.translate("MainWindow", u"18", None));
-        ___qtablewidgetitem41 = self.tablaPaginacionL.item(10, 1)
-        ___qtablewidgetitem41.setText(QCoreApplication.translate("MainWindow", u"20", None));
-        ___qtablewidgetitem42 = self.tablaPaginacionL.item(11, 1)
-        ___qtablewidgetitem42.setText(QCoreApplication.translate("MainWindow", u"22", None));
-        ___qtablewidgetitem43 = self.tablaPaginacionL.item(12, 1)
-        ___qtablewidgetitem43.setText(QCoreApplication.translate("MainWindow", u"24", None));
-        ___qtablewidgetitem44 = self.tablaPaginacionL.item(13, 1)
-        ___qtablewidgetitem44.setText(QCoreApplication.translate("MainWindow", u"26", None));
-        ___qtablewidgetitem45 = self.tablaPaginacionL.item(14, 1)
-        ___qtablewidgetitem45.setText(QCoreApplication.translate("MainWindow", u"28", None));
-        ___qtablewidgetitem46 = self.tablaPaginacionL.item(15, 1)
-        ___qtablewidgetitem46.setText(QCoreApplication.translate("MainWindow", u"30", None));
-        ___qtablewidgetitem47 = self.tablaPaginacionL.item(16, 1)
-        ___qtablewidgetitem47.setText(QCoreApplication.translate("MainWindow", u"32", None));
-        ___qtablewidgetitem48 = self.tablaPaginacionL.item(17, 1)
-        ___qtablewidgetitem48.setText(QCoreApplication.translate("MainWindow", u"34", None));
-        ___qtablewidgetitem49 = self.tablaPaginacionL.item(18, 1)
-        ___qtablewidgetitem49.setText(QCoreApplication.translate("MainWindow", u"36", None));
-        ___qtablewidgetitem50 = self.tablaPaginacionL.item(19, 1)
-        ___qtablewidgetitem50.setText(QCoreApplication.translate("MainWindow", u"38", None));
-        ___qtablewidgetitem51 = self.tablaPaginacionL.item(20, 1)
-        ___qtablewidgetitem51.setText(QCoreApplication.translate("MainWindow", u"40", None));
-        ___qtablewidgetitem52 = self.tablaPaginacionL.item(21, 1)
-        ___qtablewidgetitem52.setText(QCoreApplication.translate("MainWindow", u"42", None));
+        ___qtablewidgetitem33 = self.tablaPaginacionL.item(0, 1)
+        ___qtablewidgetitem33.setText(QCoreApplication.translate("MainWindow", u"0", None));
+        ___qtablewidgetitem34 = self.tablaPaginacionL.item(1, 1)
+        ___qtablewidgetitem34.setText(QCoreApplication.translate("MainWindow", u"2", None));
+        ___qtablewidgetitem35 = self.tablaPaginacionL.item(2, 1)
+        ___qtablewidgetitem35.setText(QCoreApplication.translate("MainWindow", u"4", None));
+        ___qtablewidgetitem36 = self.tablaPaginacionL.item(3, 1)
+        ___qtablewidgetitem36.setText(QCoreApplication.translate("MainWindow", u"6", None));
+        ___qtablewidgetitem37 = self.tablaPaginacionL.item(4, 1)
+        ___qtablewidgetitem37.setText(QCoreApplication.translate("MainWindow", u"8", None));
+        ___qtablewidgetitem38 = self.tablaPaginacionL.item(5, 1)
+        ___qtablewidgetitem38.setText(QCoreApplication.translate("MainWindow", u"10", None));
+        ___qtablewidgetitem39 = self.tablaPaginacionL.item(6, 1)
+        ___qtablewidgetitem39.setText(QCoreApplication.translate("MainWindow", u"12", None));
+        ___qtablewidgetitem40 = self.tablaPaginacionL.item(7, 1)
+        ___qtablewidgetitem40.setText(QCoreApplication.translate("MainWindow", u"14", None));
+        ___qtablewidgetitem41 = self.tablaPaginacionL.item(8, 1)
+        ___qtablewidgetitem41.setText(QCoreApplication.translate("MainWindow", u"16", None));
+        ___qtablewidgetitem42 = self.tablaPaginacionL.item(9, 1)
+        ___qtablewidgetitem42.setText(QCoreApplication.translate("MainWindow", u"18", None));
+        ___qtablewidgetitem43 = self.tablaPaginacionL.item(10, 1)
+        ___qtablewidgetitem43.setText(QCoreApplication.translate("MainWindow", u"20", None));
+        ___qtablewidgetitem44 = self.tablaPaginacionL.item(11, 1)
+        ___qtablewidgetitem44.setText(QCoreApplication.translate("MainWindow", u"22", None));
+        ___qtablewidgetitem45 = self.tablaPaginacionL.item(12, 1)
+        ___qtablewidgetitem45.setText(QCoreApplication.translate("MainWindow", u"24", None));
+        ___qtablewidgetitem46 = self.tablaPaginacionL.item(13, 1)
+        ___qtablewidgetitem46.setText(QCoreApplication.translate("MainWindow", u"26", None));
+        ___qtablewidgetitem47 = self.tablaPaginacionL.item(14, 1)
+        ___qtablewidgetitem47.setText(QCoreApplication.translate("MainWindow", u"28", None));
+        ___qtablewidgetitem48 = self.tablaPaginacionL.item(15, 1)
+        ___qtablewidgetitem48.setText(QCoreApplication.translate("MainWindow", u"30", None));
+        ___qtablewidgetitem49 = self.tablaPaginacionL.item(16, 1)
+        ___qtablewidgetitem49.setText(QCoreApplication.translate("MainWindow", u"32", None));
+        ___qtablewidgetitem50 = self.tablaPaginacionL.item(17, 1)
+        ___qtablewidgetitem50.setText(QCoreApplication.translate("MainWindow", u"34", None));
+        ___qtablewidgetitem51 = self.tablaPaginacionL.item(18, 1)
+        ___qtablewidgetitem51.setText(QCoreApplication.translate("MainWindow", u"36", None));
+        ___qtablewidgetitem52 = self.tablaPaginacionL.item(19, 1)
+        ___qtablewidgetitem52.setText(QCoreApplication.translate("MainWindow", u"38", None));
+        ___qtablewidgetitem53 = self.tablaPaginacionL.item(20, 1)
+        ___qtablewidgetitem53.setText(QCoreApplication.translate("MainWindow", u"40", None));
+        ___qtablewidgetitem54 = self.tablaPaginacionL.item(21, 1)
+        ___qtablewidgetitem54.setText(QCoreApplication.translate("MainWindow", u"42", None));
         self.tablaPaginacionL.setSortingEnabled(__sortingEnabled)
 
-        ___qtablewidgetitem53 = self.tablaPaginacionR.horizontalHeaderItem(1)
-        ___qtablewidgetitem53.setText(QCoreApplication.translate("MainWindow", u"N. Marco", None));
-        ___qtablewidgetitem54 = self.tablaPaginacionR.verticalHeaderItem(0)
-        ___qtablewidgetitem54.setText(QCoreApplication.translate("MainWindow", u"1", None));
-        ___qtablewidgetitem55 = self.tablaPaginacionR.verticalHeaderItem(1)
-        ___qtablewidgetitem55.setText(QCoreApplication.translate("MainWindow", u"2", None));
-        ___qtablewidgetitem56 = self.tablaPaginacionR.verticalHeaderItem(2)
-        ___qtablewidgetitem56.setText(QCoreApplication.translate("MainWindow", u"3", None));
-        ___qtablewidgetitem57 = self.tablaPaginacionR.verticalHeaderItem(3)
-        ___qtablewidgetitem57.setText(QCoreApplication.translate("MainWindow", u"4", None));
-        ___qtablewidgetitem58 = self.tablaPaginacionR.verticalHeaderItem(4)
-        ___qtablewidgetitem58.setText(QCoreApplication.translate("MainWindow", u"5", None));
-        ___qtablewidgetitem59 = self.tablaPaginacionR.verticalHeaderItem(5)
-        ___qtablewidgetitem59.setText(QCoreApplication.translate("MainWindow", u"6", None));
-        ___qtablewidgetitem60 = self.tablaPaginacionR.verticalHeaderItem(6)
-        ___qtablewidgetitem60.setText(QCoreApplication.translate("MainWindow", u"7", None));
-        ___qtablewidgetitem61 = self.tablaPaginacionR.verticalHeaderItem(7)
-        ___qtablewidgetitem61.setText(QCoreApplication.translate("MainWindow", u"8", None));
-        ___qtablewidgetitem62 = self.tablaPaginacionR.verticalHeaderItem(8)
-        ___qtablewidgetitem62.setText(QCoreApplication.translate("MainWindow", u"9", None));
-        ___qtablewidgetitem63 = self.tablaPaginacionR.verticalHeaderItem(9)
-        ___qtablewidgetitem63.setText(QCoreApplication.translate("MainWindow", u"10", None));
-        ___qtablewidgetitem64 = self.tablaPaginacionR.verticalHeaderItem(10)
-        ___qtablewidgetitem64.setText(QCoreApplication.translate("MainWindow", u"11", None));
-        ___qtablewidgetitem65 = self.tablaPaginacionR.verticalHeaderItem(11)
-        ___qtablewidgetitem65.setText(QCoreApplication.translate("MainWindow", u"12", None));
-        ___qtablewidgetitem66 = self.tablaPaginacionR.verticalHeaderItem(12)
-        ___qtablewidgetitem66.setText(QCoreApplication.translate("MainWindow", u"13", None));
-        ___qtablewidgetitem67 = self.tablaPaginacionR.verticalHeaderItem(13)
-        ___qtablewidgetitem67.setText(QCoreApplication.translate("MainWindow", u"14", None));
-        ___qtablewidgetitem68 = self.tablaPaginacionR.verticalHeaderItem(14)
-        ___qtablewidgetitem68.setText(QCoreApplication.translate("MainWindow", u"15", None));
-        ___qtablewidgetitem69 = self.tablaPaginacionR.verticalHeaderItem(15)
-        ___qtablewidgetitem69.setText(QCoreApplication.translate("MainWindow", u"16", None));
-        ___qtablewidgetitem70 = self.tablaPaginacionR.verticalHeaderItem(16)
-        ___qtablewidgetitem70.setText(QCoreApplication.translate("MainWindow", u"17", None));
-        ___qtablewidgetitem71 = self.tablaPaginacionR.verticalHeaderItem(17)
-        ___qtablewidgetitem71.setText(QCoreApplication.translate("MainWindow", u"18", None));
-        ___qtablewidgetitem72 = self.tablaPaginacionR.verticalHeaderItem(18)
-        ___qtablewidgetitem72.setText(QCoreApplication.translate("MainWindow", u"19", None));
-        ___qtablewidgetitem73 = self.tablaPaginacionR.verticalHeaderItem(19)
-        ___qtablewidgetitem73.setText(QCoreApplication.translate("MainWindow", u"20", None));
-        ___qtablewidgetitem74 = self.tablaPaginacionR.verticalHeaderItem(20)
-        ___qtablewidgetitem74.setText(QCoreApplication.translate("MainWindow", u"21", None));
-        ___qtablewidgetitem75 = self.tablaPaginacionR.verticalHeaderItem(21)
-        ___qtablewidgetitem75.setText(QCoreApplication.translate("MainWindow", u"22", None));
+        ___qtablewidgetitem55 = self.tablaPaginacionR.horizontalHeaderItem(1)
+        ___qtablewidgetitem55.setText(QCoreApplication.translate("MainWindow", u"N. Marco", None));
+        ___qtablewidgetitem56 = self.tablaPaginacionR.verticalHeaderItem(0)
+        ___qtablewidgetitem56.setText(QCoreApplication.translate("MainWindow", u"1", None));
+        ___qtablewidgetitem57 = self.tablaPaginacionR.verticalHeaderItem(1)
+        ___qtablewidgetitem57.setText(QCoreApplication.translate("MainWindow", u"2", None));
+        ___qtablewidgetitem58 = self.tablaPaginacionR.verticalHeaderItem(2)
+        ___qtablewidgetitem58.setText(QCoreApplication.translate("MainWindow", u"3", None));
+        ___qtablewidgetitem59 = self.tablaPaginacionR.verticalHeaderItem(3)
+        ___qtablewidgetitem59.setText(QCoreApplication.translate("MainWindow", u"4", None));
+        ___qtablewidgetitem60 = self.tablaPaginacionR.verticalHeaderItem(4)
+        ___qtablewidgetitem60.setText(QCoreApplication.translate("MainWindow", u"5", None));
+        ___qtablewidgetitem61 = self.tablaPaginacionR.verticalHeaderItem(5)
+        ___qtablewidgetitem61.setText(QCoreApplication.translate("MainWindow", u"6", None));
+        ___qtablewidgetitem62 = self.tablaPaginacionR.verticalHeaderItem(6)
+        ___qtablewidgetitem62.setText(QCoreApplication.translate("MainWindow", u"7", None));
+        ___qtablewidgetitem63 = self.tablaPaginacionR.verticalHeaderItem(7)
+        ___qtablewidgetitem63.setText(QCoreApplication.translate("MainWindow", u"8", None));
+        ___qtablewidgetitem64 = self.tablaPaginacionR.verticalHeaderItem(8)
+        ___qtablewidgetitem64.setText(QCoreApplication.translate("MainWindow", u"9", None));
+        ___qtablewidgetitem65 = self.tablaPaginacionR.verticalHeaderItem(9)
+        ___qtablewidgetitem65.setText(QCoreApplication.translate("MainWindow", u"10", None));
+        ___qtablewidgetitem66 = self.tablaPaginacionR.verticalHeaderItem(10)
+        ___qtablewidgetitem66.setText(QCoreApplication.translate("MainWindow", u"11", None));
+        ___qtablewidgetitem67 = self.tablaPaginacionR.verticalHeaderItem(11)
+        ___qtablewidgetitem67.setText(QCoreApplication.translate("MainWindow", u"12", None));
+        ___qtablewidgetitem68 = self.tablaPaginacionR.verticalHeaderItem(12)
+        ___qtablewidgetitem68.setText(QCoreApplication.translate("MainWindow", u"13", None));
+        ___qtablewidgetitem69 = self.tablaPaginacionR.verticalHeaderItem(13)
+        ___qtablewidgetitem69.setText(QCoreApplication.translate("MainWindow", u"14", None));
+        ___qtablewidgetitem70 = self.tablaPaginacionR.verticalHeaderItem(14)
+        ___qtablewidgetitem70.setText(QCoreApplication.translate("MainWindow", u"15", None));
+        ___qtablewidgetitem71 = self.tablaPaginacionR.verticalHeaderItem(15)
+        ___qtablewidgetitem71.setText(QCoreApplication.translate("MainWindow", u"16", None));
+        ___qtablewidgetitem72 = self.tablaPaginacionR.verticalHeaderItem(16)
+        ___qtablewidgetitem72.setText(QCoreApplication.translate("MainWindow", u"17", None));
+        ___qtablewidgetitem73 = self.tablaPaginacionR.verticalHeaderItem(17)
+        ___qtablewidgetitem73.setText(QCoreApplication.translate("MainWindow", u"18", None));
+        ___qtablewidgetitem74 = self.tablaPaginacionR.verticalHeaderItem(18)
+        ___qtablewidgetitem74.setText(QCoreApplication.translate("MainWindow", u"19", None));
+        ___qtablewidgetitem75 = self.tablaPaginacionR.verticalHeaderItem(19)
+        ___qtablewidgetitem75.setText(QCoreApplication.translate("MainWindow", u"20", None));
+        ___qtablewidgetitem76 = self.tablaPaginacionR.verticalHeaderItem(20)
+        ___qtablewidgetitem76.setText(QCoreApplication.translate("MainWindow", u"21", None));
+        ___qtablewidgetitem77 = self.tablaPaginacionR.verticalHeaderItem(21)
+        ___qtablewidgetitem77.setText(QCoreApplication.translate("MainWindow", u"22", None));
 
         __sortingEnabled1 = self.tablaPaginacionR.isSortingEnabled()
         self.tablaPaginacionR.setSortingEnabled(False)
-        ___qtablewidgetitem76 = self.tablaPaginacionR.item(0, 1)
-        ___qtablewidgetitem76.setText(QCoreApplication.translate("MainWindow", u"1", None));
-        ___qtablewidgetitem77 = self.tablaPaginacionR.item(1, 1)
-        ___qtablewidgetitem77.setText(QCoreApplication.translate("MainWindow", u"3", None));
-        ___qtablewidgetitem78 = self.tablaPaginacionR.item(2, 1)
-        ___qtablewidgetitem78.setText(QCoreApplication.translate("MainWindow", u"5", None));
-        ___qtablewidgetitem79 = self.tablaPaginacionR.item(3, 1)
-        ___qtablewidgetitem79.setText(QCoreApplication.translate("MainWindow", u"7", None));
-        ___qtablewidgetitem80 = self.tablaPaginacionR.item(4, 1)
-        ___qtablewidgetitem80.setText(QCoreApplication.translate("MainWindow", u"9", None));
-        ___qtablewidgetitem81 = self.tablaPaginacionR.item(5, 1)
-        ___qtablewidgetitem81.setText(QCoreApplication.translate("MainWindow", u"11", None));
-        ___qtablewidgetitem82 = self.tablaPaginacionR.item(6, 1)
-        ___qtablewidgetitem82.setText(QCoreApplication.translate("MainWindow", u"13", None));
-        ___qtablewidgetitem83 = self.tablaPaginacionR.item(7, 1)
-        ___qtablewidgetitem83.setText(QCoreApplication.translate("MainWindow", u"15", None));
-        ___qtablewidgetitem84 = self.tablaPaginacionR.item(8, 1)
-        ___qtablewidgetitem84.setText(QCoreApplication.translate("MainWindow", u"17", None));
-        ___qtablewidgetitem85 = self.tablaPaginacionR.item(9, 1)
-        ___qtablewidgetitem85.setText(QCoreApplication.translate("MainWindow", u"19", None));
-        ___qtablewidgetitem86 = self.tablaPaginacionR.item(10, 1)
-        ___qtablewidgetitem86.setText(QCoreApplication.translate("MainWindow", u"21", None));
-        ___qtablewidgetitem87 = self.tablaPaginacionR.item(11, 1)
-        ___qtablewidgetitem87.setText(QCoreApplication.translate("MainWindow", u"23", None));
-        ___qtablewidgetitem88 = self.tablaPaginacionR.item(12, 1)
-        ___qtablewidgetitem88.setText(QCoreApplication.translate("MainWindow", u"25", None));
-        ___qtablewidgetitem89 = self.tablaPaginacionR.item(13, 1)
-        ___qtablewidgetitem89.setText(QCoreApplication.translate("MainWindow", u"27", None));
-        ___qtablewidgetitem90 = self.tablaPaginacionR.item(14, 1)
-        ___qtablewidgetitem90.setText(QCoreApplication.translate("MainWindow", u"29", None));
-        ___qtablewidgetitem91 = self.tablaPaginacionR.item(15, 1)
-        ___qtablewidgetitem91.setText(QCoreApplication.translate("MainWindow", u"31", None));
-        ___qtablewidgetitem92 = self.tablaPaginacionR.item(16, 1)
-        ___qtablewidgetitem92.setText(QCoreApplication.translate("MainWindow", u"33", None));
-        ___qtablewidgetitem93 = self.tablaPaginacionR.item(17, 1)
-        ___qtablewidgetitem93.setText(QCoreApplication.translate("MainWindow", u"35", None));
-        ___qtablewidgetitem94 = self.tablaPaginacionR.item(18, 1)
-        ___qtablewidgetitem94.setText(QCoreApplication.translate("MainWindow", u"37", None));
-        ___qtablewidgetitem95 = self.tablaPaginacionR.item(19, 1)
-        ___qtablewidgetitem95.setText(QCoreApplication.translate("MainWindow", u"39", None));
-        ___qtablewidgetitem96 = self.tablaPaginacionR.item(20, 1)
-        ___qtablewidgetitem96.setText(QCoreApplication.translate("MainWindow", u"41", None));
-        ___qtablewidgetitem97 = self.tablaPaginacionR.item(21, 1)
-        ___qtablewidgetitem97.setText(QCoreApplication.translate("MainWindow", u"43", None));
+        ___qtablewidgetitem78 = self.tablaPaginacionR.item(0, 1)
+        ___qtablewidgetitem78.setText(QCoreApplication.translate("MainWindow", u"1", None));
+        ___qtablewidgetitem79 = self.tablaPaginacionR.item(1, 1)
+        ___qtablewidgetitem79.setText(QCoreApplication.translate("MainWindow", u"3", None));
+        ___qtablewidgetitem80 = self.tablaPaginacionR.item(2, 1)
+        ___qtablewidgetitem80.setText(QCoreApplication.translate("MainWindow", u"5", None));
+        ___qtablewidgetitem81 = self.tablaPaginacionR.item(3, 1)
+        ___qtablewidgetitem81.setText(QCoreApplication.translate("MainWindow", u"7", None));
+        ___qtablewidgetitem82 = self.tablaPaginacionR.item(4, 1)
+        ___qtablewidgetitem82.setText(QCoreApplication.translate("MainWindow", u"9", None));
+        ___qtablewidgetitem83 = self.tablaPaginacionR.item(5, 1)
+        ___qtablewidgetitem83.setText(QCoreApplication.translate("MainWindow", u"11", None));
+        ___qtablewidgetitem84 = self.tablaPaginacionR.item(6, 1)
+        ___qtablewidgetitem84.setText(QCoreApplication.translate("MainWindow", u"13", None));
+        ___qtablewidgetitem85 = self.tablaPaginacionR.item(7, 1)
+        ___qtablewidgetitem85.setText(QCoreApplication.translate("MainWindow", u"15", None));
+        ___qtablewidgetitem86 = self.tablaPaginacionR.item(8, 1)
+        ___qtablewidgetitem86.setText(QCoreApplication.translate("MainWindow", u"17", None));
+        ___qtablewidgetitem87 = self.tablaPaginacionR.item(9, 1)
+        ___qtablewidgetitem87.setText(QCoreApplication.translate("MainWindow", u"19", None));
+        ___qtablewidgetitem88 = self.tablaPaginacionR.item(10, 1)
+        ___qtablewidgetitem88.setText(QCoreApplication.translate("MainWindow", u"21", None));
+        ___qtablewidgetitem89 = self.tablaPaginacionR.item(11, 1)
+        ___qtablewidgetitem89.setText(QCoreApplication.translate("MainWindow", u"23", None));
+        ___qtablewidgetitem90 = self.tablaPaginacionR.item(12, 1)
+        ___qtablewidgetitem90.setText(QCoreApplication.translate("MainWindow", u"25", None));
+        ___qtablewidgetitem91 = self.tablaPaginacionR.item(13, 1)
+        ___qtablewidgetitem91.setText(QCoreApplication.translate("MainWindow", u"27", None));
+        ___qtablewidgetitem92 = self.tablaPaginacionR.item(14, 1)
+        ___qtablewidgetitem92.setText(QCoreApplication.translate("MainWindow", u"29", None));
+        ___qtablewidgetitem93 = self.tablaPaginacionR.item(15, 1)
+        ___qtablewidgetitem93.setText(QCoreApplication.translate("MainWindow", u"31", None));
+        ___qtablewidgetitem94 = self.tablaPaginacionR.item(16, 1)
+        ___qtablewidgetitem94.setText(QCoreApplication.translate("MainWindow", u"33", None));
+        ___qtablewidgetitem95 = self.tablaPaginacionR.item(17, 1)
+        ___qtablewidgetitem95.setText(QCoreApplication.translate("MainWindow", u"35", None));
+        ___qtablewidgetitem96 = self.tablaPaginacionR.item(18, 1)
+        ___qtablewidgetitem96.setText(QCoreApplication.translate("MainWindow", u"37", None));
+        ___qtablewidgetitem97 = self.tablaPaginacionR.item(19, 1)
+        ___qtablewidgetitem97.setText(QCoreApplication.translate("MainWindow", u"39", None));
+        ___qtablewidgetitem98 = self.tablaPaginacionR.item(20, 1)
+        ___qtablewidgetitem98.setText(QCoreApplication.translate("MainWindow", u"41", None));
+        ___qtablewidgetitem99 = self.tablaPaginacionR.item(21, 1)
+        ___qtablewidgetitem99.setText(QCoreApplication.translate("MainWindow", u"43", None));
         self.tablaPaginacionR.setSortingEnabled(__sortingEnabled1)
 
     # retranslateUi
