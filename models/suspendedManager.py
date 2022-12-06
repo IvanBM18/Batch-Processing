@@ -3,7 +3,7 @@ from models.process import Process
 class SuspendManager():
     FILE_NAME = "suspended.txt"
     def __init__(self):
-        self._suspendedList = [Process]
+        self._suspendedList : list(Process) = []
         self._file = open(self.FILE_NAME,"w")
         self._file.write("--- Suspended Processes ---\n")
         self._processOnTop = None
@@ -33,8 +33,11 @@ class SuspendManager():
     
     def retrieveProcess(self):
         if(len(self._suspendedList) > 0):
-            auxProcess = self._processOnTop
-            self._processOnTop = self._suspendedList.pop(0)
+            auxProcess = self._suspendedList.pop(0)
+            if(self._suspendedList):
+                self._processOnTop = self._suspendedList[0]
+            else:
+                self._processOnTop = None
             # Updates the file
             self._openOnWrite()
             for i in self._suspendedList:

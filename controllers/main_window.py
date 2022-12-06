@@ -10,9 +10,9 @@
 # Terminado: Procesos que se salieron de procesos activos
 
 
-# Mandar macros a archivo y extraerlos de ahi
-# Colocar ID en los macros
-
+# Borrar ID de los macros
+# QPaintDevice: Cannot destroy paint device that is being painted
+# QWidget::repaint: Recursive repaint detected
 #Library Imports
 import keyboard
 import random
@@ -89,7 +89,6 @@ class MainForm(QMainWindow, MainWindow):
         #Button Listeners
         self.pushButton_Agregar.clicked.connect(self.setValues)
         self.pushButton_Ejecutar.clicked.connect(self.startExecution)
-        keyboard.on_press(self.onKeyPress)
         self.pushButton_Ejecutar.setEnabled(False)
         self.suspendedList = SuspendManager()
         
@@ -156,7 +155,7 @@ class MainForm(QMainWindow, MainWindow):
 #Processing Methods
     # Execute Lot Processing
     def execute(self):
-        
+        keyboard.on_press(self.onKeyPress)
         while(not self.noProcessesLeft()):
             if(self.pause):
                 continue
@@ -193,7 +192,7 @@ class MainForm(QMainWindow, MainWindow):
                     self.readyProcesses.pop(0) 
                 
                 # Change due to Quantum
-                if(not self.quantumCounter and self.remainingTime):
+                if(not self.quantumCounter and self.remainingTime > 0):
                     self.onQuantumEnd()
                     QCoreApplication.processEvents()
                 # Change due proceess end
@@ -247,6 +246,7 @@ class MainForm(QMainWindow, MainWindow):
                     aux.stats.setArrivalTime(self.timeCounter)
                     aux.setPageList(self.reserveSpace(aux.getSize()))
                     self.readyProcesses.append(aux)
+                    self.insertMemoryRow(int(aux.processID),aux.pageList)
                     self.insertReadyRow(aux)
                     
             # Time changes
@@ -265,16 +265,17 @@ class MainForm(QMainWindow, MainWindow):
     
     # End of Processing
     def endExecution(self):
-        self.execution = False
-        # Last process calculations
-        self.actualProcess.stats.setEndTime(self.timeCounter)
-        self.actualProcess = self.updateTStats(self.actualProcess)
-        if(self.error):
-            self.actualProcess.stats.setServiceTime(self.actualProcess.stats.getEndTime() - self.actualProcess.stats.getAnswerTime())
-        else:
-            self.actualProcess.stats.setServiceTime(self.actualProcess.getTime())
-        self.finishedList.append(self.actualProcess)
         
+        # Last process calculations
+        if(self.actualProcess not in self.finishedList):
+            self.actualProcess.stats.setEndTime(self.timeCounter)
+            self.actualProcess = self.updateTStats(self.actualProcess)
+            if(self.error):
+                self.actualProcess.stats.setServiceTime(self.actualProcess.stats.getEndTime() - self.actualProcess.stats.getAnswerTime())
+            else:
+                self.actualProcess.stats.setServiceTime(self.actualProcess.getTime())
+            self.finishedList.append(self.actualProcess)
+        self
         #Updating UI
         self.updateUI(Updates.END)
         
@@ -286,6 +287,8 @@ class MainForm(QMainWindow, MainWindow):
         while(self.bcp):
             QCoreApplication.processEvents()
         self.BCPWindow.hide()
+        self.execution = False
+        self.releaseKeyboard()
         
         print("Procesamiento Terminado!")
     
@@ -295,7 +298,6 @@ class MainForm(QMainWindow, MainWindow):
             if(not self.execution):
                 return
             option = str(event.name).lower()
-            # print(f'Key {event.name} pressed')
             # Pause
             if(option == 'p'): 
                 self.pause = True
@@ -304,6 +306,7 @@ class MainForm(QMainWindow, MainWindow):
                 if(self.pause):
                     self.pause = False
                     self.bcp = False
+                    # self.execute()
                 else:
                     self.pause = False
                     self.bcp = False
@@ -317,6 +320,7 @@ class MainForm(QMainWindow, MainWindow):
                 self.error = True
             # New Process
             elif(option == 'n'):
+                print("Nuevo Proceso")
                 # Generating and Enqueueing new process
                 aux = self.newProcess(self.indxP)
                 self.indxP += 1
@@ -335,12 +339,15 @@ class MainForm(QMainWindow, MainWindow):
                 self.pause = True
             # Suspender Proceso
             elif(option == 's'):
+                print("Suspendiendo Proceso")
                 self.onProcessSuspend()
             # Regresar Proceso
             elif(option == 'r'):
+                print("Regresando Proceso")
                 self.getFromSuspended()
-        except:
-            pass
+        except Exception as e:
+            print('Error en onKeyPress')
+            print(e)
     
     # Processes left comprobation
     def noProcessesLeft(self):
@@ -358,7 +365,7 @@ class MainForm(QMainWindow, MainWindow):
     def isChangeNeeded(self) -> bool:
         if(not self.quantumCounter):
             return True
-        if(not self.remainingTime):
+        if(self.remainingTime <= 0):
             return True
         if(not self.actualProcess):
             return True
@@ -451,6 +458,7 @@ class MainForm(QMainWindow, MainWindow):
                 aux.stats.setArrivalTime(self.timeCounter)
                 self.readyProcesses.append(aux)
                 self.insertReadyRow(aux)
+                self.insertMemoryRow(int(aux.processID),auxMemory)
         
         if(len(self.readyProcesses)):
             # Adapting Variables to Interruption
@@ -514,7 +522,7 @@ class MainForm(QMainWindow, MainWindow):
         self.suspendedProcess = self.suspendedList.getProcessOnTop()
         
         # Freing Memory
-        self.memory.freeMemory(auxProcess.pageList)
+        self.freeSpace(auxProcess.pageList)
         
         self.updateUI(Updates.SUSPEND)
         self.updateUI(Updates.BLOCKED)
@@ -527,7 +535,8 @@ class MainForm(QMainWindow, MainWindow):
             if(auxMemory == None):
                 return
             # Adding to ready List
-            aux = self.suspendedList.retrieveProcess()
+            aux : Process = self.suspendedList.retrieveProcess()
+            self.insertMemoryRow(int(aux.processID),auxMemory)
             aux.setPageList(auxMemory)
             self.readyProcesses.append(aux)
             self.insertReadyRow(aux)
@@ -551,7 +560,8 @@ class MainForm(QMainWindow, MainWindow):
         return pages
     
     # Frees Memory for a Process
-    def freeSpace(self,pages) -> None:
+    def freeSpace(self,pages,id) -> None:
+        self.insertMemoryRow(-1,pages)
         for i in pages:
             self.changeTablePage(i,"lightgreen",5)
         self.memory.freeMemory(pages)
@@ -598,6 +608,7 @@ class MainForm(QMainWindow, MainWindow):
         elif(upType == Updates.END):
             self.textBox_restantes.setText(str(0))
             self.textBox_quantumGlobal.setText(str(0))
+            self.textBox_tiempo_restante.setText(str(0))
             self.tablaProcesos.clearContents()
         # Suspended Process
         elif(upType == Updates.SUSPEND):
@@ -635,6 +646,16 @@ class MainForm(QMainWindow, MainWindow):
             self.tablaPTerminados.setItem(n,2,QTableWidgetItem("Error"))
         else:
             self.tablaPTerminados.setItem(n,2,QTableWidgetItem(str(row.getResult())))
+    
+    # Inserts a row in the Memory Table
+    def insertMemoryRow(self,id : int, memoryPages : list):
+        if(not memoryPages):
+            return
+        for i in memoryPages:
+            if(i % 2 == 0):
+                self.tablaPaginacionL.setItem(i//2,0,QTableWidgetItem(str(id) if id != -1 else ""))
+            else:
+                self.tablaPaginacionR.setItem(i//2,0,QTableWidgetItem(str(id) if id != -1 else ""))
     
     # Updates the table of pages
     def changeTablePage(self,indx: int, color : str, progress:int):

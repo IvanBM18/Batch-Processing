@@ -105,9 +105,9 @@ class Process:
             return self.valueA ** self.valueB
     
     def toFile(self):
-        result = f'ID: {self.processID}'
-        result +=  f'Operacion: {self.getFullOperation()}' 
-        result += f'Tiempo: {self.remainingTime}'
-        result += f'Tamaño: {self.size} | Paginas: {self.pageList}'
+        result = f'ID: {self.processID}\n'
+        result +=  f'Operacion: {self.getFullOperation()}\n' 
+        result += f'Tiempo: {self.remainingTime}\n'
+        result += f'Tamaño: {self.size} | Paginas: {len(self.pageList)}\n'
         result += ''.rjust(50,"-") + '\n'
         return result
