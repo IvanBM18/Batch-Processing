@@ -82,7 +82,7 @@ class MainForm(QMainWindow, MainWindow):
         #Init UI
         super().__init__()
         self.setupUi(self)
-        self.setWindowTitle("Paginación")
+        self.setWindowTitle("Programa 8 - Procesos suspendidos")
         # Timer Generation
         # self.timer = QTimer(self)
         # self.timer.timeout.connect(self.updateTimer)
