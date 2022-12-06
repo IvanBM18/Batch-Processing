@@ -10,3 +10,5 @@ class Updates(Enum):
     BLOCKED = 3
     #Process Finishd
     END = 4
+    # Suspend Process
+    SUSPEND = 5

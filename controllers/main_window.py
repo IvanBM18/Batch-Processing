@@ -9,8 +9,9 @@
 # Bloquados: Procesos que no se pueden ejecutar hasta que termine una operación de E/S
 # Terminado: Procesos que se salieron de procesos activos
 
-# Tabla BCP, Mostrar casilla vacia en lugar de  -1 en los tiempos
-# Abrir Tabla BCP
+
+# Mandar macros a archivo y extraerlos de ahi
+# Colocar ID en los macros
 
 #Library Imports
 import keyboard
@@ -32,6 +33,7 @@ from models.queue import Queue
 from models.process import Process
 from models.uiUpdate import Updates
 from models.memory import Memory
+from models.suspendedManager import SuspendManager
 
 class MainForm(QMainWindow, MainWindow):
 #Atributtes
@@ -48,6 +50,8 @@ class MainForm(QMainWindow, MainWindow):
     blockedProcesses = []
     # Finished Process List
     finishedList = []
+    # Suspended Process List
+    suspendedList : SuspendManager
     # Updates the actual process Index
     indxP = 0
     
@@ -60,6 +64,7 @@ class MainForm(QMainWindow, MainWindow):
     
 #Variables to be used during process Execution
     actualProcess : Process
+    suspendedProcess : Process
     BCPWindow  : BCP_table
     interruptedProcesses = False
     memory : Memory 
@@ -69,6 +74,7 @@ class MainForm(QMainWindow, MainWindow):
     error = False
     interruption = False
     bcp = False
+    execution = False
     
     
     #Constructor
@@ -76,18 +82,21 @@ class MainForm(QMainWindow, MainWindow):
         #Init UI
         super().__init__()
         self.setupUi(self)
-        self.setWindowTitle("Round-Robin (RR)")
+        self.setWindowTitle("Paginación")
         # Timer Generation
         # self.timer = QTimer(self)
         # self.timer.timeout.connect(self.updateTimer)
         #Button Listeners
         self.pushButton_Agregar.clicked.connect(self.setValues)
         self.pushButton_Ejecutar.clicked.connect(self.startExecution)
+        keyboard.on_press(self.onKeyPress)
         self.pushButton_Ejecutar.setEnabled(False)
+        self.suspendedList = SuspendManager()
         
         
         for i in range(40):
             self.changeTablePage(i,"lightgreen",5)
+        self.progressBar_30.setStyleSheet("QProgressBar::chunk {background-color: lightgreen;}")
         self.progressBar_43.setStyleSheet("QProgressBar::chunk{background-color: red;}")
         self.progressBar_42.setStyleSheet("QProgressBar::chunk{background-color: red;}")
         self.progressBar_41.setStyleSheet("QProgressBar::chunk{background-color : red;}")
@@ -147,7 +156,7 @@ class MainForm(QMainWindow, MainWindow):
 #Processing Methods
     # Execute Lot Processing
     def execute(self):
-        keyboard.on_press(self.onKeyPress)
+        
         while(not self.noProcessesLeft()):
             if(self.pause):
                 continue
@@ -166,7 +175,7 @@ class MainForm(QMainWindow, MainWindow):
             if(self.error): 
                 self.remainingTime = 0
                 
-            # If there is a process bloqued
+            # If there is a process blocked
             if(self.interruptedProcesses):
                 self.updateUI(Updates.BLOCKED)
             
@@ -190,7 +199,7 @@ class MainForm(QMainWindow, MainWindow):
                 # Change due proceess end
                 else:
                     self.onProcessEnd()
-                    
+                
                 # Enqueueing new Process to ready List
                 if(self.newQueue.getLength() and len(self.readyProcesses) < 3):
                     # If Theres Memory Space Available
@@ -251,10 +260,12 @@ class MainForm(QMainWindow, MainWindow):
             self.updateUI(Updates.NEW)
             
             QCoreApplication.processEvents()
+            self.execution = True
             self.execute()
     
     # End of Processing
     def endExecution(self):
+        self.execution = False
         # Last process calculations
         self.actualProcess.stats.setEndTime(self.timeCounter)
         self.actualProcess = self.updateTStats(self.actualProcess)
@@ -266,12 +277,23 @@ class MainForm(QMainWindow, MainWindow):
         
         #Updating UI
         self.updateUI(Updates.END)
-    
+        
+        # Displaying Results
+        self.BCPWindow = BCP_table(self.getAllProcesses())
+        self.BCPWindow.startTable()
+        self.BCPWindow.show()
+        self.bcp = True
+        while(self.bcp):
+            QCoreApplication.processEvents()
+        self.BCPWindow.hide()
+        
         print("Procesamiento Terminado!")
     
     # Applies on keyboard press
     def onKeyPress(self,event):
         try:
+            if(not self.execution):
+                return
             option = str(event.name).lower()
             # print(f'Key {event.name} pressed')
             # Pause
@@ -308,8 +330,15 @@ class MainForm(QMainWindow, MainWindow):
             # BCP Table
             elif(option == 'b'):
                 self.bcp = True
-                # Ciclo para mantener la ventana de BCP abierta
-                
+            # Pausa para tabla de paginas
+            elif(option == 't'):
+                self.pause = True
+            # Suspender Proceso
+            elif(option == 's'):
+                self.onProcessSuspend()
+            # Regresar Proceso
+            elif(option == 'r'):
+                self.getFromSuspended()
         except:
             pass
     
@@ -470,15 +499,55 @@ class MainForm(QMainWindow, MainWindow):
         # Free Memory
         self.freeSpace(self.actualProcess.pageList)
     
+    # Only for blocked processes
+    def onProcessSuspend(self) -> None:
+        # If there are no blocked processes Ignore
+        if(not self.blockedProcesses):
+            return
+        
+        # Removing and adding to Table
+        auxProcess : Process  = self.blockedProcesses.pop(0)
+        self.tablaPbloqueados.removeRow(0)
+        
+        # Adding to suspended List
+        self.suspendedList.addProcess(auxProcess)
+        self.suspendedProcess = self.suspendedList.getProcessOnTop()
+        
+        # Freing Memory
+        self.memory.freeMemory(auxProcess.pageList)
+        
+        self.updateUI(Updates.SUSPEND)
+        self.updateUI(Updates.BLOCKED)
+        return
+    
+    # Tries to retrieve a suspended process
+    def getFromSuspended(self) -> None:
+        if(self.suspendedProcess):
+            auxMemory = self.reserveSpace(self.suspendedProcess.getSize())
+            if(auxMemory == None):
+                return
+            # Adding to ready List
+            aux = self.suspendedList.retrieveProcess()
+            aux.setPageList(auxMemory)
+            self.readyProcesses.append(aux)
+            self.insertReadyRow(aux)
+            
+            # Getting new process from List
+            self.suspendedProcess = self.suspendedList.getProcessOnTop()
+            
+            self.updateUI(Updates.SUSPEND)
+            self.updateUI(Updates.BLOCKED)
+    
 #Memory Management
     # Reserves Memory for a new Process
     def reserveSpace(self,size) -> None:
         color = self.getRandomRGBColor()
         pages = self.memory.reserveMemory(size)
-        for i in pages:
-            self.changeTablePage(i,color,5)
-        self.changeTablePage(pages[-1],color,5 if size%5 == 0 else size%5)
-        QCoreApplication.processEvents()
+        if(pages):
+            for i in pages:
+                self.changeTablePage(i,color,5)
+            self.changeTablePage(pages[-1],color,5 if size%5 == 0 else size%5)
+            QCoreApplication.processEvents()
         return pages
     
     # Frees Memory for a Process
@@ -506,12 +575,12 @@ class MainForm(QMainWindow, MainWindow):
                 self.textBox_proximo_id.setText("N/A")
                 self.textBox_proximo_size.setText("0")
         #Only Changes in Remaining Time/Elapsed Time
-        if(upType == Updates.TIMER):
+        elif(upType == Updates.TIMER):
             self.textBox_tiempo_transcurrido.setText(str(self.elapsedTime))
             self.textBox_tiempo_restante.setText(str(self.remainingTime))
             self.textBox_quantumGlobal.setText(str(self.quantumCounter))
         #Blocked Process
-        if(upType == Updates.BLOCKED):
+        elif(upType == Updates.BLOCKED):
             cont = 0
             time : int
             for i in self.blockedProcesses:
@@ -526,10 +595,18 @@ class MainForm(QMainWindow, MainWindow):
                     self.blockedProcesses.pop(0)
                 cont += 1
         # End of Processing
-        if(upType == Updates.END):
+        elif(upType == Updates.END):
             self.textBox_restantes.setText(str(0))
             self.textBox_quantumGlobal.setText(str(0))
             self.tablaProcesos.clearContents()
+        # Suspended Process
+        elif(upType == Updates.SUSPEND):
+            if(self.suspendedProcess):
+                self.textBox_proximo_memoria_id.setText(str(self.suspendedProcess.getID()))
+                self.textBox_proximo_memoria_size.setText(str(self.suspendedProcess.getSize()))
+            else:
+                self.textBox_proximo_memoria_id.setText("N/A")
+                self.textBox_proximo_memoria_size.setText("")
         self.textBox_contadorGlobal.setText(str(self.timeCounter))
     
     # Inserts row in ProcessTable

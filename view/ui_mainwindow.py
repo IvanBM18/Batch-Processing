@@ -128,7 +128,7 @@ class Ui_MainWindow(object):
         self.groupBox_2.setBaseSize(QSize(9, 6))
         self.groupBox_5 = QGroupBox(self.groupBox_2)
         self.groupBox_5.setObjectName(u"groupBox_5")
-        self.groupBox_5.setGeometry(QRect(10, 260, 321, 341))
+        self.groupBox_5.setGeometry(QRect(10, 260, 321, 371))
         self.groupBox_5.setBaseSize(QSize(7, 7))
         self.groupBox_5.setStyleSheet(u"selection-background-color: rgb(255, 170, 127);\n"
 "border: 0px solid rgb(0, 153, 117);\n"
@@ -228,7 +228,7 @@ class Ui_MainWindow(object):
         self.label_Numero_tamanio = QLabel(self.groupBox_5)
         self.label_Numero_tamanio.setObjectName(u"label_Numero_tamanio")
         self.label_Numero_tamanio.setGeometry(QRect(170, 60, 51, 21))
-        self.label_Numero_tamanio.setAutoFillBackground(True)
+        self.label_Numero_tamanio.setAutoFillBackground(False)
         self.label_Numero_tamanio.setStyleSheet(u"color:rgb(255, 255, 255);\n"
 "font: 10pt \"Segoe UI Emoji\";\n"
 "")
@@ -239,19 +239,43 @@ class Ui_MainWindow(object):
         self.label_Numero_id.setStyleSheet(u"color:rgb(255, 255, 255);\n"
 "font: 10pt \"Segoe UI Emoji\";\n"
 "")
-        self.textBox_Id_quantum = QLineEdit(self.groupBox_5)
-        self.textBox_Id_quantum.setObjectName(u"textBox_Id_quantum")
-        self.textBox_Id_quantum.setGeometry(QRect(150, 280, 141, 35))
-        self.textBox_Id_quantum.setMinimumSize(QSize(60, 35))
-        self.textBox_Id_quantum.setMaximumSize(QSize(230, 35))
-        self.textBox_Id_quantum.setStyleSheet(u"background-color: rgb(52, 62, 64);\n"
+        self.label_titulo_Nuevos_3 = QLabel(self.groupBox_5)
+        self.label_titulo_Nuevos_3.setObjectName(u"label_titulo_Nuevos_3")
+        self.label_titulo_Nuevos_3.setGeometry(QRect(80, 280, 171, 31))
+        self.label_titulo_Nuevos_3.setStyleSheet(u"color:rgb(0, 153, 117);\n"
+"\n"
+"font: 63 13pt \"Segoe UI Semibold\";\n"
+"")
+        self.textBox_proximo_memoria_id = QLineEdit(self.groupBox_5)
+        self.textBox_proximo_memoria_id.setObjectName(u"textBox_proximo_memoria_id")
+        self.textBox_proximo_memoria_id.setGeometry(QRect(90, 320, 61, 35))
+        self.textBox_proximo_memoria_id.setMinimumSize(QSize(60, 35))
+        self.textBox_proximo_memoria_id.setMaximumSize(QSize(230, 35))
+        self.textBox_proximo_memoria_id.setStyleSheet(u"background-color: rgb(52, 62, 64);\n"
 "color: rgb(255, 255, 255);\n"
 "border: 1px solid rgb(0, 153, 117);\n"
 "border-radius: 4px;")
-        self.label_id_quantum = QLabel(self.groupBox_5)
-        self.label_id_quantum.setObjectName(u"label_id_quantum")
-        self.label_id_quantum.setGeometry(QRect(20, 280, 61, 31))
-        self.label_id_quantum.setStyleSheet(u"color:rgb(255, 255, 255);\n"
+        self.label_Numero_id_2 = QLabel(self.groupBox_5)
+        self.label_Numero_id_2.setObjectName(u"label_Numero_id_2")
+        self.label_Numero_id_2.setGeometry(QRect(50, 330, 21, 21))
+        self.label_Numero_id_2.setAutoFillBackground(False)
+        self.label_Numero_id_2.setStyleSheet(u"color:rgb(255, 255, 255);\n"
+"font: 10pt \"Segoe UI Emoji\";\n"
+"")
+        self.textBox_proximo_memoria_size = QLineEdit(self.groupBox_5)
+        self.textBox_proximo_memoria_size.setObjectName(u"textBox_proximo_memoria_size")
+        self.textBox_proximo_memoria_size.setGeometry(QRect(230, 320, 61, 35))
+        self.textBox_proximo_memoria_size.setMinimumSize(QSize(60, 35))
+        self.textBox_proximo_memoria_size.setMaximumSize(QSize(230, 35))
+        self.textBox_proximo_memoria_size.setStyleSheet(u"background-color: rgb(52, 62, 64);\n"
+"color: rgb(255, 255, 255);\n"
+"border: 1px solid rgb(0, 153, 117);\n"
+"border-radius: 4px;")
+        self.label_Numero_tamanio_2 = QLabel(self.groupBox_5)
+        self.label_Numero_tamanio_2.setObjectName(u"label_Numero_tamanio_2")
+        self.label_Numero_tamanio_2.setGeometry(QRect(170, 330, 51, 21))
+        self.label_Numero_tamanio_2.setAutoFillBackground(False)
+        self.label_Numero_tamanio_2.setStyleSheet(u"color:rgb(255, 255, 255);\n"
 "font: 10pt \"Segoe UI Emoji\";\n"
 "")
         self.tablaProcesos = QTableWidget(self.groupBox_2)
@@ -1009,7 +1033,9 @@ class Ui_MainWindow(object):
         self.label_titulo_Nuevos_2.setText(QCoreApplication.translate("MainWindow", u"Proximo a ingresar", None))
         self.label_Numero_tamanio.setText(QCoreApplication.translate("MainWindow", u"Tama\u00f1o", None))
         self.label_Numero_id.setText(QCoreApplication.translate("MainWindow", u"ID", None))
-        self.label_id_quantum.setText(QCoreApplication.translate("MainWindow", u"Quantum", None))
+        self.label_titulo_Nuevos_3.setText(QCoreApplication.translate("MainWindow", u"Proximo en Memoria", None))
+        self.label_Numero_id_2.setText(QCoreApplication.translate("MainWindow", u"ID", None))
+        self.label_Numero_tamanio_2.setText(QCoreApplication.translate("MainWindow", u"Tama\u00f1o", None))
         ___qtablewidgetitem2 = self.tablaProcesos.horizontalHeaderItem(0)
         ___qtablewidgetitem2.setText(QCoreApplication.translate("MainWindow", u"ID", None));
         ___qtablewidgetitem3 = self.tablaProcesos.horizontalHeaderItem(1)
@@ -1034,7 +1060,7 @@ class Ui_MainWindow(object):
         self.label_titulo_ProcesoTableP.setText(QCoreApplication.translate("MainWindow", u"Tabla de paginas", None))
         self.groupBox_7.setTitle("")
         ___qtablewidgetitem8 = self.tablaPaginacionL.horizontalHeaderItem(1)
-        ___qtablewidgetitem8.setText(QCoreApplication.translate("MainWindow", u"N. Macro", None));
+        ___qtablewidgetitem8.setText(QCoreApplication.translate("MainWindow", u"N. Marco", None));
         ___qtablewidgetitem9 = self.tablaPaginacionL.verticalHeaderItem(0)
         ___qtablewidgetitem9.setText(QCoreApplication.translate("MainWindow", u"1", None));
         ___qtablewidgetitem10 = self.tablaPaginacionL.verticalHeaderItem(1)

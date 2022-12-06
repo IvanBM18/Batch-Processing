@@ -103,3 +103,11 @@ class Process:
             return self.valueA % self.valueB
         elif(self.operation == "^"):
             return self.valueA ** self.valueB
+    
+    def toFile(self):
+        result = f'ID: {self.processID}'
+        result +=  f'Operacion: {self.getFullOperation()}' 
+        result += f'Tiempo: {self.remainingTime}'
+        result += f'Tamaño: {self.size} | Paginas: {self.pageList}'
+        result += ''.rjust(50,"-") + '\n'
+        return result

@@ -41,7 +41,7 @@ class BCP_table(QWidget):
         self.ui.tableTStats.setItem(n,7,QTableWidgetItem(str(stat.getWaitTime())))
         self.ui.tableTStats.setItem(n,8,QTableWidgetItem(str(stat.getServiceTime())))
         self.ui.tableTStats.setItem(n,9,QTableWidgetItem(str(process.getTime())))
-        self.ui.tableTStats.setItem(n,10,QTableWidgetItem(str(stat.getAnswerTime())))
+        self.ui.tableTStats.setItem(n,10,QTableWidgetItem(str(stat.getAnswerTime() if stat.getAnswerTime() != -1 else "")))
 
     def startTable(self):
         for i in self.pList:

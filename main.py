@@ -1,4 +1,4 @@
-
+# Estado N/A, entra nuevo algoritmo, actualizar la tabla
 from PySide6.QtWidgets import QApplication
 
 from controllers.main_window import MainForm 

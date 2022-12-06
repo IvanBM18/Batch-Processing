@@ -300,7 +300,7 @@ font: 10pt &quot;Segoe UI Emoji&quot;;
        <x>10</x>
        <y>260</y>
        <width>321</width>
-       <height>341</height>
+       <height>371</height>
       </rect>
      </property>
      <property name="baseSize">
@@ -605,7 +605,7 @@ font: 63 13pt &quot;Segoe UI Semibold&quot;;
        </rect>
       </property>
       <property name="autoFillBackground">
-       <bool>true</bool>
+       <bool>false</bool>
       </property>
       <property name="styleSheet">
        <string notr="true">color:rgb(255, 255, 255);
@@ -637,12 +637,31 @@ font: 10pt &quot;Segoe UI Emoji&quot;;
        <string>ID</string>
       </property>
      </widget>
-     <widget class="QLineEdit" name="textBox_Id_quantum">
+     <widget class="QLabel" name="label_titulo_Nuevos_3">
       <property name="geometry">
        <rect>
-        <x>150</x>
+        <x>80</x>
         <y>280</y>
-        <width>141</width>
+        <width>171</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color:rgb(0, 153, 117);
+
+font: 63 13pt &quot;Segoe UI Semibold&quot;;
+</string>
+      </property>
+      <property name="text">
+       <string>Proximo en Memoria</string>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="textBox_proximo_memoria_id">
+      <property name="geometry">
+       <rect>
+        <x>90</x>
+        <y>320</y>
+        <width>61</width>
         <height>35</height>
        </rect>
       </property>
@@ -665,14 +684,17 @@ border: 1px solid rgb(0, 153, 117);
 border-radius: 4px;</string>
       </property>
      </widget>
-     <widget class="QLabel" name="label_id_quantum">
+     <widget class="QLabel" name="label_Numero_id_2">
       <property name="geometry">
        <rect>
-        <x>20</x>
-        <y>280</y>
-        <width>61</width>
-        <height>31</height>
+        <x>50</x>
+        <y>330</y>
+        <width>21</width>
+        <height>21</height>
        </rect>
+      </property>
+      <property name="autoFillBackground">
+       <bool>false</bool>
       </property>
       <property name="styleSheet">
        <string notr="true">color:rgb(255, 255, 255);
@@ -680,7 +702,56 @@ font: 10pt &quot;Segoe UI Emoji&quot;;
 </string>
       </property>
       <property name="text">
-       <string>Quantum</string>
+       <string>ID</string>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="textBox_proximo_memoria_size">
+      <property name="geometry">
+       <rect>
+        <x>230</x>
+        <y>320</y>
+        <width>61</width>
+        <height>35</height>
+       </rect>
+      </property>
+      <property name="minimumSize">
+       <size>
+        <width>60</width>
+        <height>35</height>
+       </size>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>230</width>
+        <height>35</height>
+       </size>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(52, 62, 64);
+color: rgb(255, 255, 255);
+border: 1px solid rgb(0, 153, 117);
+border-radius: 4px;</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_Numero_tamanio_2">
+      <property name="geometry">
+       <rect>
+        <x>170</x>
+        <y>330</y>
+        <width>51</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="autoFillBackground">
+       <bool>false</bool>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color:rgb(255, 255, 255);
+font: 10pt &quot;Segoe UI Emoji&quot;;
+</string>
+      </property>
+      <property name="text">
+       <string>Tamaño</string>
       </property>
      </widget>
     </widget>
