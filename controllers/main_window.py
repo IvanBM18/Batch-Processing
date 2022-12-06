@@ -10,7 +10,6 @@
 # Terminado: Procesos que se salieron de procesos activos
 
 
-# Borrar ID de los macros
 # QPaintDevice: Cannot destroy paint device that is being painted
 # QWidget::repaint: Recursive repaint detected
 #Library Imports
@@ -155,10 +154,12 @@ class MainForm(QMainWindow, MainWindow):
 #Processing Methods
     # Execute Lot Processing
     def execute(self):
-        keyboard.on_press(self.onKeyPress)
+        # keyboard.on_press(self.onKeyPress)
         while(not self.noProcessesLeft()):
             if(self.pause):
-                continue
+                while(self.pause):
+                    QCoreApplication.processEvents()
+                self.pause = False
             
             if(self.bcp):
                 self.BCPWindow = BCP_table(self.getAllProcesses())
@@ -229,6 +230,7 @@ class MainForm(QMainWindow, MainWindow):
     
     #Starts Task Processing
     def startExecution(self) -> None:
+        keyboard.on_press(self.onKeyPress)
         self.tablaPTerminados.clearContents()
         self.tablaPbloqueados.clearContents()
         self.tablaProcesos.clearContents()
@@ -288,15 +290,14 @@ class MainForm(QMainWindow, MainWindow):
             QCoreApplication.processEvents()
         self.BCPWindow.hide()
         self.execution = False
-        self.releaseKeyboard()
+        keyboard.unhook_all()
+        keyboard.on_press(self.close())
         
         print("Procesamiento Terminado!")
     
     # Applies on keyboard press
     def onKeyPress(self,event):
         try:
-            if(not self.execution):
-                return
             option = str(event.name).lower()
             # Pause
             if(option == 'p'): 
@@ -323,20 +324,28 @@ class MainForm(QMainWindow, MainWindow):
                 print("Nuevo Proceso")
                 # Generating and Enqueueing new process
                 aux = self.newProcess(self.indxP)
+                aux.processID = self.indxP
                 self.indxP += 1
                 aux.stats.setArrivalTime(self.timeCounter)
-                if(len(self.readyProcesses) < 3):
+                if(len(self.readyProcesses) < 3 ):
+                    auxMemory = self.reserveSpace(aux.getSize())
+                    if(auxMemory != None):
+                        aux.pageList = auxMemory
+                        self.insertMemoryRow(int(aux.processID),aux.pageList)
                     self.readyProcesses.append(aux)
                     self.insertReadyRow(aux)
+                    QCoreApplication.processEvents()
                 else:
                     self.newQueue.enqueue(aux)
                 self.textBox_restantes.setText(str(self.newQueue.getLength()))
             # BCP Table
             elif(option == 'b'):
                 self.bcp = True
+                # keyboard.wait('c')
             # Pausa para tabla de paginas
             elif(option == 't'):
                 self.pause = True
+                # keyboard.wait('c')
             # Suspender Proceso
             elif(option == 's'):
                 print("Suspendiendo Proceso")
@@ -560,7 +569,7 @@ class MainForm(QMainWindow, MainWindow):
         return pages
     
     # Frees Memory for a Process
-    def freeSpace(self,pages,id) -> None:
+    def freeSpace(self,pages) -> None:
         self.insertMemoryRow(-1,pages)
         for i in pages:
             self.changeTablePage(i,"lightgreen",5)
