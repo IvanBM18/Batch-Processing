@@ -1,1 +1,11 @@
 --- Suspended Processes ---
+ID: 7
+Operacion: 17*69
+Tiempo: 11
+Tamaño: 22 | Paginas: 5
+--------------------------------------------------
+ID: 8
+Operacion: 44%78
+Tiempo: 9
+Tamaño: 11 | Paginas: 3
+--------------------------------------------------
